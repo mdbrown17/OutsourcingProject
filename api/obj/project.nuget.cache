@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "m2hlx6DkxYoib8YeUTHDz0+BtWdtiSTEZgLph1ItuHD9LcWBx/JHCJiX/0PqKCNsVZOsPaERqhlyS7Ite/eyRA==",
+  "success": true,
+  "projectFilePath": "/Users/mattbrown/Documents/Alabama/Spring2022/321GroupProj/OutsourcingProject/api/api.csproj",
+  "expectedPackageFiles": [
+    "/Users/mattbrown/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "/Users/mattbrown/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/Users/mattbrown/.nuget/packages/swashbuckle.aspnetcore/5.6.3/swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "/Users/mattbrown/.nuget/packages/swashbuckle.aspnetcore.swagger/5.6.3/swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "/Users/mattbrown/.nuget/packages/swashbuckle.aspnetcore.swaggergen/5.6.3/swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "/Users/mattbrown/.nuget/packages/swashbuckle.aspnetcore.swaggerui/5.6.3/swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}
