@@ -1,40 +1,64 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
-
-    <title>Signin Template for Bootstrap</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
-
-    <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-    <!-- Custom styles for this template -->
+<head>
+    <script src="./resources/scripts/index.js" type="text/JavaScript"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="./resources/loginPage.css" rel="stylesheet">
-  </head>
+</head>
+<body>
 
-  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: lightgray">
+            <img src="./Images/logo2" id="logo" />
+    </nav>
 
-    <div class = "text-center">
-    <form class="form-signin">
-      <h1 class="h3 mb-3 font-weight-normal">Login</h1>
-      <label for="inputUsername" class="sr-only">Username</label>
-      <input type="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
+    <div class="header">
+        <div class="btn1">
+            <button id="loginButton" class="btn1" style="float: right;">Home</button>
+        </div>
+        <h1>Login</h1>
+    </div>
+
+    <div class ="container">
+        <div class="row">
+          <div class = "col-4">
+          </div>
+          <div class = "col-4">
+            <form>
+              <label for="username">Username:</label><br>
+              <input type = "text" id="username" name="username" size="35"><br>
+              <label for="password">Password:</label><br>
+              <input type = "text" id="password" name="password" size="35"><br>
+            </form>
+          </div>
+          <div class = "col-4">
+            
+          </div>
+        </div>
+    </div>
+
+    <div class ="container">
+      <div class="row">
+        <div class = "col-4">
+        </div>
+        <div class = "col-4">
+          <div class="btn">
+            <button id="loginButton" class="btn">Login</button>
+          </div>
+          <div class="btn">
+            <button id="loginButton" class="btn">Create an Account</button>
+          </div>
+        </div>
+        <div class = "col-4">
+          
+        </div>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    </form>
   </div>
-  </body>
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
+</body>
+</div>
 </html>
