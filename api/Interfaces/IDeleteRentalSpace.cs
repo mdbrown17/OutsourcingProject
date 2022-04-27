@@ -1,0 +1,9 @@
+namespace api.Interfaces
+{
+    public interface IDeleteRentalSpaces
+    {
+         public void Delete(Lease value){
+             
+         }
+    }
+}
