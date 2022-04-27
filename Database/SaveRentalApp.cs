@@ -11,7 +11,28 @@ namespace OutsourcingProject.api.Database
 { 
     public class SaveRentalApps : IInsertRentalApps{
         public void InsertRentalApp(RentalApplication value){
+            ConnectionString myConnection = new ConnectionString();
+            string cs = myConnection.cs;
+            using var con = new MySqlConnection(cs);
+            con.Open();
 
+            string stm = @"INSERT INTO rentalapplication(applicationid,daterequested,approvalstatus,customernotes,rcustomerid,rmanagerid,rentalid,startdate,enddate) VALUES(@applicationid,@daterequested,@approvalstatus,@customernotes,@rcustomerid,@rmanagerid,@rentalid,@startdate,@enddate)";
+
+            using var cmd = new MySqlCommand(stm,con);
+
+            cmd.Parameters.AddWithValue("@applicationid",value.applicationid);
+            cmd.Parameters.AddWithValue("@daterequested",value.daterequested);
+            cmd.Parameters.AddWithValue("@approvalstatus",value.approvalstatus);
+            cmd.Parameters.AddWithValue("@customernotes",value.customernotes) ;
+            cmd.Parameters.AddWithValue("@rcustomerid",value.rcustomerid);
+            cmd.Parameters.AddWithValue("@rmanagerid", value.rmanagerid);
+            cmd.Parameters.AddWithValue("@rentalid",value.rentalid);
+            cmd.Parameters.AddWithValue("@startdate",value.startdate);
+            cmd.Parameters.AddWithValue("@enddate",value.enddate);
+
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
          }
         public void UpdateRentalApp(RentalApplication value){
              
