@@ -9,6 +9,9 @@ using MySql.Data.MySqlClient;
 using System.Data;
 using System.Data.SqlClient;
 using MySql.Data;
+using api.Interfaces;
+using api.Models;
+
 namespace OutsourcingProject.api{
     public class CheckMangLogin : ICheckLogin{
         public int CheckMangLogin(string user, string password){
@@ -18,13 +21,11 @@ namespace OutsourcingProject.api{
 
             foreach (Manager m in managers){
                 if(m.mUsername == user && m.mPassword == password){
-                    return m.managerID; //returns manager id if login credientials are valid
+                    return m.managerID; //returns manager id if login credentials are valid
                 }
             }
             // -1 is returned if login credentials are invalid
             return -1;
-
-            
         }
 
     }

@@ -3,7 +3,6 @@ using System.IO;
 using System.Collections.Generic;
 using api.Interfaces;
 using api.Models;
-using MySql.Data.MySqlClient;
 
 namespace api
 {

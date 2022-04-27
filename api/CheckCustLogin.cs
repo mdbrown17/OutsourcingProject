@@ -9,6 +9,8 @@ using MySql.Data.MySqlClient;
 using System.Data;
 using System.Data.SqlClient;
 using MySql.Data;
+using api.Interfaces;
+
 namespace OutsourcingProject.api{
     public class CheckCustLogin : ICheckLogin{
         public int CheckLogin(string user, string password){
