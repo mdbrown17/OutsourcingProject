@@ -35,7 +35,28 @@ namespace OutsourcingProject.api.Database
             cmd.ExecuteNonQuery();
          }
         public void UpdateRentalApp(RentalApplication value){
-             
+            ConnectionString myConnection = new ConnectionString();
+            string cs = myConnection.cs;
+            using var con = new MySqlConnection(cs);
+            con.Open();
+
+            using var cmd = new MySqlCommand(@"UPDATE rentalapplication set daterequested = @daterequested, approvalstatus = @approvalstatus, customernotes = @customernotes, rcustomerid = @rcustomerid, rmanagerid = @rmanagerid, rentalid = @rentalid, startdate = @startdate, enddate = @enddate WHERE applicationid = @applicationid");
+
+            cmd.Connection = con;
+
+            //cmd.Parameters.AddWithValue("@applicationid",value.applicationid);
+            cmd.Parameters.AddWithValue("@daterequested",value.daterequested);
+            cmd.Parameters.AddWithValue("@approvalstatus",value.approvalstatus);
+            cmd.Parameters.AddWithValue("@customernotes",value.customernotes) ;
+            cmd.Parameters.AddWithValue("@rcustomerid",value.rcustomerid);
+            cmd.Parameters.AddWithValue("@rmanagerid", value.rmanagerid);
+            cmd.Parameters.AddWithValue("@rentalid",value.rentalid);
+            cmd.Parameters.AddWithValue("@startdate",value.startdate);
+            cmd.Parameters.AddWithValue("@enddate",value.enddate);
+
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
         }
     }
 }

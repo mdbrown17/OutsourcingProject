@@ -33,8 +33,27 @@ namespace OutsourcingProject.api.Database
             cmd.ExecuteNonQuery();
          }
          public void UpdateManager(Manager value){
-             //updates manager info in database
-             
+            ConnectionString myConnection = new ConnectionString();
+            string cs = myConnection.cs;
+            using var con = new MySqlConnection(cs);
+            con.Open();
+
+            using var cmd = new MySqlCommand(@"UPDATE manager set mfname = @mfname, mlname = @mlname, mphonenumber = @mphonenumber, memail = @memail, musername = @musername, mpassword = @mpassword WHERE managerid = @managerid");
+
+            cmd.Connection = con;
+
+            //cmd.Parameters.AddWithValue("@managerid",value.managerid);
+            cmd.Parameters.AddWithValue("@mfname",value.mfname);
+            cmd.Parameters.AddWithValue("@mlname",value.mlname);
+            cmd.Parameters.AddWithValue("@mphonenumber",value.mphonenumber) ;
+            cmd.Parameters.AddWithValue("@memail",value.memail);
+            cmd.Parameters.AddWithValue("@musername", value.musername);
+            cmd.Parameters.AddWithValue("@mpassword",value.mpassword);
+
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
          }
     }
 }
