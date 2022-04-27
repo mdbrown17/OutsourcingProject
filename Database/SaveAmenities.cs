@@ -24,7 +24,7 @@ namespace OutsourcingProject.api.Database
             cmd.Parameters.AddWithValue("@kitchen",value.kitchen);
             cmd.Parameters.AddWithValue("@commerciallighting",value.commerciallighting);
             cmd.Parameters.AddWithValue("@securitysystem", value.securitysystem);
-            cmd.Parameters.AddWithValue("@internet",value.internet) ;
+            cmd.Parameters.AddWithValue("@internet",value.internet);
             cmd.Parameters.AddWithValue("@bathroom",value.bathroom);
 
             cmd.Prepare();
@@ -32,7 +32,25 @@ namespace OutsourcingProject.api.Database
             cmd.ExecuteNonQuery();
          }
          public void UpdateAmenities(Amenities value){
-             
+            ConnectionString myConnection = new ConnectionString();
+            string cs = myConnection.cs;
+            using var con = new MySqlConnection(cs);
+            con.Open();
+
+            using var cmd = new MySqlCommand(@"UPDATE amenities set kitchen = @kitchen, commerciallighting = @commerciallighting, securitysystem = @securitysystem, internet = @internet, bathroom = @bathroom WHERE rentalid = @rentalid");
+
+            cmd.Connection = con;
+
+            //cmd.Parameters.AddWithValue("@rentalid",value.rentalid);
+            cmd.Parameters.AddWithValue("@kitchen",value.kitchen);
+            cmd.Parameters.AddWithValue("@commerciallighting",value.commerciallighting);
+            cmd.Parameters.AddWithValue("@securitysystem", value.securitysystem);
+            cmd.Parameters.AddWithValue("@internet",value.internet);
+            cmd.Parameters.AddWithValue("@bathroom",value.bathroom);
+
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
          }
     }
 }
