@@ -11,6 +11,7 @@ namespace OutsourcingProject.api.Database
 { 
     public class SaveAmenities : IInsertAmenities{
          public void InsertAmenities(Amenities value){
+             //insert new amenities into database
 
          }
          public void UpdateAmenities(Amenities value){
