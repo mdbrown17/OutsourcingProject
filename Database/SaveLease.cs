@@ -24,14 +24,31 @@ namespace OutsourcingProject.api.Database
             cmd.Parameters.AddWithValue("@startdate",value.startdate);
             cmd.Parameters.AddWithValue("@enddate",value.enddate);
             cmd.Parameters.AddWithValue("@lrentalid", value.lrentalid);
-            cmd.Parameters.AddWithValue("@lcustomerid",value.lcustomerid) ;
+            cmd.Parameters.AddWithValue("@lcustomerid",value.lcustomerid);
 
             cmd.Prepare();
 
             cmd.ExecuteNonQuery();
          }
          public void UpdateLease(Lease value){
-             
+            ConnectionString myConnection = new ConnectionString();
+            string cs = myConnection.cs;
+            using var con = new MySqlConnection(cs);
+            con.Open();
+
+            using var cmd = new MySqlCommand(@"UPDATE lease set startdate = @startdate, enddate = @enddate, lrentalid = @lrentalid, lcustomerid = @lcustomerid WHERE leaseid = @leaseid");
+
+            cmd.Connection = con;
+
+            //cmd.Parameters.AddWithValue("@leaseid",value.leaseid);
+            cmd.Parameters.AddWithValue("@startdate",value.startdate);
+            cmd.Parameters.AddWithValue("@enddate",value.enddate);
+            cmd.Parameters.AddWithValue("@lrentalid", value.lrentalid);
+            cmd.Parameters.AddWithValue("@lcustomerid",value.lcustomerid);
+
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
          }
     }
 }

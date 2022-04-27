@@ -27,11 +27,36 @@ namespace OutsourcingProject.api.Database
             cmd.Parameters.AddWithValue("@cphonenumber",value.cphoneNumber) ;
             cmd.Parameters.AddWithValue("@cemail",value.cEmail);
             cmd.Parameters.AddWithValue("@cusername", value.cUsername);
-            cmd.Parameters.AddWithValue("@cpassword",value.cPassword) ;
+            cmd.Parameters.AddWithValue("@cpassword",value.cPassword);
 
             cmd.Prepare();
 
             cmd.ExecuteNonQuery();
         }
+
+        public void UpdateCustomer(Customer value){
+            ConnectionString myConnection = new ConnectionString();
+            string cs = myConnection.cs;
+            using var con = new MySqlConnection(cs);
+            con.Open();
+
+            using var cmd = new MySqlCommand(@"UPDATE customer set cfname = @cfname, clname = @clname, cbusinessname = @cbusinessname, cphonenumber = @cphonenumber, cemail = @cemail, cusername = @cusername, cpassword = @cpassword WHERE customerid = @customerid");
+
+            cmd.Connection = con;
+
+            //cmd.Parameters.AddWithValue("@customerid",value.customerID);
+            cmd.Parameters.AddWithValue("@cfname",value.cfname);
+            cmd.Parameters.AddWithValue("@clname",value.clname);
+            cmd.Parameters.AddWithValue("@cbusinessname", value.cBusinessName);
+            cmd.Parameters.AddWithValue("@cphonenumber",value.cphoneNumber) ;
+            cmd.Parameters.AddWithValue("@cemail",value.cEmail);
+            cmd.Parameters.AddWithValue("@cusername", value.cUsername);
+            cmd.Parameters.AddWithValue("@cpassword",value.cPassword);
+
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+         }
+
     }
 }
