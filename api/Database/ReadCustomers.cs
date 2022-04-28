@@ -32,7 +32,7 @@ namespace api.Database
                 string fName = reader.GetString(1);
                 string lName = reader.GetString(2);
                 string business = reader.GetString(3);
-                int phone = reader.GetInt32(4);
+                Int64 phone = reader.GetInt64(4);
                 string email = reader.GetString(5);
                 string user = reader.GetString(6);
                 string pass = reader.GetString(7);
@@ -60,7 +60,7 @@ namespace api.Database
                 string fName = reader.GetString(1);
                 string lName = reader.GetString(2);
                 string business = reader.GetString(3);
-                int phone = reader.GetInt32(4);
+                Int64 phone = reader.GetInt64(4);
                 string email = reader.GetString(5);
                 string user = reader.GetString(6);
                 string pass = reader.GetString(7);
@@ -69,8 +69,6 @@ namespace api.Database
             }
             reader.Close();
             return customers[0];
-
-
         }
 
     }
