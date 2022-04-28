@@ -1,12 +1,14 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
-using OutsourcingProject.api.Interfaces;
-using OutsourcingProject.api.Models;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Data.SqlClient;
 using MySql.Data;
+using api.Interfaces;
+using api.Models;
+using api;
+
 namespace OutsourcingProject.api.Database
 { 
     // class reads in rentalapp objects from database
@@ -37,7 +39,7 @@ namespace OutsourcingProject.api.Database
                 DateTime start = reader.GetDateTime(7);
                 DateTime end = reader.GetDateTime(8);
                 
-                apps.Add(new RentalApplication(){applicatonID = id,dateRequested = request, approvalStatus = approval, customerNotes = custNotes, customerID = custId, managerID = manId, rentalID = rentId, startDate = start, endDate = end});
+                apps.Add(new RentalApplication(){applicationID = id,dateRequested = request, approvalStatus = approval, customerNotes = custNotes, customerID = custId, managerID = manId, rentalID = rentId, startDate = start, endDate = end});
             }
             reader.Close();
             return apps;

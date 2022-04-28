@@ -1,15 +1,16 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
-using OutsourcingProject.api.Interfaces;
-using OutsourcingProject.api.Models;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Data.SqlClient;
 using MySql.Data;
-namespace OutsourcingProject.api.Database
+using api.Models;
+using api.Interfaces;
+
+namespace api.Database
 { 
-    public class SaveManager : IInsertManager{
+    public class SaveManager : IInsertManagers{
          public void InsertManager(Manager value){
             ConnectionString myConnection = new ConnectionString();
             string cs = myConnection.cs;
@@ -20,13 +21,13 @@ namespace OutsourcingProject.api.Database
 
             using var cmd = new MySqlCommand(stm,con);
 
-            cmd.Parameters.AddWithValue("@managerid",value.managerid);
+            cmd.Parameters.AddWithValue("@managerid",value.managerID);
             cmd.Parameters.AddWithValue("@mfname",value.mfname);
             cmd.Parameters.AddWithValue("@mlname",value.mlname);
-            cmd.Parameters.AddWithValue("@mphonenumber",value.mphonenumber) ;
-            cmd.Parameters.AddWithValue("@memail",value.memail);
-            cmd.Parameters.AddWithValue("@musername", value.musername);
-            cmd.Parameters.AddWithValue("@mpassword",value.mpassword);
+            cmd.Parameters.AddWithValue("@mphonenumber",value.mphoneNumber) ;
+            cmd.Parameters.AddWithValue("@memail",value.mEmail);
+            cmd.Parameters.AddWithValue("@musername", value.mUsername);
+            cmd.Parameters.AddWithValue("@mpassword",value.mPassword);
 
             cmd.Prepare();
 
@@ -45,10 +46,10 @@ namespace OutsourcingProject.api.Database
             //cmd.Parameters.AddWithValue("@managerid",value.managerid);
             cmd.Parameters.AddWithValue("@mfname",value.mfname);
             cmd.Parameters.AddWithValue("@mlname",value.mlname);
-            cmd.Parameters.AddWithValue("@mphonenumber",value.mphonenumber) ;
-            cmd.Parameters.AddWithValue("@memail",value.memail);
-            cmd.Parameters.AddWithValue("@musername", value.musername);
-            cmd.Parameters.AddWithValue("@mpassword",value.mpassword);
+            cmd.Parameters.AddWithValue("@mphonenumber",value.mphoneNumber) ;
+            cmd.Parameters.AddWithValue("@memail",value.mEmail);
+            cmd.Parameters.AddWithValue("@musername", value.mUsername);
+            cmd.Parameters.AddWithValue("@mpassword",value.mPassword);
 
             cmd.Prepare();
 

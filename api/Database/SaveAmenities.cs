@@ -1,13 +1,15 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
-using OutsourcingProject.api.Interfaces;
-using OutsourcingProject.api.Models;
+
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Data.SqlClient;
 using MySql.Data;
-namespace OutsourcingProject.api.Database
+using api.Interfaces;
+using api.Models;
+
+namespace api.Database
 { 
     public class SaveAmenities : IInsertAmenities{
          public void InsertAmenities(Amenities value){
@@ -20,10 +22,10 @@ namespace OutsourcingProject.api.Database
 
             using var cmd = new MySqlCommand(stm,con);
 
-            cmd.Parameters.AddWithValue("@rentalid",value.rentalid);
+            cmd.Parameters.AddWithValue("@rentalid",value.rentalID);
             cmd.Parameters.AddWithValue("@kitchen",value.kitchen);
-            cmd.Parameters.AddWithValue("@commerciallighting",value.commerciallighting);
-            cmd.Parameters.AddWithValue("@securitysystem", value.securitysystem);
+            cmd.Parameters.AddWithValue("@commerciallighting",value.commercialLighting);
+            cmd.Parameters.AddWithValue("@securitysystem", value.securitySystem);
             cmd.Parameters.AddWithValue("@internet",value.internet);
             cmd.Parameters.AddWithValue("@bathroom",value.bathroom);
 
@@ -43,8 +45,8 @@ namespace OutsourcingProject.api.Database
 
             //cmd.Parameters.AddWithValue("@rentalid",value.rentalid);
             cmd.Parameters.AddWithValue("@kitchen",value.kitchen);
-            cmd.Parameters.AddWithValue("@commerciallighting",value.commerciallighting);
-            cmd.Parameters.AddWithValue("@securitysystem", value.securitysystem);
+            cmd.Parameters.AddWithValue("@commerciallighting",value.commercialLighting);
+            cmd.Parameters.AddWithValue("@securitysystem", value.securitySystem);
             cmd.Parameters.AddWithValue("@internet",value.internet);
             cmd.Parameters.AddWithValue("@bathroom",value.bathroom);
 
