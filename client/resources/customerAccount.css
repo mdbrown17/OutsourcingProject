@@ -1,0 +1,43 @@
+.navbar{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+  
+#logo {
+    position:relative;
+    left: 560px;
+    width: 250px;
+    height: 100px;
+}
+  
+.header {
+    padding-top: 125px;
+    text-align: center;
+}
+
+
+  
+.header2{
+    text-align: right;
+    font-size: x-small;
+}
+  
+.btn{
+    background-color: darkred;
+    color: white;
+}
+
+.col-6 img {
+    width: 80%;
+}
+
+.leaseinfo {
+    padding-bottom: 20px;
+}
+
+.customerinfo {
+    padding-bottom: 20px;
+}
