@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="./resources/scripts/index.js" type="text/JavaScript"></script>
+    <script src="./scripts/homePage.js" type="text/JavaScript"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
     <link href="./resources/homePage.css" rel="stylesheet">
     <title>TIDE Market</title>
 </head>
-<body>
+<body onload="handleOnLoad()">
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: lightgray">
             <img src="./Images/logo2" id="logo" />
     </nav>
@@ -19,41 +19,13 @@
         </div>
         <h1>Available Rentals</h1>
     </div>
-    <div class ="small-container">
-        <div class="row">
-            <div class = "col-4" style="border-style: solid;">
-                <h4><b>Rental Space A</b></h4>
-                <img src="./Images/floorplan.jpg" alt="floorplan">
-                <p><strong>$700/month</strong></p>
-                <p><strong>750 sq ft</strong></p>
-                <div class="btn">
-                    <button id="requestButton" class="btn">Request</button>
-                </div>
-            </div>
-            <div class = "col-4" style="border-style: solid;">
-                <h4><b>Rental Space B</b></h4>
-                <img src="./Images/floorplan.jpg" alt="floorplan">
-                <p><strong>$800/month</strong></p>
-                <p><strong>850 sq ft</strong> </p>
-                <div class="btn">
-                    <button id="requestButton" class="btn">Request</button>
-                </div>
-            </div>
-            <div class = "col-4" style="border-style: solid;">
-                <h4><b>Rental Space C</b></h4>
-                <img src="./Images/floorplan.jpg" alt="floorplan">
-                <p><strong>$650/month</strong></p>
-                <p><strong>750 sq ft</strong></p>
-                <div class="btn">
-                    <button id="requestButton" class="btn">Request</button>
-                </div>
-            </div>
+    <div id = "rentals" class ="small-container">
 
-        </div>
     </div>
+    
    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src = "./scripts/loginPage.js"></script>
+    <script src = "./scripts/homePage.js"></script>
 </body>
 </div>
 </html>
