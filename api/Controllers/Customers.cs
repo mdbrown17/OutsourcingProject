@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using api.Database;
 using api.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace api.Controllers
 {
@@ -37,14 +38,18 @@ namespace api.Controllers
         }
 
         // POST: api/Customers
+        [EnableCors("OpenPolicy")]        
         [HttpPost]
-        public void PostCustomer([FromBody] string value)
+        public void Post([FromBody] Customer myCustomer)
         {
+            IInsertCustomers createCustomer = new InsertCustomers();
+            createCustomer.InsertCustomer(myCustomer);
+            Console.WriteLine(myCustomer.cBusinessName); 
         }
 
         // PUT: api/Customers
         [HttpPut("{customerID}")]
-        public void PutCustomer(int customerID, [FromBody] string value)
+        public void Put(int customerID, [FromBody] string value)
         {
         }
 
