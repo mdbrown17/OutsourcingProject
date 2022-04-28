@@ -14,6 +14,10 @@ function change_page_createAccount(){
     window.location.href = "createAccount.html";
 }
 
+function change_page_loginNavigation(){
+    window.location.href = "loginNavigation.html";
+}
+
 const loginForm = document.getElementById("login-form");
 const loginButton = document.getElementById("login-form-submit");
 const loginErrorMsg = document.getElementById("login-error-msg");
