@@ -1,0 +1,60 @@
+.navbar{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+
+
+#logo {
+    position:relative;
+    left: 560px;
+    width: 250px;
+    height: 100px;
+
+  }
+  .card{
+    min-height: 100px;
+    max-width: fit-content;
+    padding: 5px;
+}
+
+.header {
+  padding-top: 125px;
+  text-align: center;
+}
+.header2{
+text-align: right;
+font-size: x-small;
+}
+.col-4 img {
+  width: 80%;
+}
+.col-4{
+  border: 1px;
+  border-width: 1px;
+  margin: 1px;
+  flex-basis: 33%;
+  padding: 20px;
+  min-width: 200px;
+  margin-bottom: 50px;
+  transition: transform 0.5s;
+}
+.small-container{
+  max-width: 1080px;
+  margin: auto;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.approveBtn{
+  background-color: green;
+  color: white;
+}
+
+.denyBtn{
+    background-color: red;
+    color: white;
+  }
