@@ -5,6 +5,12 @@ namespace api.Interfaces
 {
     public interface IGetCustomers
     {
+         public List<Customer> GetAll(){
+             
+         }
+        public Customer GetOne(int id){
+            
+        }
          public List<Customer> GetAll();
     }
 }
