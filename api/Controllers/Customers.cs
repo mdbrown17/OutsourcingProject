@@ -16,6 +16,7 @@ namespace api.Controllers
     public class Customers : ControllerBase
     {
         // GET: api/Customers 
+        [EnableCors("OpenPolicy")]
         [HttpGet]
         public List<Customer> Get()
         {
@@ -30,6 +31,7 @@ namespace api.Controllers
         }
 
         // GET: api/Customers
+        [EnableCors("OpenPolicy")]
         [HttpGet("{customerID}", Name = "GetCustomer")]
         public Customer Get(int customerID)
         {

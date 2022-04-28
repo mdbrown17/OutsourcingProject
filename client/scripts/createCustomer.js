@@ -1,4 +1,5 @@
 // const baseUrl = "https://localhost:5001/api/customers"; //
+
 function postCustomer() {
     console.log("Made it here");
     const fName = document.getElementById("firstname").value;
@@ -18,8 +19,6 @@ function postCustomer() {
             cUsername: username,
             cPassword: password
         };
-
-
         console.log(user);
 
     fetch("https://localhost:5001/api/customers", {
