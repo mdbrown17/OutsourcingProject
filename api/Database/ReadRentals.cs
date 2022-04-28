@@ -59,7 +59,7 @@ namespace api.Database
             using MySqlDataReader reader = cmd.ExecuteReader();
 
             while(reader.Read()){
-                int id = reader.GetInt32(0);
+                int rentalID = reader.GetInt32(0);
                 int ft = reader.GetInt32(1);
                 string image = reader.GetString(2);
                 int min = reader.GetInt32(3);
@@ -69,8 +69,8 @@ namespace api.Database
                 string location = reader.GetString(7);
                 string nearTenant = reader.GetString(8);
                 int custID = reader.GetInt32(9);
-                int manID = reader.GetInt(10);
-                rentals.Add(new RentalSpace(){rentalID = id,sqFt = ft, imageLink = link, minimumPeriod = min, maximumPeriod = max, monthlyRate = monthly, weeklyRate = weekly, locationDetail = location, nearByTenant = nearTenant, customerID = custID, managerID = manID});
+                int manID = reader.GetInt32(10);
+                rentals.Add(new RentalSpace(){rentalID = id,sqFt = ft, imageLink = image, minimumPeriod = min, maximumPeriod = max, monthlyRate = monthly, weeklyRate = weekly, locationDetail = location, nearbyTenant = nearTenant, customerID = custID, managerID = manID});
             }
             reader.Close();
             return rentals[0];

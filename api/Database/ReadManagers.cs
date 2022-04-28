@@ -58,7 +58,7 @@ namespace api.Database
 
 
             while(reader.Read()){
-                int id = reader.GetInt32(0);
+                int managerID = reader.GetInt32(0);
                 string fName = reader.GetString(1);
                 string lName = reader.GetString(2);
                 int phone = reader.GetInt32(3);

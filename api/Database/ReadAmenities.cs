@@ -57,14 +57,14 @@ namespace api.Database
 
 
             while(reader.Read()){
-                int id = reader.GetInt32(0);
+                int rentalID = reader.GetInt32(0);
                 string kitch = reader.GetString(1);
                 string lighting = reader.GetString(2);
                 string security = reader.GetString(3);
                 string inter = reader.GetString(4);
                 string bath = reader.GetString(5);
                 
-                amenities.Add(new Amenities(){rentalID = id,kitchen = kitch, commericalLighting = lighting, securitySystem = security, internet = inter, bathroom = bath});
+                amenities.Add(new Amenities(){rentalID = id,kitchen = kitch, commercialLighting = lighting, securitySystem = security, internet = inter, bathroom = bath});
             }
             reader.Close();
             return amenities[0];

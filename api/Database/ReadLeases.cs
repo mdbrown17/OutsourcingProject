@@ -57,7 +57,7 @@ namespace api.Database
 
 
             while(reader.Read()){
-                int id = reader.GetInt32(0);
+                int leaseID = reader.GetInt32(0);
                 DateTime start = reader.GetDateTime(1);
                 DateTime end = reader.GetDateTime(2);
                 int rentId = reader.GetInt32(3);

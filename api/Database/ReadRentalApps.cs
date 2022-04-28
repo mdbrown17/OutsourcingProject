@@ -52,14 +52,14 @@ namespace OutsourcingProject.api.Database
             using var con = new MySqlConnection(cs);
             con.Open();
 
-            string stm = @"Select * from rentalapplication WHERE @applicationid = applicationid";
+            string stm = @"Select * from rentalapplication WHERE @applicationID = applicationID";
 
             using var cmd = new MySqlCommand(stm,con);
-            cmd.Parameters.AddWithValue("@applicationid",id);
+            cmd.Parameters.AddWithValue("@applicationID",id);
             using MySqlDataReader reader = cmd.ExecuteReader();
 
             while(reader.Read()){
-                int id = reader.GetInt32(0);
+                int applicationID = reader.GetInt32(0);
                 DateTime request = reader.GetDateTime(1);
                 string approval = reader.GetString(2);
                 string custNotes = reader.GetString(3);
@@ -69,7 +69,7 @@ namespace OutsourcingProject.api.Database
                 DateTime start = reader.GetDateTime(7);
                 DateTime end = reader.GetDateTime(8);
                 
-                apps.Add(new RentalApplication(){applicatonID = id,dateRequested = request, approvalStatus = approval, customerNotes = custNotes, customerID = custId, managerID = manId, rentalID = rentId, startDate = start, endDate = end});
+                apps.Add(new RentalApplication(){applicationID = id,dateRequested = request, approvalStatus = approval, customerNotes = custNotes, customerID = custId, managerID = manId, rentalID = rentId, startDate = start, endDate = end});
             }
             reader.Close();
             return apps[0];
