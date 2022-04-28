@@ -6,7 +6,6 @@
   z-index: 1;
 }
 
-<<<<<<< HEAD
 body {
   display: -ms-flexbox;
   display: -webkit-box;
@@ -26,14 +25,12 @@ body {
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
-=======
-#logo {
+  #logo{
   position:relative;
   left: 560px;
   width: 250px;
   height: 100px;
 
->>>>>>> 56d92fd7a9a6a6fb094063d542ec35a715f94ccd
 }
 
 .header {

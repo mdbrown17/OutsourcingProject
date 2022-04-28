@@ -1,13 +1,14 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
-using OutsourcingProject.api.Interfaces;
-using OutsourcingProject.api.Models;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Data.SqlClient;
 using MySql.Data;
-namespace OutsourcingProject.api.Database
+using api.Interfaces;
+using api.Models;
+
+namespace api.Database
 { 
     // class reads in customer objects from database
     public class ReadCustomers : IGetCustomers{
@@ -36,7 +37,7 @@ namespace OutsourcingProject.api.Database
                 string user = reader.GetString(6);
                 string pass = reader.GetString(7);
                 
-                customers.Add(new Customer(){customerID = id,cfname = fName, clname = lName, cBusinessName = business, cphoneNumber = phone, cEmail = email, cUsername = user, cPassword = pass});
+                customers.Add(new Customer(){customerID = id, cfName = fName, clName = lName, cBusinessName = business, cPhoneNumber = phone, cEmail = email, cUsername = user, cPassword = pass});
             }
             reader.Close();
             return customers;
