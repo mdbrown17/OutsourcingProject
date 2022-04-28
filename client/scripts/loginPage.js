@@ -2,6 +2,14 @@ function change_page_home(){
     window.location.href = "homePage.html";
 }
 
+function change_page_customerLogin(){
+    window.location.href = "customerLogin.html";
+}
+
+function change_page_managerLogin(){
+    window.location.href = "managerLogin.html";
+}
+
 function change_page_createAccount(){
     window.location.href = "createAccount.html";
 }
