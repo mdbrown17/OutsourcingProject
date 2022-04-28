@@ -2,19 +2,19 @@ using System.Runtime.InteropServices;
 using System;
 using System.IO;
 using System.Collections.Generic;
-using OutsourcingProject.api.Interfaces;
-using OutsourcingProject.api.Models;
 using OutsourcingProject.api.Database;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Data.SqlClient;
 using MySql.Data;
 using api.Interfaces;
+using api.Database;
+using api.Models;
 
 namespace OutsourcingProject.api{
     public class CheckCustLogin : ICheckLogin{
         public int CheckLogin(string user, string password){
-            ReadCustomer cust = new ReadCustomer();
+            ReadCustomers cust = new ReadCustomers();
             List<Customer> customers = new List<Customer>();
             customers = cust.GetAll(); //puts all customers from database into list
 
