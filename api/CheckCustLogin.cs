@@ -25,9 +25,6 @@ namespace OutsourcingProject.api{
             }
             // -1 is returned if login credentials are invalid
             return -1;
-
-            
         }
-
     }
 }
