@@ -102,3 +102,14 @@
 /Users/mattbrown/Documents/Alabama/Spring2022/321GroupProj/OutsourcingProject/api/obj/Debug/net5.0/ref/api.dll
 /Users/mattbrown/Documents/Alabama/Spring2022/321GroupProj/OutsourcingProject/api/obj/Debug/net5.0/api.pdb
 /Users/mattbrown/Documents/Alabama/Spring2022/321GroupProj/OutsourcingProject/api/obj/Debug/net5.0/api.genruntimeconfig.cache
+/Users/mattbrown/Documents/Alabama/Spring2022/321GroupProj/OutsourcingProject/api/bin/Debug/net5.0/BouncyCastle.Crypto.dll
+/Users/mattbrown/Documents/Alabama/Spring2022/321GroupProj/OutsourcingProject/api/bin/Debug/net5.0/Google.Protobuf.dll
+/Users/mattbrown/Documents/Alabama/Spring2022/321GroupProj/OutsourcingProject/api/bin/Debug/net5.0/K4os.Compression.LZ4.dll
+/Users/mattbrown/Documents/Alabama/Spring2022/321GroupProj/OutsourcingProject/api/bin/Debug/net5.0/K4os.Compression.LZ4.Streams.dll
+/Users/mattbrown/Documents/Alabama/Spring2022/321GroupProj/OutsourcingProject/api/bin/Debug/net5.0/K4os.Hash.xxHash.dll
+/Users/mattbrown/Documents/Alabama/Spring2022/321GroupProj/OutsourcingProject/api/bin/Debug/net5.0/MySql.Data.dll
+/Users/mattbrown/Documents/Alabama/Spring2022/321GroupProj/OutsourcingProject/api/bin/Debug/net5.0/Ubiety.Dns.Core.dll
+/Users/mattbrown/Documents/Alabama/Spring2022/321GroupProj/OutsourcingProject/api/bin/Debug/net5.0/ZstdNet.dll
+/Users/mattbrown/Documents/Alabama/Spring2022/321GroupProj/OutsourcingProject/api/bin/Debug/net5.0/System.Configuration.ConfigurationManager.dll
+/Users/mattbrown/Documents/Alabama/Spring2022/321GroupProj/OutsourcingProject/api/bin/Debug/net5.0/System.Security.Cryptography.ProtectedData.dll
+/Users/mattbrown/Documents/Alabama/Spring2022/321GroupProj/OutsourcingProject/api/bin/Debug/net5.0/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll
