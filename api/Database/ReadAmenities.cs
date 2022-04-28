@@ -2,13 +2,14 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
-using OutsourcingProject.api.Interfaces;
-using OutsourcingProject.api.Models;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Data.SqlClient;
 using MySql.Data;
-namespace OutsourcingProject.api.Database
+using api.Interfaces;
+using api.Models;
+
+namespace api.Database
 { 
     // class reads in amentities objects from database
     public class ReadAmentities : IGetAmenities{
@@ -35,7 +36,7 @@ namespace OutsourcingProject.api.Database
                 string inter = reader.GetString(4);
                 string bath = reader.GetString(5);
                 
-                amenities.Add(new Amenities(){rentalID = id,kitchen = kitch, commericalLighting = lighting, securitySystem = security, internet = inter, bathroom = bath});
+                amenities.Add(new Amenities(){rentalID = id,kitchen = kitch, commercialLighting = lighting, securitySystem = security, internet = inter, bathroom = bath});
             }
             reader.Close();
             return amenities;

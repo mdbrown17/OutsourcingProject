@@ -1,3 +1,6 @@
+using api.Models;
+using System.Collections.Generic;
+
 namespace api.Interfaces
 {
     public interface IGetCustomers
@@ -8,5 +11,6 @@ namespace api.Interfaces
         public Customer GetOne(int id){
             
         }
+         public List<Customer> GetAll();
     }
 }

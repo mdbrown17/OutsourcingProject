@@ -1,13 +1,14 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
-using OutsourcingProject.api.Interfaces;
-using OutsourcingProject.api.Models;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Data.SqlClient;
 using MySql.Data;
-namespace OutsourcingProject.api.Database
+using api.Interfaces;
+using api.Models;
+
+namespace api.Database
 { 
     public class SaveRental : IInsertRentalSpaces{
          public void InsertRentalSpace(RentalSpace value){
@@ -20,17 +21,17 @@ namespace OutsourcingProject.api.Database
 
             using var cmd = new MySqlCommand(stm,con);
 
-            cmd.Parameters.AddWithValue("@rentalid",value.rentalid);
-            cmd.Parameters.AddWithValue("@sqft",value.sqft);
-            cmd.Parameters.AddWithValue("@imagelink",value.imagelink);
-            cmd.Parameters.AddWithValue("@minimumperiod",value.minimumperiod) ;
-            cmd.Parameters.AddWithValue("@maximumperiod",value.maximumperiod);
-            cmd.Parameters.AddWithValue("@monthlyrate", value.monthlyrate);
-            cmd.Parameters.AddWithValue("@weeklyrate",value.weeklyrate);
-            cmd.Parameters.AddWithValue("@locationdetail",value.locationdetail);
-            cmd.Parameters.AddWithValue("@nearbytenant",value.nearbytenant);
-            cmd.Parameters.AddWithValue("@rscustomerid",value.rscustomerid);
-            cmd.Parameters.AddWithValue("@rsmanagerid",value.rsmanagerid);
+            cmd.Parameters.AddWithValue("@rentalid",value.rentalID);
+            cmd.Parameters.AddWithValue("@sqft",value.sqFt);
+            cmd.Parameters.AddWithValue("@imagelink",value.imageLink);
+            cmd.Parameters.AddWithValue("@minimumperiod",value.minimumPeriod) ;
+            cmd.Parameters.AddWithValue("@maximumperiod",value.maximumPeriod);
+            cmd.Parameters.AddWithValue("@monthlyrate", value.monthlyRate);
+            cmd.Parameters.AddWithValue("@weeklyrate",value.weeklyRate);
+            cmd.Parameters.AddWithValue("@locationdetail",value.locationDetail);
+            cmd.Parameters.AddWithValue("@nearbytenant",value.nearbyTenant);
+            cmd.Parameters.AddWithValue("@rscustomerid",value.customerID);
+            cmd.Parameters.AddWithValue("@rsmanagerid",value.managerID);
 
             cmd.Prepare();
 
@@ -47,16 +48,16 @@ namespace OutsourcingProject.api.Database
             cmd.Connection = con;
 
             //cmd.Parameters.AddWithValue("@rentalid",value.rentalid);
-            cmd.Parameters.AddWithValue("@sqft",value.sqft);
-            cmd.Parameters.AddWithValue("@imagelink",value.imagelink);
-            cmd.Parameters.AddWithValue("@minimumperiod",value.minimumperiod) ;
-            cmd.Parameters.AddWithValue("@maximumperiod",value.maximumperiod);
-            cmd.Parameters.AddWithValue("@monthlyrate", value.monthlyrate);
-            cmd.Parameters.AddWithValue("@weeklyrate",value.weeklyrate);
-            cmd.Parameters.AddWithValue("@locationdetail",value.locationdetail);
-            cmd.Parameters.AddWithValue("@nearbytenant",value.nearbytenant);
-            cmd.Parameters.AddWithValue("@rscustomerid",value.rscustomerid);
-            cmd.Parameters.AddWithValue("@rsmanagerid",value.rsmanagerid);
+            cmd.Parameters.AddWithValue("@sqft",value.sqFt);
+            cmd.Parameters.AddWithValue("@imagelink",value.imageLink);
+            cmd.Parameters.AddWithValue("@minimumperiod",value.minimumPeriod) ;
+            cmd.Parameters.AddWithValue("@maximumperiod",value.maximumPeriod);
+            cmd.Parameters.AddWithValue("@monthlyrate", value.monthlyRate);
+            cmd.Parameters.AddWithValue("@weeklyrate",value.weeklyRate);
+            cmd.Parameters.AddWithValue("@locationdetail",value.locationDetail);
+            cmd.Parameters.AddWithValue("@nearbytenant",value.nearbyTenant);
+            cmd.Parameters.AddWithValue("@rscustomerid",value.customerID);
+            cmd.Parameters.AddWithValue("@rsmanagerid",value.managerID);
 
             cmd.Prepare();
 

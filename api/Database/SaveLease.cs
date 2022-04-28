@@ -1,12 +1,14 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
-using OutsourcingProject.api.Interfaces;
-using OutsourcingProject.api.Models;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Data.SqlClient;
 using MySql.Data;
+using api.Interfaces;
+using api.Models;
+using api;
+
 namespace OutsourcingProject.api.Database
 { 
     public class SaveLease : IInsertLeases{
@@ -20,11 +22,11 @@ namespace OutsourcingProject.api.Database
 
             using var cmd = new MySqlCommand(stm,con);
 
-            cmd.Parameters.AddWithValue("@leaseid",value.leaseid);
-            cmd.Parameters.AddWithValue("@startdate",value.startdate);
-            cmd.Parameters.AddWithValue("@enddate",value.enddate);
-            cmd.Parameters.AddWithValue("@lrentalid", value.lrentalid);
-            cmd.Parameters.AddWithValue("@lcustomerid",value.lcustomerid);
+            cmd.Parameters.AddWithValue("@leaseid",value.leaseID);
+            cmd.Parameters.AddWithValue("@startdate",value.startDate);
+            cmd.Parameters.AddWithValue("@enddate",value.endDate);
+            cmd.Parameters.AddWithValue("@lrentalid", value.rentalID);
+            cmd.Parameters.AddWithValue("@lcustomerid",value.customerID);
 
             cmd.Prepare();
 
@@ -41,10 +43,10 @@ namespace OutsourcingProject.api.Database
             cmd.Connection = con;
 
             //cmd.Parameters.AddWithValue("@leaseid",value.leaseid);
-            cmd.Parameters.AddWithValue("@startdate",value.startdate);
-            cmd.Parameters.AddWithValue("@enddate",value.enddate);
-            cmd.Parameters.AddWithValue("@lrentalid", value.lrentalid);
-            cmd.Parameters.AddWithValue("@lcustomerid",value.lcustomerid);
+            cmd.Parameters.AddWithValue("@startdate",value.startDate);
+            cmd.Parameters.AddWithValue("@enddate",value.endDate);
+            cmd.Parameters.AddWithValue("@lrentalid", value.rentalID);
+            cmd.Parameters.AddWithValue("@lcustomerid",value.customerID);
 
             cmd.Prepare();
 

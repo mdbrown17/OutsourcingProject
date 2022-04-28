@@ -1,3 +1,6 @@
+using api.Models;
+using System.Collections.Generic;
+
 namespace api.Interfaces
 {
     public interface IGetRentalApps
@@ -9,5 +12,6 @@ namespace api.Interfaces
          public RentalApplication GetOne(int id){
 
          }
+         
     }
 }

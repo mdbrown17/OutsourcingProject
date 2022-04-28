@@ -7410,19 +7410,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Anna\\.nuget\\packages\\": {}
+    "/Users/mattbrown/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Source\\repos\\OutsourcingProject\\api\\api.csproj",
+      "projectUniqueName": "/Users/mattbrown/Documents/Alabama/Spring2022/321GroupProj/OutsourcingProject/api/api.csproj",
       "projectName": "api",
-      "projectPath": "C:\\Source\\repos\\OutsourcingProject\\api\\api.csproj",
-      "packagesPath": "C:\\Users\\Anna\\.nuget\\packages\\",
-      "outputPath": "C:\\Source\\repos\\OutsourcingProject\\api\\obj\\",
+      "projectPath": "/Users/mattbrown/Documents/Alabama/Spring2022/321GroupProj/OutsourcingProject/api/api.csproj",
+      "packagesPath": "/Users/mattbrown/.nuget/packages/",
+      "outputPath": "/Users/mattbrown/Documents/Alabama/Spring2022/321GroupProj/OutsourcingProject/api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Anna\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/mattbrown/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -7481,7 +7481,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.400/RuntimeIdentifierGraph.json"
       }
     }
   }
