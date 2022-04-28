@@ -5,5 +5,9 @@ namespace api.Interfaces
          public List<RentalApplication> GetAll(){
              
          }
+
+         public RentalApplication GetOne(int id){
+
+         }
     }
 }

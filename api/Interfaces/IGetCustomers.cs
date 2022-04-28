@@ -5,5 +5,8 @@ namespace api.Interfaces
          public List<Customer> GetAll(){
              
          }
+        public Customer GetOne(int id){
+            
+        }
     }
 }

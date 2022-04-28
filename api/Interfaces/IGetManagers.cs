@@ -5,5 +5,8 @@ namespace api.Interfaces
          public List<Manager> GetAll(){
              
          }
+         public Manager GetOne(int id){
+             
+         }
     }
 }

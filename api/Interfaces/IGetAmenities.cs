@@ -5,5 +5,8 @@ namespace api.Interfaces
          public List<Amenities> GetAll(){
              
          }
+         public Amenities GetOne(int id){
+             
+         }
     }
 }
