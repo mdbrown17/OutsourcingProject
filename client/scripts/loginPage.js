@@ -10,12 +10,16 @@ function change_page_managerLogin(){
     window.location.href = "managerLogin.html";
 }
 
-function change_page_createAccount(){
-    window.location.href = "createAccount.html";
-}
-
 function change_page_loginNavigation(){
     window.location.href = "loginNavigation.html";
+}
+
+function change_page_createCustomerAccount(){
+    window.location.href = "createCustomerAccount.html";
+}
+
+function change_page_createManagerAccount(){
+    window.location.href = "createManagerAccount.html";
 }
 
 const loginForm = document.getElementById("login-form");
