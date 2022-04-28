@@ -18,8 +18,6 @@ namespace api.Database{
             con.Open();
             
             using var cmd = new MySqlCommand("DELETE FROM customer WHERE customerid = '" + value.customerID +"'",con);
-            
-            
             cmd.ExecuteNonQuery();
         }
     }
