@@ -39,7 +39,16 @@ namespace api.Database
                 string nearTenant = reader.GetString(8);
                 int custID = reader.GetInt32(9);
                 int manID = reader.GetInt32(10);
-                rentals.Add(new RentalSpace(){rentalID = id,sqFt = ft, imageLink = image, minimumPeriod = min, maximumPeriod = max, monthlyRate = monthly, weeklyRate = weekly, locationDetail = location, nearbyTenant = nearTenant, customerID = custID, managerID = manID});
+                int kitch = reader.GetInt32(11);
+                int lighting = reader.GetInt32(12);
+                int security = reader.GetInt32(13);
+                int inter = reader.GetInt32(14);
+                int bath = reader.GetInt32(15);
+                rentals.Add(new RentalSpace(){rentalID = id,sqFt = ft, imageLink = image,
+                 minimumPeriod = min, maximumPeriod = max, monthlyRate = monthly, 
+                 weeklyRate = weekly, locationDetail = location, nearbyTenant = nearTenant, 
+                 customerID = custID, managerID = manID, kitchen = kitch, commercialLighting =lighting,
+                 securitySystem = security, internet = inter, bathroom = bath});
             }
             reader.Close();
             return rentals;
@@ -59,7 +68,7 @@ namespace api.Database
 
             //read in each song from database and add to list
             while(reader.Read()){
-                if(reader.GetInt32(9) == 0)
+                if(reader.GetInt32(9) == 1)
                 {
                     int id = reader.GetInt32(0);
                     int ft = reader.GetInt32(1);
@@ -72,7 +81,16 @@ namespace api.Database
                     string nearTenant = reader.GetString(8);
                     int custID = reader.GetInt32(9);
                     int manID = reader.GetInt32(10);
-                    rentals.Add(new RentalSpace(){rentalID = id,sqFt = ft, imageLink = image, minimumPeriod = min, maximumPeriod = max, monthlyRate = monthly, weeklyRate = weekly, locationDetail = location, nearbyTenant = nearTenant, customerID = custID, managerID = manID});
+                    int kitch = reader.GetInt32(11);
+                    int lighting = reader.GetInt32(12);
+                    int security = reader.GetInt32(13);
+                    int inter = reader.GetInt32(14);
+                    int bath = reader.GetInt32(15);
+                    rentals.Add(new RentalSpace(){rentalID = id,sqFt = ft, imageLink = image,
+                    minimumPeriod = min, maximumPeriod = max, monthlyRate = monthly, 
+                    weeklyRate = weekly, locationDetail = location, nearbyTenant = nearTenant, 
+                    customerID = custID, managerID = manID, kitchen = kitch, commercialLighting =lighting,
+                    securitySystem = security, internet = inter, bathroom = bath});
                 }
             }
             reader.Close();
@@ -93,18 +111,27 @@ namespace api.Database
             using MySqlDataReader reader = cmd.ExecuteReader();
 
             while(reader.Read()){
-                int rentalID = reader.GetInt32(0);
-                int ft = reader.GetInt32(1);
-                string image = reader.GetString(2);
-                int min = reader.GetInt32(3);
-                int max = reader.GetInt32(4);
-                int monthly = reader.GetInt32(5);
-                int weekly = reader.GetInt32(6);
-                string location = reader.GetString(7);
-                string nearTenant = reader.GetString(8);
-                int custID = reader.GetInt32(9);
-                int manID = reader.GetInt32(10);
-                rentals.Add(new RentalSpace(){rentalID = id,sqFt = ft, imageLink = image, minimumPeriod = min, maximumPeriod = max, monthlyRate = monthly, weeklyRate = weekly, locationDetail = location, nearbyTenant = nearTenant, customerID = custID, managerID = manID});
+                int rentalId = reader.GetInt32(0);
+                    int ft = reader.GetInt32(1);
+                    string image = reader.GetString(2);
+                    int min = reader.GetInt32(3);
+                    int max = reader.GetInt32(4);
+                    int monthly = reader.GetInt32(5);
+                    int weekly = reader.GetInt32(6);
+                    string location = reader.GetString(7);
+                    string nearTenant = reader.GetString(8);
+                    int custID = reader.GetInt32(9);
+                    int manID = reader.GetInt32(10);
+                    int kitch = reader.GetInt32(11);
+                    int lighting = reader.GetInt32(12);
+                    int security = reader.GetInt32(13);
+                    int inter = reader.GetInt32(14);
+                    int bath = reader.GetInt32(15);
+                rentals.Add(new RentalSpace(){rentalID = rentalId, sqFt = ft, imageLink = image,
+                 minimumPeriod = min, maximumPeriod = max, monthlyRate = monthly, 
+                 weeklyRate = weekly, locationDetail = location, nearbyTenant = nearTenant, 
+                 customerID = custID, managerID = manID, kitchen = kitch, commercialLighting =lighting,
+                 securitySystem = security, internet = inter, bathroom = bath});
             }
             reader.Close();
             return rentals[0];
