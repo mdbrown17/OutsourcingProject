@@ -65,8 +65,10 @@ function getRentalSpaces(){
                 html += '<p><strong>Bathroom Included</strong></p>';
             }
 
-            html += '<div class="btn">';
-            html += '<button id="requestButton" class="btn" onclick="rentalModal(' + rentalID+ ')">Request</button> </div> </div>';
+            // html += '<div class="btn">';
+            // html += '<a href="#" data-toggle="modal" data-target="#requestModal"> Request </a>';
+            html += '<button id="requestButton" class="btn" onclick="rentalModal(' + rentalID + ')">Request</button>';
+            html+=' </div> </div>';
             rentalCount ++;
         });
         document.getElementById("rentals").innerHTML = html;
@@ -77,23 +79,5 @@ function getRentalSpaces(){
 }
 
 function rentalModal(id){
-    let html = "";
-    html +='<div class="modal" tabindex="-1" role="dialog">';
-    html +='<div class="modal-dialog" role="document">';
-    html +='<div class="modal-content">';
-    html +='<div class="modal-header">';
-    html +='<h5 class="modal-title">Modal title</h5>';
-    html +='<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
-    html +='<span aria-hidden="true">&times;</span>';
-    html +='</button>';
-    html +='</div>';
-    html +='<div class="modal-body">';
-    html +='<p>Modal body text goes here.</p>';
-    html +='</div>';
-    html +='<div class="modal-footer">';
-    html +='<button type="button" class="btn btn-primary">Save changes</button>';
-    html +='<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>';
-    html +='</div> </div> </div> </div>';
-
-    document.getElementById("modal").innerHTML = html;
+    $('#requestModal').modal('show');
 }
