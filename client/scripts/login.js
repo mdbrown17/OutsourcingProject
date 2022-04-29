@@ -25,16 +25,12 @@ function checkLogin()
 
             if(customer.cUsername == temp.username && customer.cPassword == temp.password)
             {
-                customer.isLoggedIn == true;
                 change_page_customerAccount();
             }
 
         })
 
     });
-
-    
-
 }
 
 function change_page_customerAccount(){
