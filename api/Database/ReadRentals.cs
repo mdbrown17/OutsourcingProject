@@ -28,7 +28,7 @@ namespace api.Database
 
             //read in each song from database and add to list
             while(reader.Read()){
-                int id = reader.GetInt32(0);
+                int rentalId = reader.GetInt32(0);
                 int ft = reader.GetInt32(1);
                 string image = reader.GetString(2);
                 int min = reader.GetInt32(3);
@@ -68,9 +68,9 @@ namespace api.Database
 
             //read in each song from database and add to list
             while(reader.Read()){
-                if(reader.GetInt32(9) == 0)
+                if(reader.GetInt32(9) == 1)
                 {
-                    int id = reader.GetInt32(0);
+                    int rentalId = reader.GetInt32(0);
                     int ft = reader.GetInt32(1);
                     string image = reader.GetString(2);
                     int min = reader.GetInt32(3);
@@ -111,7 +111,7 @@ namespace api.Database
             using MySqlDataReader reader = cmd.ExecuteReader();
 
             while(reader.Read()){
-                int rentalID = reader.GetInt32(0);
+                int rentalId = reader.GetInt32(0);
                 int ft = reader.GetInt32(1);
                 string image = reader.GetString(2);
                 int min = reader.GetInt32(3);
