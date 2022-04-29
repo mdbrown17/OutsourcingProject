@@ -39,7 +39,16 @@ namespace api.Database
                 string nearTenant = reader.GetString(8);
                 int custID = reader.GetInt32(9);
                 int manID = reader.GetInt32(10);
-                rentals.Add(new RentalSpace(){rentalID = id,sqFt = ft, imageLink = image, minimumPeriod = min, maximumPeriod = max, monthlyRate = monthly, weeklyRate = weekly, locationDetail = location, nearbyTenant = nearTenant, customerID = custID, managerID = manID});
+                int kitch = reader.GetInt32(11);
+                int lighting = reader.GetInt32(12);
+                int security = reader.GetInt32(13);
+                int inter = reader.GetInt32(14);
+                int bath = reader.GetInt32(15);
+                rentals.Add(new RentalSpace(){rentalID = rentalId, sqFt = ft, imageLink = image,
+                 minimumPeriod = min, maximumPeriod = max, monthlyRate = monthly, 
+                 weeklyRate = weekly, locationDetail = location, nearbyTenant = nearTenant, 
+                 customerID = custID, managerID = manID, kitchen = kitch, commercialLighting =lighting,
+                 securitySystem = security, internet = inter, bathroom = bath});
             }
             reader.Close();
             return rentals;
@@ -72,7 +81,16 @@ namespace api.Database
                     string nearTenant = reader.GetString(8);
                     int custID = reader.GetInt32(9);
                     int manID = reader.GetInt32(10);
-                    rentals.Add(new RentalSpace(){rentalID = id,sqFt = ft, imageLink = image, minimumPeriod = min, maximumPeriod = max, monthlyRate = monthly, weeklyRate = weekly, locationDetail = location, nearbyTenant = nearTenant, customerID = custID, managerID = manID});
+                    int kitch = reader.GetInt32(11);
+                    int lighting = reader.GetInt32(12);
+                    int security = reader.GetInt32(13);
+                    int inter = reader.GetInt32(14);
+                    int bath = reader.GetInt32(15);
+                    rentals.Add(new RentalSpace(){rentalID = rentalId, sqFt = ft, imageLink = image,
+                    minimumPeriod = min, maximumPeriod = max, monthlyRate = monthly, 
+                    weeklyRate = weekly, locationDetail = location, nearbyTenant = nearTenant, 
+                    customerID = custID, managerID = manID, kitchen = kitch, commercialLighting =lighting,
+                    securitySystem = security, internet = inter, bathroom = bath});
                 }
             }
             reader.Close();
@@ -104,7 +122,16 @@ namespace api.Database
                 string nearTenant = reader.GetString(8);
                 int custID = reader.GetInt32(9);
                 int manID = reader.GetInt32(10);
-                rentals.Add(new RentalSpace(){rentalID = id,sqFt = ft, imageLink = image, minimumPeriod = min, maximumPeriod = max, monthlyRate = monthly, weeklyRate = weekly, locationDetail = location, nearbyTenant = nearTenant, customerID = custID, managerID = manID});
+                int kitch = reader.GetInt32(11);
+                int lighting = reader.GetInt32(12);
+                int security = reader.GetInt32(13);
+                int inter = reader.GetInt32(14);
+                int bath = reader.GetInt32(15);
+                rentals.Add(new RentalSpace(){rentalID = rentalId, sqFt = ft, imageLink = image,
+                 minimumPeriod = min, maximumPeriod = max, monthlyRate = monthly, 
+                 weeklyRate = weekly, locationDetail = location, nearbyTenant = nearTenant, 
+                 customerID = custID, managerID = manID, kitchen = kitch, commercialLighting =lighting,
+                 securitySystem = security, internet = inter, bathroom = bath});
             }
             reader.Close();
             return rentals[0];

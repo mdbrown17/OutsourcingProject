@@ -13,5 +13,10 @@ namespace api.Models
         public int rentalID {get; set;}
         public DateTime startDate {get; set;}
         public DateTime endDate {get; set;}
+        public int kitchen {get; set;}
+        public int commercialLighting {get; set;}
+        public int securitySystem {get; set;}
+        public int internet {get; set;}
+        public int bathroom {get; set;}
     }
 }
