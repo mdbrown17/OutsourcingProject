@@ -5,6 +5,8 @@ function checkLogin()
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
+    localStorage.setItem("username", username);
+
     var temp = {
         username: username,
         password: password
@@ -25,6 +27,8 @@ function checkLogin()
 
             if(customer.cUsername == temp.username && customer.cPassword == temp.password)
             {
+                var id = customer.customerID;
+                localStorage.setItem("userID", id);
                 change_page_customerAccount();
             }
 

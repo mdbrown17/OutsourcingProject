@@ -7,6 +7,9 @@ function handleOnLoad() {
 }
 
 function getCustomerInfo() {
+
+    console.log('here ' + localStorage.getItem("userID"));
+
     fetch('https://localhost:5001/api/customers')
         .then(function(response){
         console.log(response);
@@ -14,6 +17,7 @@ function getCustomerInfo() {
     }).then(function(json){
 
         let html = "";
+
 
         json.forEach((customer) => {
             
@@ -41,7 +45,7 @@ function getCustomerInfo() {
         });
         document.getElementById("info").innerHTML = html;
 
-    }).catch(function(error){
-        console.log(error);
-    });
+        }).catch(function(error){
+            console.log(error);
+        });
 }
