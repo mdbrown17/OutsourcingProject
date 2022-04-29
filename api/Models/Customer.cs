@@ -12,5 +12,7 @@ namespace api.Models
         public string cEmail {get; set;}
         public string cUsername {get; set;}
         public string cPassword {get; set;}
+
+        public bool isLoggedIn {get; set;}
     }
 }
