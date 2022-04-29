@@ -5,7 +5,10 @@
     left: 0;
     z-index: 1;
 }
-
+#myimage{
+  width: 90%;
+  height: auto;
+}
 
 #logo {
     position:relative;
@@ -51,4 +54,5 @@ font-size: x-small;
 .btn{
   background-color: darkred;
   color: white;
+  margin-bottom: 12%;
 }
