@@ -10,13 +10,13 @@ using api.Models;
 
 namespace api.Database{
     public class DeleteRentalSpace : IDeleteRentalSpaces{
-        public void Delete(RentalSpace value){
+        public void Delete(int rentalid){
             ConnectionString myConnection = new ConnectionString();
             string cs = myConnection.cs;
             using var con = new MySqlConnection(cs);
             con.Open();
             
-            using var cmd = new MySqlCommand("DELETE FROM rentalspace WHERE rentalid = '" + value.rentalID +"'",con);
+            using var cmd = new MySqlCommand("DELETE FROM rentalspace WHERE rentalid = '" + rentalid +"'",con);
             
             
             cmd.ExecuteNonQuery();

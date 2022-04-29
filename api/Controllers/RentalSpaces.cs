@@ -31,29 +31,37 @@ namespace api.Controllers
         }
 
         // GET: api/RentalSpaces -async/5
+        [EnableCors("OpenPolicy")]
         [HttpGet("{rentalID}", Name = "GetRental")]
-        public string Get(int rentalID)
+        public RentalSpace Get(int rentalID)
         {
-            return "value";
+            IGetRentalSpaces getRentalSpace = new ReadRentals();
+            return getRentalSpace.GetOne(rentalID);
         }
 
         // POST: api/RentalSpaces -async
         [EnableCors("OpenPolicy")]    
         [HttpPost]
-        public void Post([FromBody] string value)
-        {
+        public void Post([FromBody] RentalSpace value){
+            IInsertRentalSpaces insertRental = new SaveRental();
+            insertRental.InsertRentalSpace(value);
         }
 
         // PUT: api/RentalSpaces -async/5
+        [EnableCors("OpenPolicy")] 
         [HttpPut("{rentalID}")]
         public void PutRental(int rentalID, [FromBody] string value)
         {
+
         }
 
         // DELETE: api/RentalSpaces -async/5
+        [EnableCors("OpenPolicy")] 
         [HttpDelete("{rentalID}")]
-        public void DeleteRental(int rentalID)
-        {
+        public void DeleteRental(int rentalID){
+            IDeleteRentalSpaces deleteRental = new DeleteRentalSpace();
+            deleteRental.Delete(rentalID);
+
         }
     }
 }

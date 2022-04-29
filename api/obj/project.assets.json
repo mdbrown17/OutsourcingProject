@@ -7410,19 +7410,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\houst\\.nuget\\packages\\": {}
+    "C:\\Users\\Anna\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\source\\MIS321\\OutsourcingProject\\api\\api.csproj",
+      "projectUniqueName": "C:\\Source\\repos\\OutsourcingProject\\api\\api.csproj",
       "projectName": "api",
-      "projectPath": "C:\\source\\MIS321\\OutsourcingProject\\api\\api.csproj",
-      "packagesPath": "C:\\Users\\houst\\.nuget\\packages\\",
-      "outputPath": "C:\\source\\MIS321\\OutsourcingProject\\api\\obj\\",
+      "projectPath": "C:\\Source\\repos\\OutsourcingProject\\api\\api.csproj",
+      "packagesPath": "C:\\Users\\Anna\\.nuget\\packages\\",
+      "outputPath": "C:\\Source\\repos\\OutsourcingProject\\api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\houst\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Anna\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -7481,7 +7481,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -4,6 +4,6 @@ namespace api.Interfaces
 {
     public interface IDeleteRentalSpaces
     {
-        public void Delete(RentalSpace value);
+        public void Delete(int rentalid);
     }
 }
