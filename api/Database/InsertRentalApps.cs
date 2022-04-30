@@ -21,14 +21,12 @@ namespace api.Database
 
             con.Open();
 
-            string stm = @$"INSERT INTO rentalapplication(applicationid, daterequested, approvalstatus, customernotes, rcustomerid, rmanagerid, rentalid, startdate, enddate)
-                        VALUES(@applicationID, @dateRequested, @approvalStatus, @customerNotes, @customerID, @managerID, @rentalID, @startDate, @endDate)";
+            string stm = @$"INSERT INTO rentalapplication(customernotes, rcustomerid, rmanagerid, rentalid, startdate, enddate)
+                        VALUES(@customerNotes, @customerID, @managerID, @rentalID, @startDate, @endDate)";
 
             using var cmd = new MySqlCommand(stm, con);
 
-            cmd.Parameters.AddWithValue("@applicationID", myRentalApp.applicationID);
-            cmd.Parameters.AddWithValue("@dateRequested", myRentalApp.dateRequested);
-            cmd.Parameters.AddWithValue("@approvalStatus", myRentalApp.approvalStatus);
+            // cmd.Parameters.AddWithValue("@approvalStatus", myRentalApp.approvalStatus);
             cmd.Parameters.AddWithValue("@customerNotes", myRentalApp.customerNotes);
             cmd.Parameters.AddWithValue("@customerID", myRentalApp.customerID);
             cmd.Parameters.AddWithValue("@managerID", myRentalApp.managerID);
