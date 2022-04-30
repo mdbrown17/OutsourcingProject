@@ -18,28 +18,26 @@ function getCustomerInfo() {
 
         let html = "";
 
-
         json.forEach((customer) => {
             
-            console.log(customer.isLoggedIn);
-            
-            if(customer.isLoggedIn == true)
-            {
-                var firstname = customer.cfname;
-                var lastname = customer.clname;
-                var username = customer.cusername;
-                var password = customer.cpassword;
-                var email = customer.cemail;
-                var phonenumber = customer.cphonenumber;
-                var businessname = customer.businessname;
+            if(customer.customerID == localStorage.getItem("userID"))
+            {            
+                console.log(localStorage.getItem("userID"));
+                var firstname = customer.cfName;
+                var lastname = customer.clName;
+                var username = customer.cUsername;
+                var password = customer.cPassword;
+                var email = customer.cEmail;
+                var phonenumber = customer.cPhoneNumber;
+                var businessname = customer.cBusinessName;
 
                 html += '<p><strong>First Name: ' + firstname + '</strong></p>';
                 html += '<p><strong>Last Name: ' + lastname + '</strong></p>';
-                html += '<p><strong>Username: ' + username + ' sqFt</strong></p>';
-                html += '<p><strong>Password: ' + password + ' sqFt</strong></p>';
-                html += '<p><strong>Password: ' + email + ' sqFt</strong></p>';
-                html += '<p><strong>Password: ' + phonenumber + ' sqFt</strong></p>';
-                html += '<p><strong>Password: ' + businessname + ' sqFt</strong></p>';
+                html += '<p><strong>Username: ' + username + ' </strong></p>';
+                html += '<p><strong>Password: ' + password + ' </strong></p>';
+                html += '<p><strong>Email: ' + email + ' </strong></p>';
+                html += '<p><strong>Phone number: ' + phonenumber + ' </strong></p>';
+                html += '<p><strong>Business Name: ' + businessname + ' </strong></p>';
             }
 
         });
