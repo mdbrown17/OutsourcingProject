@@ -23,11 +23,12 @@
   text-align: right;
   font-size: x-small;
   }
-  .col-4 img {
-  width: 80%;
-  }
   
-  .col-4{
+.col-4 img {
+  width: 80%;
+}
+  
+.col-4{
   border: 1px;
   border-width: 1px;
   margin: 1px;
@@ -36,9 +37,9 @@
   min-width: 200px;
   margin-bottom: 50px;
   transition: transform 0.5s;
-  }
+}
   
-  .btn{
+.btn{
   background-color: darkred;
   color: white;
-  }
+}

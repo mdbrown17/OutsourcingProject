@@ -21,9 +21,7 @@ function checkLogin()
         return response.json();
     }).then(function(json){
 
-        json.forEach((customer) => {
-
-            console.log(customer.customerid);
+        json.forEach((customer) => {        
 
             if(customer.cUsername == temp.username && customer.cPassword == temp.password)
             {
@@ -31,8 +29,21 @@ function checkLogin()
                 localStorage.setItem("userID", id);
                 change_page_customerAccount();
             }
-
+            else if(customer.cUsername != temp.username && customer.cPassword == temp.password)
+            {
+                let html = "";
+                html += '<p><strong>There is no account with that username.</strong></p>';
+                document.getElementById("error").innerHTML = html;
+            }
+            else if(customer.cUsername == temp.username && customer.cPassword != temp.password)
+            {
+                let html = "";
+                html += '<p><strong>Incorrect password. Please try again.</strong></p>';
+                document.getElementById("error").innerHTML = html;
+            }
         })
+
+        
 
     });
 }
