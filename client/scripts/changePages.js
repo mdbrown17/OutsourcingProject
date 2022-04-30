@@ -22,10 +22,18 @@ function change_page_createManagerAccount(){
     window.location.href = "createManagerAccount.html";
 }
 
-function change_page_availableRentals(){
-    window.location.href = "availableRentals.html";
+function change_page_managerNavigation(){
+    window.location.href = "managerNavigation.html";
+}
+
+function change_page_customerNavigation(){
+    window.location.href = "customerNavigation.html";
 }
 
 function change_page_customerAccount(){
     window.location.href = "customerAccount.html";
+}
+
+function change_page_availableRentals(){
+    window.location.href = "availableRentals.html";
 }
