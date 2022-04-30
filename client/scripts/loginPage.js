@@ -1,5 +1,5 @@
 function change_page_home(){
-    window.location.href = "homePage.html";
+    window.location.href = "loginNavigation.html";
 }
 
 function change_page_customerLogin(){
