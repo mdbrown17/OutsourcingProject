@@ -5,6 +5,12 @@
     left: 0;
     z-index: 1;
   }
+
+  .navbar{
+    overflow: hidden;
+    background-color: lightgray;
+    font-family: Arial;
+  }
   
   #logo {
     position:relative;
@@ -15,15 +21,16 @@
   }
   
   .header {
-  padding-top: 125px;
-  text-align: center;
-  }
-  
-  .header2{
-  text-align: right;
-  font-size: x-small;
-  }
-  
+    padding-top: 125px;
+    text-align: center;
+    }
+    
+    .header h1{
+      font-size: 50px;
+      color: #B22222;
+      font-variant: small-caps;
+    }
+
 .col-4 img {
   width: 80%;
 }
@@ -39,7 +46,20 @@
   transition: transform 0.5s;
 }
   
+.loginButton{
+  padding-top: 25px;
+}
+
+.container{
+  padding-top: 50px;
+}
+
 .btn{
-  background-color: darkred;
+  padding-top: 25px;
+  font-size: 18px;
+}
+
+input[type=button] {
+  background-color: rgb(83, 75, 75);
   color: white;
 }

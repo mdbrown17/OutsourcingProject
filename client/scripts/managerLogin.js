@@ -15,29 +15,27 @@ function checkLogin()
     console.log(temp.username);
     console.log(temp.password);
 
-    fetch('https://localhost:5001/api/customers')
+    fetch('https://localhost:5001/api/managers')
         .then(function(response){
         console.log(response);
         return response.json();
     }).then(function(json){
 
-        json.forEach((customer) => {        
+        json.forEach((manager) => {        
 
-            if(customer.cUsername == temp.username && customer.cPassword == temp.password)
+            if(manager.mUsername == temp.username && manager.mPassword == temp.password)
             {
-                var id = customer.customerID;
-                var firstname = customer.cfName;
-                localStorage.setItem("userID", id);
-                localStorage.setItem("userFirstName", firstname);
-                change_page_customerNavigation();
+                var id = manager.managerID;
+                localStorage.setItem("managerID", id);
+                change_page_managerNavigation();
             }
-            else if(customer.cUsername != temp.username && customer.cPassword == temp.password)
+            else if(manager.mUsername != temp.username && manager.mPassword == temp.password)
             {
                 let html = "";
                 html += '<p><strong>There is no account with that username.</strong></p>';
                 document.getElementById("error").innerHTML = html;
             }
-            else if(customer.cUsername == temp.username && customer.cPassword != temp.password)
+            else if(manager.mUsername == temp.username && manager.mPassword != temp.password)
             {
                 let html = "";
                 html += '<p><strong>Incorrect password. Please try again.</strong></p>';
@@ -45,11 +43,9 @@ function checkLogin()
             }
         })
 
-        
-
     });
 }
 
-function change_page_customerNavigation(){
-    window.location.href = "customerNavigation.html";
+function change_page_managerNavigation(){
+    window.location.href = "managerNavigation.html";
 }
