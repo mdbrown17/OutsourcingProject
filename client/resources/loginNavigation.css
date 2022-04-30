@@ -13,22 +13,10 @@
     height: 100px;
 }
 
-.card{
-    min-height: 100px;
-    max-width: fit-content;
-    padding: 5px;
-}
-
 .header{
   padding-top: 125px;
   text-align: center;
-}
-
-.small-container{
-  max-width: 1080px;
-  margin: auto;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-bottom: 100px;
 }
 
 .btn{

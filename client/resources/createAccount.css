@@ -4,29 +4,29 @@
     top: 0;
     left: 0;
     z-index: 1;
-  }
+}
   
-  #logo {
+#logo{
     position:relative;
     left: 560px;
     width: 250px;
     height: 100px;
   
-  }
+}
   
-  .header {
+.header{
   padding-top: 125px;
   text-align: center;
-  }
+}
   
-  .header2{
+.header2{
   text-align: right;
   font-size: x-small;
-  }
+}
   
-  .col-4 img {
+.col-4 img{
   width: 80%;
-  }
+}
   
   .col-4{
   border: 1px;
