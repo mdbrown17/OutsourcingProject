@@ -21,3 +21,7 @@ function change_page_createCustomerAccount(){
 function change_page_createManagerAccount(){
     window.location.href = "createManagerAccount.html";
 }
+
+function change_page_availableRentals(){
+    window.location.href = "availableRentals.html";
+}
