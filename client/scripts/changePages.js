@@ -21,9 +21,3 @@ function change_page_createCustomerAccount(){
 function change_page_createManagerAccount(){
     window.location.href = "createManagerAccount.html";
 }
-
-
-
-// const loginForm = document.getElementById("login-form");
-// const loginButton = document.getElementById("login-form-submit");
-// const loginErrorMsg = document.getElementById("login-error-msg");
