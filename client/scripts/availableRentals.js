@@ -5,6 +5,7 @@ function handleOnLoad() {
 }
 
 function getRentalSpaces(){
+    
     fetch('https://localhost:5001/api/availablerentalspaces')
         .then(function(response){
         console.log(response);
@@ -67,7 +68,7 @@ function getRentalSpaces(){
 
             // html += '<div class="btn">';
             // html += '<a href="#" data-toggle="modal" data-target="#requestModal"> Request </a>';
-            html += '<button id="requestButton" class="btn" onclick="rentalModal(' + rentalID + ')">Request</button>';
+            html += '<button id="requestButton" class="btn" onclick="showRentalModal()">Request</button>';
             html+=' </div> </div>';
             rentalCount ++;
         });
@@ -78,6 +79,11 @@ function getRentalSpaces(){
     });
 }
 
-function rentalModal(id){
+function showRentalModal(){
     $('#requestModal').modal('show');
 }
+
+function hideRentalModal(){
+    $('#requestModal').modal('hide');
+}
+
