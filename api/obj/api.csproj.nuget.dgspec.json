@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\source\\MIS321\\OutsourcingProject\\api\\api.csproj": {}
+    "/Users/mattbrown/Documents/Alabama/Spring2022/321GroupProj/OutsourcingProject/api/api.csproj": {}
   },
   "projects": {
-    "C:\\source\\MIS321\\OutsourcingProject\\api\\api.csproj": {
+    "/Users/mattbrown/Documents/Alabama/Spring2022/321GroupProj/OutsourcingProject/api/api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\source\\MIS321\\OutsourcingProject\\api\\api.csproj",
+        "projectUniqueName": "/Users/mattbrown/Documents/Alabama/Spring2022/321GroupProj/OutsourcingProject/api/api.csproj",
         "projectName": "api",
-        "projectPath": "C:\\source\\MIS321\\OutsourcingProject\\api\\api.csproj",
-        "packagesPath": "C:\\Users\\houst\\.nuget\\packages\\",
-        "outputPath": "C:\\source\\MIS321\\OutsourcingProject\\api\\obj\\",
+        "projectPath": "/Users/mattbrown/Documents/Alabama/Spring2022/321GroupProj/OutsourcingProject/api/api.csproj",
+        "packagesPath": "/Users/mattbrown/.nuget/packages/",
+        "outputPath": "/Users/mattbrown/Documents/Alabama/Spring2022/321GroupProj/OutsourcingProject/api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\houst\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/mattbrown/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -73,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.400/RuntimeIdentifierGraph.json"
         }
       }
     }
