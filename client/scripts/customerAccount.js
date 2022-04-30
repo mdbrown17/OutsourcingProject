@@ -3,7 +3,7 @@ var customerList = [];
 var myCustomer = {};
 
 function handleOnLoad() {
-    localStorage.setItem("successfulApp", "false");
+    localStorage.setItem('successfulApp', 'false');
     getCustomerInfo();
 }
 
