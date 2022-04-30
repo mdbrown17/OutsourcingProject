@@ -1,8 +1,9 @@
 // const baseUrl = "https://localhost:5001/api/availablerentalspaces";
 
 function handleOnLoad() {
+    console.log(localStorage.getItem('successfulApp'));
     getRentalSpaces();
-    if(localStorage.getItem("successfulApp") == "true"){
+    if(localStorage.getItem('successfulApp') == "true"){
         showModalSuccess();
     }
     localStorage.setItem("successfulApp", 'false');
@@ -78,7 +79,7 @@ function getRentalSpaces(){
     });
 }
 function submitRequest(){
-    localStorage.setItem("successfulApp", "true");
+    localStorage.setItem('successfulApp', 'true');
     const chosenSpace = localStorage.getItem("spaceToApplyID");
     const start = document.getElementById("startDate").value;
     const end = document.getElementById("endDate").value;
@@ -94,6 +95,7 @@ function postApplication(start, end, notes, chosenSpace){
         startDate: start,
         endDate: end
     };
+
     fetch("https://localhost:5001/api/rentalapplications", {
         method: "POST",
         headers: {
@@ -119,6 +121,7 @@ function hideModalSuccess(){
 function showRentalModal(id){
     localStorage.setItem("spaceToApplyID", id);
     console.log("id requested " + id);
+    console.log(localStorage.getItem('successfulApp'));
     $('#requestModal').modal('show');
 }
 
