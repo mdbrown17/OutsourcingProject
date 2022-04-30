@@ -34,7 +34,7 @@ namespace api.Database
             cmd.Prepare();
 
             cmd.ExecuteNonQuery();
-         }
+        }
         public void UpdateRentalApp(RentalApplication value){
             ConnectionString myConnection = new ConnectionString();
             string cs = myConnection.cs;
