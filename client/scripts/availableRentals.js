@@ -2,6 +2,10 @@
 
 function handleOnLoad() {
     getRentalSpaces();
+    if(localStorage.getItem("successfulApp") == "true"){
+        showModalSuccess();
+    }
+    localStorage.setItem("successfulApp", 'false');
 }
 
 function getRentalSpaces(){
@@ -19,10 +23,6 @@ function getRentalSpaces(){
         json.forEach((RentalSpace) => {
 
             console.log(RentalSpace.rentalID); // test note
-
-            // if(rentalCount % 3 == 0){
-            //     html +=  '<div class="row"></div>';
-            // };
             var rentalID = RentalSpace.rentalID;
             var image = RentalSpace.imageLink;
             var monthly = RentalSpace.monthlyRate;
@@ -77,13 +77,9 @@ function getRentalSpaces(){
             console.log(error);
     });
 }
-function showRentalModal(id){
-    localStorage.setItem("spaceToApplyID", id);
-    console.log("id requested " + id);
-    $('#requestModal').modal('show');
-}
 function submitRequest(){
-    var chosenSpace = localStorage.getItem("spaceToApplyID");
+    localStorage.setItem("successfulApp", "true");
+    const chosenSpace = localStorage.getItem("spaceToApplyID");
     const start = document.getElementById("startDate").value;
     const end = document.getElementById("endDate").value;
     const notes = document.getElementById("notes").value;
@@ -98,7 +94,6 @@ function postApplication(start, end, notes, chosenSpace){
         startDate: start,
         endDate: end
     };
-    console.log(user);
     fetch("https://localhost:5001/api/rentalapplications", {
         method: "POST",
         headers: {
@@ -109,39 +104,23 @@ function postApplication(start, end, notes, chosenSpace){
         
     }).then((response) =>{
         console.log(response);
-    }); 
+    });
 }
-// function getASpace(id){
-//     fetch('https://localhost:5001/api/availablerentalspaces') 
-//     .then(function(response){
-//     console.log(response);
-//     return response.json();
-// }).then(function(json){
-//     json.forEach((RentalSpace) => {
 
-//         console.log(RentalSpace.rentalID); // test note
 
-//         var rentalID = RentalSpace.rentalID;
-//         var image = RentalSpace.imageLink;
-//         var monthly = RentalSpace.monthlyRate;
-//         var weekly = RentalSpace.weeklyRate;
-//         var size = RentalSpace.sqFt;
-//         var min = RentalSpace.minimumPeriod;
-//         var max = RentalSpace.maximumPeriod;
-//         var nearby = RentalSpace.nearbyTenant;
-//         var location = RentalSpace.locationDetail;
-//         var kitchen = RentalSpace.kitchen;
-//         var lighting = RentalSpace.commercialLighting;
-//         var security = RentalSpace.securitySystem;
-//         var internet = RentalSpace.internet;
-//         var bathroom = RentalSpace.bathroom;
-//     });
-//     document.getElementById("rentals").innerHTML = html;
+function showModalSuccess(){
+    $('#successModal').modal('show');
+}
 
-// }).catch(function(error){
-//         console.log(error);
-// });
-// }
+function hideModalSuccess(){
+    $('#successModal').modal('hide');
+}
+
+function showRentalModal(id){
+    localStorage.setItem("spaceToApplyID", id);
+    console.log("id requested " + id);
+    $('#requestModal').modal('show');
+}
 
 function hideRentalModal(){
     $('#requestModal').modal('hide');
