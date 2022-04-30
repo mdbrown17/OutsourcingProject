@@ -31,7 +31,7 @@ namespace api.Controllers
         }
 
         // GET: api/RentalApplications -async/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}", Name = "GetRentalApplications")]
         public string Get(int id)
         {
             return "value";
