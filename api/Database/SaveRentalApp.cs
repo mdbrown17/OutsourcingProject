@@ -36,6 +36,9 @@ namespace api.Database
             cmd.ExecuteNonQuery();
         }
         public void UpdateRentalApp(RentalApplication value){
+
+            Console.WriteLine($"Made it xxx");
+            
             ConnectionString myConnection = new ConnectionString();
             string cs = myConnection.cs;
             using var con = new MySqlConnection(cs);
@@ -45,7 +48,7 @@ namespace api.Database
 
             cmd.Connection = con;
 
-            //cmd.Parameters.AddWithValue("@applicationid",value.applicationid);
+            cmd.Parameters.AddWithValue("@applicationid",value.applicationID);
             cmd.Parameters.AddWithValue("@daterequested",value.dateRequested);
             cmd.Parameters.AddWithValue("@approvalstatus",value.approvalStatus);
             cmd.Parameters.AddWithValue("@customernotes",value.customerNotes) ;
