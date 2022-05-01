@@ -44,3 +44,11 @@ function change_page_managerRentals(){
 function change_page_managerAccount(){
     window.location.href = "managerAccount.html";
 }
+
+function change_page_viewEditRentals(){
+    window.location.href = "viewEditRentals.html";
+}
+
+function change_page_pendingRental(){
+    window.location.href = "pendingRental.html";
+}
