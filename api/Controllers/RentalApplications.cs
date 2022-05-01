@@ -12,11 +12,13 @@ using OutsourcingProject.api.Database;
 
 namespace api.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class RentalApplications : ControllerBase
     {
         // GET: api/RentalApplications -async
+        [EnableCors("OpenPolicy")] 
         [HttpGet]
         public List<RentalApplication> Get()
         {
