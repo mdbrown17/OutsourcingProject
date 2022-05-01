@@ -1,4 +1,5 @@
 function handleOnLoad(){
+    console.log(localStorage.getItem("managerID"));
     getAllPending();
 }
 
@@ -16,17 +17,17 @@ function getAllPending(){
             // onsole.log(RentalApplication.rentalID); // test note
 
             var applicationID = RentalApplication.applicationID;
-            var dateRequested = RentalApplication.dateRequested;
+            var dateRequested = new Date(RentalApplication.dateRequested);
             var approvalStatus = RentalApplication.approvalStatus;
             var customerNotes = RentalApplication.customerNotes;
             var managerID = localStorage.getItem("managerID");
 
             var customerID = RentalApplication.customerID;
             var rentalID = RentalApplication.rentalID;
-            var startDate = RentalApplication.startDate;
-            var endDate = RentalApplication.endDate;
+            var startDate = new Date(RentalApplication.startDate);
+            var endDate = new Date(RentalApplication.endDate);
 
-            let myApplication = {
+            const myApplication = {
                 applicationID: applicationID,
                 dateRequested: dateRequested,
                 approvalStatus: approvalStatus,
@@ -36,25 +37,29 @@ function getAllPending(){
                 rentalID: rentalID,
                 startDate: startDate,
                 endDate: endDate
-            };            
+            };
+            localStorage.setItem("application", myApplication);
             getImage(rentalID);
 
             var myImage = localStorage.getItem('image');
 
             console.log(myImage);
-
-            html += '<div class = "col-4" style="border-style: solid;">';
-            html += '<h4><b> Rental Space' + rentalID + ' </b></h4>';
-            html += '<img src="' + myImage + '" alt="floorplan">'; //come back img
-            html += '<p><strong>Date Requested:' + dateRequested + '</strong></p>';
-            html += '<p><strong>Notes:' + customerNotes + '</strong></p>';
-            html += '<p><strong>Start Date Requested:' + startDate + '</strong></p>';
-            html += '<p><strong>End Date Requested:' + endDate + '</strong></p>';
-            html += '<div class="approveBtn">';
-            html += '<button id="approveButton" class="btn" onclick="approveApplication(' + myApplication + ')">Approve</button>';
-            html += '</div>';
-            html += '<div class="denyBtn">';
-            html += '<button id="denyButton" class="btn">Deny</button></div></div>';
+            if(approvalStatus == 'pending')
+            {
+                html += '<div class = "col-4" style="border-style: solid;">';
+                html += '<h4><b> Rental Space' + rentalID + ' </b></h4>';
+                html += '<img src="' + myImage + '" alt="floorplan">'; //come back img
+                html += '<p><strong>Date Requested:' + dateRequested + '</strong></p>';
+                html += '<p><strong>Notes:' + customerNotes + '</strong></p>';
+                html += '<p><strong>Start Date Requested:' + startDate + '</strong></p>';
+                html += '<p><strong>End Date Requested:' + endDate + '</strong></p>';
+                html += '<div class="approveBtn">';
+                html += '<button id="approveButton" class="btn" onclick="approveApplication(' + applicationID + ', (' + dateRequested + '), "' + customerNotes+ '", ' + managerID+ ', ' + customerID + ', ' + rentalID+ ', (' + startDate+ '), (' + endDate + '))">Approve</button>';
+                html += '</div>';
+                html += '<div class="denyBtn">';
+                html += '<button id="denyButton" class="btn">Deny</button></div></div>';
+            }
+            
         });
         document.getElementById("rentalApps").innerHTML = html;
 
@@ -83,8 +88,11 @@ function getImage(searchID){
 // function updateRentalSpace(rentalID){
 
 // }
-function approveApplication(myApplication){
-    const specificUrl = "https://localhost:5001/api/rentalapplications/" + rentalID;
+function approveApplication(applicationID, dateRequested, customerNotes, managerID, customerID, rentalID, startDate, endDate){
+
+    console.log("made it to approve function" + applicationID);
+
+    const specificUrl = "https://localhost:5001/api/rentalapplications/" + applicationID;
 
     fetch(specificUrl, {
         method: "PUT",
@@ -94,15 +102,15 @@ function approveApplication(myApplication){
         }
         ,
         body: JSON.stringify({
-            applicationID: myApplication.applicationID,
-            dateRequested: myApplication.dateRequested,
+            applicationID: applicationID,
+            dateRequested: dateRequested,
             approvalStatus: "approved",
-            customerNotes: myApplication.customerNotes,
-            managerID: myApplication.managerID,
-            customerID: myApplication.customerID,
-            rentalID: myApplication.rentalID,
-            startDate: myApplication.startDate,
-            endDate: myApplication.endDate
+            customerNotes: customerNotes,
+            managerID: managerID,
+            customerID: customerID,
+            rentalID: rentalID,
+            startDate: startDate,
+            endDate: endDate
         })
     }).then((response) =>{
         console.log(response);
