@@ -13,7 +13,7 @@ function getAllPending(){
 
         json.forEach((RentalApplication) => {
 
-            console.log(RentalApplication.rentalID); // test note
+            // onsole.log(RentalApplication.rentalID); // test note
 
             var applicationID = RentalApplication.applicationID;
             var dateRequested = RentalApplication.dateRequested;
@@ -21,8 +21,6 @@ function getAllPending(){
             var customerNotes = RentalApplication.customerNotes;
             var managerID = localStorage.getItem("managerID");
 
-            console.log("made it thus far" + managerID);
-            
             var customerID = RentalApplication.customerID;
             var rentalID = RentalApplication.rentalID;
             var startDate = RentalApplication.startDate;
@@ -38,11 +36,16 @@ function getAllPending(){
                 rentalID: rentalID,
                 startDate: startDate,
                 endDate: endDate
-            };
+            };            
+            getImage(rentalID);
+
+            var myImage = localStorage.getItem('image');
+
+            console.log(myImage);
 
             html += '<div class = "col-4" style="border-style: solid;">';
-            html += '<h4><b> Rental Space' + rentalID +' </b></h4>';
-            html += '<img src="./Images/floorplan.jpg" alt="floorplan">'; //come back img
+            html += '<h4><b> Rental Space' + rentalID + ' </b></h4>';
+            html += '<img src="' + myImage + '" alt="floorplan">'; //come back img
             html += '<p><strong>Date Requested:' + dateRequested + '</strong></p>';
             html += '<p><strong>Notes:' + customerNotes + '</strong></p>';
             html += '<p><strong>Start Date Requested:' + startDate + '</strong></p>';
@@ -59,9 +62,23 @@ function getAllPending(){
         console.log(error);
     });
 }
-// function generalApprove(rentalID){
-
-// }
+function getImage(searchID){
+    var image = "";
+    fetch('https://localhost:5001/api/rentalspaces')
+        .then(function(response){
+        console.log(response);
+        return response.json();
+    }).then(function(json){
+        json.forEach((rentalSpace) => {
+            if(rentalSpace.rentalID == searchID)
+            {   
+                image = rentalSpace.imagelink
+                //localStorage.setItem("image", rentalSpace.imagelink);
+            }
+        });
+    });
+    return image;
+}
 
 // function updateRentalSpace(rentalID){
 

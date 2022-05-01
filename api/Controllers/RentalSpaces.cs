@@ -17,6 +17,7 @@ namespace api.Controllers
     public class RentalSpaces : ControllerBase
     {
         // GET: api/RentalSpaces
+        [EnableCors("OpenPolicy")]
         [HttpGet]
         public List<RentalSpace> Get()
         {
