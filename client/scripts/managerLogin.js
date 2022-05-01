@@ -42,7 +42,6 @@ function checkLogin()
                 document.getElementById("error").innerHTML = html;
             }
         })
-
     });
 }
 
