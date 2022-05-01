@@ -1,0 +1,88 @@
+.navbar{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+#myimage{
+  width: 90%;
+  height: auto;
+}
+
+#logo {
+    position:relative;
+    left: 560px;
+    width: 250px;
+    height: 100px;
+
+  }
+  .card{
+    min-height: 100px;
+    max-width: fit-content;
+    padding: 5px;
+}
+
+.header {
+  padding-top: 125px;
+  text-align: center;
+}
+  
+.header h1{
+  font-size: 50px;
+  color: #B22222;    
+  font-variant: small-caps;
+}
+
+.header2{
+text-align: right;
+font-size: x-small;
+}
+.col-4 img {
+  width: 80%;
+}
+.col-sm-4{
+  border: 1px;
+  border-width: 1px;
+  margin: 1px;
+  flex-basis: 33%;
+  padding: 20px;
+  min-width: 200px;
+  margin-bottom: 50px;
+  transition: transform 0.5s;
+}
+.small-container{
+  max-width: 1080px;
+  margin: auto;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.btn{
+  background-color: darkred;
+  color: white;
+  margin-bottom: 12%;
+}
+
+.container{
+  width: 1500px;
+  padding: 25px;
+  align-content: center;
+}
+
+.container img{
+  max-width: 250px;
+  position: center;
+}
+
+.container h4{
+  text-align: center;
+  font-size: 30px;
+  color: #B22222;    
+  font-variant: small-caps;
+}
+
+.container p{
+  text-align: center;
+  font-size: 15px;
+}
