@@ -50,9 +50,12 @@ namespace api.Controllers
         }
 
         // PUT: api/RentalApplications -async/5
+        [EnableCors("OpenPolicy")] 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(RentalApplication myRentalApp)
         {
+            IInsertRentalApps updateRentalApp = new SaveRentalApps(); 
+            updateRentalApp.UpdateRentalApp(myRentalApp);
         }
 
         // DELETE: api/RentalApplications -async/5
