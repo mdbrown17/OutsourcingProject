@@ -26,7 +26,9 @@ function checkLogin()
             if(manager.mUsername == temp.username && manager.mPassword == temp.password)
             {
                 var id = manager.managerID;
+                var firstname = manager.mfname;
                 localStorage.setItem("managerID", id);
+                localStorage.setItem("userFirstName", firstname);
                 change_page_managerNavigation();
             }
             else if(manager.mUsername != temp.username && manager.mPassword == temp.password)

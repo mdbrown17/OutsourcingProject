@@ -8,14 +8,21 @@
     <link href="./resources/loginNavigation.css" rel="stylesheet">
     <title>TIDE Market</title>
 </head>
-<body>
+<body onload="handleOnLoad()">
 
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: lightgray">
       <img src="./Images/logo2" id="logo" />
     </nav>
 
     <div class="header">
-        <h1>Manager Navigation</h1>
+        <div class="btn1">
+            <button id="homeButton" class="btn1" style="float: right;" input type="button" value="create page" onclick="change_page_loginNavigation()">Logout</button>
+        </div>
+        <h1>
+            <div id="welcome">
+
+            </div>
+        </h1>
     </div>
 
     <div class ="container">
@@ -46,6 +53,7 @@
    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src = "./scripts/changePages.js"></script>
+    <script src = "./scripts/managerNavigation.js"></script>
 </body>
 </div>
 </html>
