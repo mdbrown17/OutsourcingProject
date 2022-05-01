@@ -37,3 +37,6 @@ function change_page_customerAccount(){
 function change_page_availableRentals(){
     window.location.href = "availableRentals.html";
 }
+function change_page_managerRentals(){
+    window.location.href = "manageRentals.html";
+}
