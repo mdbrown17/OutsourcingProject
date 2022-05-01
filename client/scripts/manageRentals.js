@@ -19,6 +19,7 @@ function getAllPending(){
             var dateRequested = RentalApplication.dateRequested;
             var approvalStatus = RentalApplication.approvalStatus;
             var customerNotes = RentalApplication.customerNotes;
+            var managerID = localStorage.getItem("managerID");
             var customerID = RentalApplication.customerID;
             var rentalID = RentalApplication.rentalID;
             var startDate = RentalApplication.startDate;
@@ -32,7 +33,7 @@ function getAllPending(){
             html += '<p><strong>Start Date Requested:' + startDate + '</strong></p>';
             html += '<p><strong>End Date Requested:' + endDate + '</strong></p>';
             html += '<div class="approveBtn">';
-            html += '<button id="approveButton" class="btn">Approve</button>';
+            html += '<button id="approveButton" class="btn" onclick="approveRental(' + rentalID + ', ' + customerID +', ' + managerID + ')">Approve</button>';
             html += '</div>';
             html += '<div class="denyBtn">';
             html += '<button id="denyButton" class="btn">Deny</button></div></div>';
@@ -42,4 +43,8 @@ function getAllPending(){
     }).catch(function(error){
             console.log(error);
     });
+}
+
+function approveRental(rentalID){
+    
 }
