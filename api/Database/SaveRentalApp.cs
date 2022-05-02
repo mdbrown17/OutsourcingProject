@@ -44,7 +44,8 @@ namespace api.Database
             using var con = new MySqlConnection(cs);
             con.Open();
 
-            using var cmd = new MySqlCommand(@"UPDATE rentalapplication set daterequested = @daterequested, approvalstatus = @approvalstatus, customernotes = @customernotes, rcustomerid = @rcustomerid, rmanagerid = @rmanagerid, rentalid = @rentalid, startdate = @startdate, enddate = @enddate WHERE applicationid = @applicationid");
+            //using var cmd = new MySqlCommand(@"UPDATE rentalapplication set daterequested = @daterequested, approvalstatus = @approvalstatus, customernotes = @customernotes, rcustomerid = @rcustomerid, rmanagerid = @rmanagerid, rentalid = @rentalid, startdate = @startdate, enddate = @enddate WHERE applicationid = @applicationid");
+            using var cmd = new MySqlCommand(@"UPDATE rentalapplication set approvalstatus = @approvalstatus, rmanagerid = @rmanagerid WHERE applicationid = @applicationid");
 
             cmd.Connection = con;
 

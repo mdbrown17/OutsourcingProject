@@ -1,4 +1,5 @@
 function handleOnLoad(){
+    localStorage.setItem("managerID", localStorage.getItem("managerID"));
 
     console.log(localStorage.getItem("userFirstName"));
     let html = "";

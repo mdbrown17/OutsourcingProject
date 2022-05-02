@@ -54,7 +54,7 @@ function getAllPending(){
                 html += '<p><strong>Start Date Requested:' + startDate + '</strong></p>';
                 html += '<p><strong>End Date Requested:' + endDate + '</strong></p>';
                 html += '<div class="approveBtn">';
-                html += '<button id="approveButton" class="btn" onclick="approveApplication(' + applicationID + ', (' + dateRequested + '), "' + customerNotes+ '", ' + managerID+ ', ' + customerID + ', ' + rentalID+ ', (' + startDate+ '), (' + endDate + '))">Approve</button>';
+                html += '<button id="approveButton" class="btn" onclick="approveApplication(' + applicationID + ', ' + managerID + ', ' + customerID + ')">Approve</button>';
                 html += '</div>';
                 html += '<div class="denyBtn">';
                 html += '<button id="denyButton" class="btn">Deny</button></div></div>';
@@ -84,11 +84,7 @@ function getImage(searchID){
     });
     return image;
 }
-
-// function updateRentalSpace(rentalID){
-
-// }
-function approveApplication(applicationID, dateRequested, customerNotes, managerID, customerID, rentalID, startDate, endDate){
+function approveApplication(applicationID, managerID, customerID){
 
     console.log("made it to approve function" + applicationID);
 
@@ -103,17 +99,30 @@ function approveApplication(applicationID, dateRequested, customerNotes, manager
         ,
         body: JSON.stringify({
             applicationID: applicationID,
-            dateRequested: dateRequested,
             approvalStatus: "approved",
-            customerNotes: customerNotes,
-            managerID: managerID,
-            customerID: customerID,
-            rentalID: rentalID,
-            startDate: startDate,
-            endDate: endDate
-        })
+            managerID: managerID
+            })
     }).then((response) =>{
         console.log(response);
-    });   
+    });
+
+    fetch("https://localhost:5001/api/rentalspaces/" + applicationID, {
+        method: "PUT",
+        headers: {
+            "Accept": 'application/json',
+            "Content-Type":'application/json',
+        }
+        ,
+        body: JSON.stringify({
+            nearbyTenant: "N/A",
+            rscustomerID: customerID
+            })
+    }).then((response) =>{
+        console.log(response);
+    });
+    showModalApproved();
 }
 
+function showModalApproved(){
+    $('#approvedModal').modal('show');
+}
