@@ -107,5 +107,7 @@ function approveApplication(myApplication){
     }).then((response) =>{
         console.log(response);
     });   
+
+    
 }
 
