@@ -4,6 +4,8 @@ function handleOnLoad(){
 }
 
 function getAllPending(){
+    console.log("made it here");
+
     fetch('https://localhost:5001/api/rentalapplications')
         .then(function(response){
         console.log(response);
@@ -13,8 +15,6 @@ function getAllPending(){
         let html = "";
 
         json.forEach((RentalApplication) => {
-
-            // onsole.log(RentalApplication.rentalID); // test note
 
             var applicationID = RentalApplication.applicationID;
             var dateRequested = new Date(RentalApplication.dateRequested);
@@ -38,12 +38,13 @@ function getAllPending(){
                 startDate: startDate,
                 endDate: endDate
             };
+
             localStorage.setItem("application", myApplication);
+            
             getImage(rentalID);
 
             var myImage = localStorage.getItem('image');
 
-            console.log(myImage);
             if(approvalStatus == 'pending')
             {
                 html += '<div class = "col-4" style="border-style: solid;">';
@@ -70,15 +71,15 @@ function getAllPending(){
 function getImage(searchID){
     var image = "";
     fetch('https://localhost:5001/api/rentalspaces')
-        .then(function(response){
-        console.log(response);
-        return response.json();
+        .then(function(response2){
+        console.log(response2);
+        return response2.json();
     }).then(function(json){
         json.forEach((rentalSpace) => {
             if(rentalSpace.rentalID == searchID)
             {   
                 image = rentalSpace.imagelink
-                //localStorage.setItem("image", rentalSpace.imagelink);
+                localStorage.setItem("image", rentalSpace.imagelink);
             }
         });
     });
