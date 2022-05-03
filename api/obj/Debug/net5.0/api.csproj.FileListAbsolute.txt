@@ -231,7 +231,6 @@ C:\source\MIS321\OutsourcingProject\api\obj\Debug\net5.0\api.genruntimeconfig.ca
 C:\source\MIS321\OutsourcingProject\api\obj\Debug\net5.0\ref\api.dll
 C:\Source\repos\OutsourcingProject\api\bin\Debug\net5.0\appsettings.Development.json
 C:\Source\repos\OutsourcingProject\api\bin\Debug\net5.0\appsettings.json
-C:\Source\repos\OutsourcingProject\api\bin\Debug\net5.0\api.StaticWebAssets.xml
 C:\Source\repos\OutsourcingProject\api\bin\Debug\net5.0\api.exe
 C:\Source\repos\OutsourcingProject\api\bin\Debug\net5.0\api.deps.json
 C:\Source\repos\OutsourcingProject\api\bin\Debug\net5.0\api.runtimeconfig.json
@@ -345,3 +344,5 @@ C:\Source\repos\OutsourcingProject\api\obj\Debug\net5.0\api.dll
 C:\Source\repos\OutsourcingProject\api\obj\Debug\net5.0\ref\api.dll
 C:\Source\repos\OutsourcingProject\api\obj\Debug\net5.0\api.pdb
 C:\Source\repos\OutsourcingProject\api\obj\Debug\net5.0\api.genruntimeconfig.cache
+C:\Source\repos\OutsourcingProject\api\bin\Debug\net5.0\global.json
+C:\Source\repos\OutsourcingProject\api\obj\Debug\net5.0\staticwebassets\api.StaticWebAssets.xml

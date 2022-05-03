@@ -17,6 +17,7 @@ namespace api.Controllers
     public class RentalSpaces : ControllerBase
     {
         // GET: api/RentalSpaces
+        [EnableCors("OpenPolicy")]
         [HttpGet]
         public List<RentalSpace> Get()
         {
@@ -32,36 +33,33 @@ namespace api.Controllers
 
         // GET: api/RentalSpaces -async/5
         [EnableCors("OpenPolicy")]
-        [HttpGet("{rentalID}", Name = "GetRental")]
-        public RentalSpace Get(int rentalID)
+        [HttpGet("{id}", Name = "GetRental")]
+        public RentalSpace Get(int id)
         {
-            IGetRentalSpaces getRentalSpace = new ReadRentals();
-            return getRentalSpace.GetOne(rentalID);
+            IGetRentalSpaces rental = new ReadRentals();
+            return rental.GetOne(id);
         }
 
         // POST: api/RentalSpaces -async
         [EnableCors("OpenPolicy")]    
         [HttpPost]
-        public void Post([FromBody] RentalSpace value){
-            IInsertRentalSpaces insertRental = new SaveRental();
-            insertRental.InsertRentalSpace(value);
+        public void Post([FromBody] string value)
+        {
         }
 
         // PUT: api/RentalSpaces -async/5
-        [EnableCors("OpenPolicy")] 
-        [HttpPut("{rentalID}")]
-        public void PutRental(int rentalID, [FromBody] string value)
+        [EnableCors("OpenPolicy")]
+        [HttpPut("{id}")]
+        public void Put(RentalSpace myRentalSpace)
         {
-
+            IInsertRentalSpaces updateRentalSpace = new SaveRental(); 
+            updateRentalSpace.UpdateRentalSpace(myRentalSpace);
         }
 
         // DELETE: api/RentalSpaces -async/5
-        [EnableCors("OpenPolicy")] 
         [HttpDelete("{rentalID}")]
-        public void DeleteRental(int rentalID){
-            IDeleteRentalSpaces deleteRental = new DeleteRentalSpace();
-            deleteRental.Delete(rentalID);
-
+        public void DeleteRental(int rentalID)
+        {
         }
     }
 }

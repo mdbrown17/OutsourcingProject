@@ -11,7 +11,8 @@ using api;
 
 namespace OutsourcingProject.api.Database
 { 
-    public class SaveLease : IInsertLeases{
+    public class SaveLease : IInsertLeases
+    {
         public void InsertLease(Lease value){
             ConnectionString myConnection = new ConnectionString();
             string cs = myConnection.cs;
@@ -42,7 +43,7 @@ namespace OutsourcingProject.api.Database
 
             cmd.Connection = con;
 
-            //cmd.Parameters.AddWithValue("@leaseid",value.leaseid);
+            cmd.Parameters.AddWithValue("@leaseid",value.leaseID);
             cmd.Parameters.AddWithValue("@startdate",value.startDate);
             cmd.Parameters.AddWithValue("@enddate",value.endDate);
             cmd.Parameters.AddWithValue("@lrentalid", value.rentalID);

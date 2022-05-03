@@ -7,5 +7,6 @@ namespace api.Interfaces
     {
          public void InsertCustomer(Customer value);
          //might need update customer method aswell
+         public void UpdateCustomer(Customer value);
     }
 }

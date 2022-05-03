@@ -31,7 +31,7 @@ namespace api.Database
                 int id = reader.GetInt32(0);
                 string fName = reader.GetString(1);
                 string lName = reader.GetString(2);
-                int phone = reader.GetInt32(3);
+                Int64 phone = reader.GetInt64(3);
                 string email = reader.GetString(4);
                 string user = reader.GetString(5);
                 string pass = reader.GetString(6);
@@ -61,7 +61,7 @@ namespace api.Database
                 int managerID = reader.GetInt32(0);
                 string fName = reader.GetString(1);
                 string lName = reader.GetString(2);
-                int phone = reader.GetInt32(3);
+                Int64 phone = reader.GetInt64(3);
                 string email = reader.GetString(4);
                 string user = reader.GetString(5);
                 string pass = reader.GetString(6);

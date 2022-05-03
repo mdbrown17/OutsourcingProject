@@ -44,15 +44,18 @@ namespace api.Controllers
         [HttpPost]
         public void Post([FromBody] Customer myCustomer)
         {
-            IInsertCustomers createCustomer = new InsertCustomers();
+            IInsertCustomers createCustomer = new SaveCustomer();
             createCustomer.InsertCustomer(myCustomer);
             Console.WriteLine(myCustomer.cBusinessName); 
         }
 
         // PUT: api/Customers
+        [EnableCors("OpenPolicy")] 
         [HttpPut("{customerID}")]
-        public void Put(int customerID, [FromBody] string value)
+        public void Put(Customer myCustomer)
         {
+            IInsertCustomers updateCustomer = new SaveCustomer(); 
+            updateCustomer.UpdateCustomer(myCustomer);
         }
 
         // DELETE: api/Customers
