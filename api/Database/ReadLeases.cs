@@ -35,7 +35,13 @@ namespace api.Database
                 int rentId = reader.GetInt32(3);
                 int custId = reader.GetInt32(4);
                 
-                leases.Add(new Lease(){leaseID = id,startDate = start, endDate = end, rentalID = rentId, customerID = custId});
+                leases.Add(new Lease(){
+                    leaseID = id, 
+                    startDate = start, 
+                    endDate = end, 
+                    rentalID = rentId, 
+                    customerID = custId
+                });
             }
             reader.Close();
             return leases;

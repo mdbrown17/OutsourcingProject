@@ -36,8 +36,13 @@ namespace api.Controllers
         [HttpGet("{id}", Name = "GetRental")]
         public RentalSpace Get(int id)
         {
+<<<<<<< HEAD
             IGetRentalSpaces rental = new ReadRentals();
             return rental.GetOne(id);
+=======
+            IGetRentalSpaces song = new ReadRentals();
+            return song.GetOne(id);
+>>>>>>> 94d86d39dea42c0534a9933e78dabe0d916976ab
         }
 
         // POST: api/RentalSpaces -async

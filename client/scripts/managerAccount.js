@@ -100,6 +100,10 @@ function updateManager() {
             console.log(error);
         });
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 94d86d39dea42c0534a9933e78dabe0d916976ab
 function editManager(){
     localStorage.setItem("fname", document.getElementById("firstname").value);
     localStorage.setItem("lname", document.getElementById("lastname").value);
