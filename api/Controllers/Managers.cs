@@ -49,9 +49,12 @@ namespace api.Controllers
         }
 
         // PUT: api/Managers/5
+        [EnableCors("OpenPolicy")] 
         [HttpPut("{managerID}")]
-        public void Put(int managerID, [FromBody] string value)
+        public void Put(Manager myManager)
         {
+            IInsertManagers updateManager = new SaveManager(); 
+            updateManager.UpdateManager(myManager);
         }
 
         // DELETE: api/Managers/5

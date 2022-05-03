@@ -21,7 +21,7 @@ namespace api.Database
             using var con = new MySqlConnection(cs);
             con.Open();
 
-            string stm = @"Select * from rentalspace";
+            string stm = @"Select * from rentalspace rs JOIN rent";
 
             using var cmd = new MySqlCommand(stm,con);
             using MySqlDataReader reader = cmd.ExecuteReader();
@@ -104,7 +104,7 @@ namespace api.Database
             using var con = new MySqlConnection(cs);
             con.Open();
 
-            string stm = @"Select * from rentalspace WHERE @rentalid = rentalid";
+            string stm = @"Select * from rentalspace JOIN WHERE @rentalid = rentalid";
 
             using var cmd = new MySqlCommand(stm,con);
             cmd.Parameters.AddWithValue("@rentalid",id);

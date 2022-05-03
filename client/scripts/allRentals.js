@@ -5,7 +5,7 @@ function handleOnLoad() {
 }
 
 function getRentalSpaces(){
-    fetch('https://localhost:5001/api/availablerentalspaces')
+    fetch('https://localhost:5001/api/rentalspaces')
         .then(function(response){
         console.log(response);
         return response.json();
@@ -37,8 +37,7 @@ function getRentalSpaces(){
             html += '<div class = "col-sm-4" style="border-style: solid;">';
             html += '<h4><b>Rental Space ' + rentalID + '</b></h4>';
             html += '<img src="' + image + '" id="myimage" alt="floorplan">'
-            html += '<p><strong>Monthly Rate: $' + monthly + '</strong><strong>Weekly Rate: $' + weekly + '</strong></p>';
-            html += '<p><strong>Weekly Rate: $' + weekly + '</strong></p>';
+            html += '<p><strong>Monthly Rate: $' + monthly + '</strong><strong> Weekly Rate: $' + weekly + '</strong></p>';
             html += '<p><strong>Size: ' + size + ' sqFt</strong></p>';
             html += '<p><strong>Min Rental Period: ' + min + ' Months</strong></p>';
             html += '<p><strong>Max Rental Period: ' + max + ' Months</strong></p>';

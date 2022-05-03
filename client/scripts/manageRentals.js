@@ -97,9 +97,9 @@ function approveApplication(applicationID, managerID, customerID){
         }
         ,
         body: JSON.stringify({
-            applicationID: applicationID,
-            approvalStatus: "approved",
-            managerID: managerID
+                applicationID: applicationID,
+                approvalStatus: "approved",
+                managerID: managerID
             })
     }).then((response) =>{
         console.log(response);

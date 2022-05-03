@@ -39,11 +39,11 @@ namespace api.Database
             using var con = new MySqlConnection(cs);
             con.Open();
 
-            using var cmd = new MySqlCommand(@"UPDATE manager set mfname = @mfname, mlname = @mlname, mphonenumber = @mphonenumber, memail = @memail, musername = @musername, mpassword = @mpassword WHERE managerid = @managerid");
+            using var cmd = new MySqlCommand(@"UPDATE manager SET mfname = @mfname, mlname = @mlname, mphonenumber = @mphonenumber, memail = @memail, musername = @musername, mpassword = @mpassword WHERE managerid = @managerid");
 
             cmd.Connection = con;
 
-            //cmd.Parameters.AddWithValue("@managerid",value.managerid);
+            cmd.Parameters.AddWithValue("@managerid",value.managerID);
             cmd.Parameters.AddWithValue("@mfname",value.mfname);
             cmd.Parameters.AddWithValue("@mlname",value.mlname);
             cmd.Parameters.AddWithValue("@mphonenumber",value.mphoneNumber) ;
