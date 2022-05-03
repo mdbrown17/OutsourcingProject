@@ -49,8 +49,8 @@ namespace api.Controllers
 
         // PUT: api/RentalSpaces -async/5
         [EnableCors("OpenPolicy")]
-        [HttpPut("{rentalID}")]
-        public void PutRental(RentalSpace myRentalSpace)
+        [HttpPut("{id}")]
+        public void Put(RentalSpace myRentalSpace)
         {
             IInsertRentalSpaces updateRentalSpace = new SaveRental(); 
             updateRentalSpace.UpdateRentalSpace(myRentalSpace);

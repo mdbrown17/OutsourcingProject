@@ -21,7 +21,7 @@ namespace api.Database
             using var con = new MySqlConnection(cs);
             con.Open();
 
-            string stm = @"Select * from rentalspace rs JOIN rent";
+            string stm = @"Select * from rentalspace";
 
             using var cmd = new MySqlCommand(stm,con);
             using MySqlDataReader reader = cmd.ExecuteReader();

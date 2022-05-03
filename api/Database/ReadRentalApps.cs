@@ -22,7 +22,7 @@ namespace OutsourcingProject.api.Database
             using var con = new MySqlConnection(cs);
             con.Open();
 
-            string stm = @"Select * from rentalapplication";
+            string stm = @"SELECT * FROM rentalapplication ra LEFT JOIN rentalspace rs ON ra.rentalid = rs.rentalid";
 
             using var cmd = new MySqlCommand(stm,con);
             using MySqlDataReader reader = cmd.ExecuteReader();
@@ -37,9 +37,48 @@ namespace OutsourcingProject.api.Database
                 int manId = reader.GetInt32(6);
                 DateTime start = reader.GetDateTime(7);
                 DateTime end = reader.GetDateTime(8);
-                
-                apps.Add(new RentalApplication(){applicationID = id,dateRequested = request, approvalStatus = approval, customerNotes = custNotes, customerID = custId, managerID = manId, rentalID = rentId, startDate = start, endDate = end});
-            }
+
+                //adding 
+                int sqFt = reader.GetInt32(10);
+                string imageLink = reader.GetString(11);
+                int minimumPeriod = reader.GetInt32(12);
+                int maximumPeriod = reader.GetInt32(13);
+                int monthlyRate = reader.GetInt32(14);
+                int weeklyRate = reader.GetInt32(15);
+                string locationDetail = reader.GetString(16);
+                string nearbyTenant = reader.GetString(17);
+
+                int kitchen = reader.GetInt32(20);
+                int commercialLighting = reader.GetInt32(21);
+                int securitySystem = reader.GetInt32(22);
+                int internet = reader.GetInt32(23);
+                int bathroom = reader.GetInt32(24);
+                //stop
+
+                // original    apps.Add(new RentalApplication(){applicationID = id,dateRequested = request, approvalStatus = approval, customerNotes = custNotes, customerID = custId, managerID = manId, rentalID = rentId, startDate = start, endDate = end});
+                apps.Add(new RentalApplication(){
+                    applicationID = id,
+                    dateRequested = request, 
+                    approvalStatus = approval, 
+                    customerNotes = custNotes, 
+                    customerID = custId, 
+                    managerID = manId, 
+                    rentalID = rentId, 
+                    startDate = start, 
+                    endDate = end, 
+                    sqFt = sqFt, 
+                    imageLink = imageLink,
+                    minimumPeriod = minimumPeriod,
+                    monthlyRate = monthlyRate,
+                    weeklyRate = weeklyRate,
+                    locationDetail = locationDetail,
+                    kitchen = kitchen,
+                    commercialLighting = commercialLighting,
+                    securitySystem = securitySystem,
+                    internet = internet,
+                    bathroom = bathroom
+                    });
+                }
             reader.Close();
             return apps;
         }
