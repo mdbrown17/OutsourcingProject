@@ -8,6 +8,7 @@ using api.Database;
 using api.Models;
 using Microsoft.AspNetCore.Cors;
 using api.Interfaces;
+using OutsourcingProject.api.Database;
 
 namespace api.Controllers
 {
@@ -43,10 +44,14 @@ namespace api.Controllers
         }
 
         // PUT: api/Leases -async/5
+        [EnableCors("OpenPolicy")]
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(Lease myLease)
         {
+            IInsertLeases updateLease = new SaveLease(); 
+            updateLease.UpdateLease(myLease);
         }
+
 
         // DELETE: api/Leases -async/5
         [HttpDelete("{id}")]
