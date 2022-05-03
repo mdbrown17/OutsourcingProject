@@ -9,8 +9,6 @@ function handleOnLoad() {
 
 function getManagerInfo() {
 
-    console.log('here ' + localStorage.getItem("managerID"));
-
     fetch('https://localhost:5001/api/managers')
         .then(function(response){
         console.log(response);
@@ -24,7 +22,6 @@ function getManagerInfo() {
             
             if(manager.managerID == localStorage.getItem("managerID"))
             {            
-                console.log(localStorage.getItem("managerID"));
                 var firstname = manager.mfname;
                 var lastname = manager.mlname;
                 var username = manager.mUsername;
@@ -66,35 +63,34 @@ function updateScreen() {
             
             if(manager.managerID == localStorage.getItem("managerID"))
             {            
-                console.log(localStorage.getItem("managerID"));
-                var managerID = manager.managerID;
+                
+                var managerid = manager.managerID;
                 var mfname = manager.mfname;
                 var mlname = manager.mlname;
-                var mUsername = manager.mUsername;
-                var mPassword = manager.mPassword;
-                var mEmail = manager.mEmail;
-                var mphoneNumber = manager.mphoneNumber;
+                var musername = manager.mUsername;
+                var mpassword = manager.mPassword;
+                var memail = manager.mEmail;
+                var mphonenumber = manager.mphoneNumber;
 
                 html += '<p><strong>First Name: </strong><input type="text" value="'+mfname+'"></input></p>';
                 html += '<p><strong>Last Name: </strong><input type="text" value="'+mlname+'"></input></p>';
-                html += '<p><strong>Username: </strong><input type="text" value="'+mUsername+'"></input></p>';
-                html += '<p><strong>Password: </strong><input type="text" value="'+mPassword+'"></input></p>';
-                html += '<p><strong>Email: </strong><input type="text" value="'+mEmail+'"></input></p>';
-                html += '<p><strong>Phone Number: </strong><input type="text" value="'+mphoneNumber+'"></input></p>';
+                html += '<p><strong>Username: </strong><input type="text" value="'+musername+'"></input></p>';
+                html += '<p><strong>Password: </strong><input type="text" value="'+mpassword+'"></input></p>';
+                html += '<p><strong>Email: </strong><input type="text" value="'+memail+'"></input></p>';
+                html += '<p><strong>Phone Number: </strong><input type="text" value="'+mphonenumber+'"></input></p>';
 
                 let myManager = {
-                    managerID: managerID,
-                    mfname: mfname,
-                    mlname: mlname,
-                    mUsername: mUsername,
-                    mPassword: mPassword,
-                    mEmail: mEmail,
-                    mphoneNumber: mphoneNumber,
+                    managerID: localStorage.getItem("managerID"),
+                    mfname: manager.mfname,
+                    mlname: manager.mlname,
+                    mUsername: manager.musername,
+                    mPassword: manager.mpassword,
+                    mEmail: manager.memail,
+                    mphoneNumber: manager.mphonenumber,
                 }; 
 
-                html2 += '<div class="btn"><button id="editManager" class="btn" onclick="updateManager(' + managerID + ', "' + mfname + '", "' + mlname + '", "' + mUsername + '", "' + mPassword + '", "' + mEmail + '", "'+ mphoneNumber + '")">Submit Changes</button></div>';
+                html2 += '<div class="btn"><button id="editManager" class="btn" onclick="updateManager(' + myManager.managerID + ')">Submit Changes</button></div>';
 
-                
             }
 
         });
@@ -109,32 +105,33 @@ function updateScreen() {
     
 }
 
-function updateManager(managerID, mfname, mlname, mUsername, mPassword, mEmail, mphoneNumber) {
+function updateManager(myManager) {
 
-    console.log("made it here");
-    const specificUrl = "https://localhost:5001/api/managers/" + managerID;
+    const specificUrl = "https://localhost:5001/api/managers/" + myManager.managerID;
 
     console.log(myManager.managerID);
+    console.log(myManager.mfname);
 
     fetch(specificUrl, {
         method: "PUT",
         headers: {
-            "Accept": 'manager/json',
-            "Content-Type":'manager/json',
+            "Accept": 'application/json',
+            "Content-Type":'application/json',
         }
         ,
         body: JSON.stringify({
-            managerID: managerID,
-            mfname: mfname,
-            mlname: mlname,
-            mUsername: mUsername,
-            mPassword: mPassword,
-            mEmail: mEmail,
-            mphoneNumber: mphoneNumber
+            mfname: myManager.mfname,
+            mlname: myManager.mlname,
+            mUsername: myManager.mUsername,
+            mPassword: myManager.mPassword,
+            mEmail: myManager.mEmail,
+            mphoneNumber: myManager.mphoneNumber
         })
     }).then((response) =>{
         console.log(response);
     });
+
+    
 
     change_page_managerAccount();
 }
