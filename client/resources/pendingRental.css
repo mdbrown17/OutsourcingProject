@@ -30,8 +30,42 @@
     font-variant: small-caps;
 }
 
-.customerinfo{
-    padding-top: 25px;
+.customerinfo applicationInfo {
+    padding-top: 75px;
+} 
+
+.pendingRentalInfo {
+    padding-top: 50px;
+}
+
+
+.customerinfo img{
+    
+    max-width: 250px;
+    position: center;
+    
+}
+
+.rentalSpace {
+    border: 1px;
+    border-width: 1px;
+    margin: 1px;
+    flex-basis: 33%;
+    padding: 20px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    transition: transform 0.5s;
+}
+
+.rentalApplication {
+    border: 1px;
+    border-width: 1px;
+    margin: 1px;
+    flex-basis: 33%;
+    padding: 20px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    transition: transform 0.5s;
 }
   
 .header2{
@@ -42,16 +76,4 @@
 .btn{
     background-color: darkred;
     color: white;
-}
-
-.col-6 img {
-    width: 80%;
-}
-
-.leaseinfo {
-    padding-bottom: 20px;
-}
-
-.customerinfo {
-    padding-bottom: 20px;
 }
