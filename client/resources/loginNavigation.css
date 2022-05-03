@@ -16,7 +16,14 @@
 .header{
   padding-top: 125px;
   text-align: center;
-  padding-bottom: 100px;
+  padding-bottom: 50px;
+}
+
+.header h1{
+    font-size: 50px;
+    color: #B22222;
+    font-variant: small-caps;
+    text-align: center;
 }
 
 .btn{
@@ -24,8 +31,21 @@
     color: white;
 }
 
-.header h1{
+.row h1{
     font-size: 50px;
     color: #B22222;
     font-variant: small-caps;
+    text-align: center;
+}
+
+.container{
+    padding-bottom: 50px;
+}
+
+.btn1{
+    margin-right: .5%;
+}
+
+.col-4{
+    padding-top: 100px;
 }

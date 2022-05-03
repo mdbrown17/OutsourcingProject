@@ -52,3 +52,7 @@ function change_page_viewEditRentals(){
 function change_page_pendingRental(){
     window.location.href = "pendingRental.html";
 }
+
+function change_page_currentRentals(){
+    window.location.href = "currentRentals.html";
+}

@@ -13,19 +13,22 @@ function getApplication(){
         let html = "";
         json.forEach((rentalapplication) => {
 
-            if(rentalapplication.applicationID == localStorage.getItem("userID"))
+            if(rentalapplication.customerID == localStorage.getItem("userID"))
             {
-                console.log(rentalapplication.applicationID); // test note
+                console.log(rentalapplication.customerID); // test note
                 var dateRequested = rentalapplication.dateRequested;
                 var rentalid = rentalapplication.rentalID;
                 var startdate = rentalapplication.startDate;
                 var enddate = rentalapplication.endDate;
                 
+                html += '<div class="rentalApplication" style="border-style: solid;">';
                 html += '<p><strong>RentalID: ' + rentalapplication.rentalID + '</strong></p>';
                 html += '<p><strong>Date Requested: ' + dateRequested + '</strong></p>';
                 html += '<p><strong>Start Date: ' + startdate + '</strong></p>';
                 html += '<p><strong>End Date: ' + enddate + '</strong></p>';
             }
+
+            html+=' </div> </div>';
 
         });
         document.getElementById("applicationInfo").innerHTML = html;
@@ -63,8 +66,9 @@ function getPendingRental(){
                 var internet = RentalSpace.internet;
                 var bathroom = RentalSpace.bathroom;
 
+                html += '<div class="rentalSpace" style="border-style: solid;">';
                 html += '<h4><b>Rental Space ' + rentalID + '</b></h4>';
-                html += '<img src="' + image + '" id="myimage" alt="floorplan">'
+                html += '<img src="' + image + '" id="myimage" alt="floorplan"><strong>Weekly Rate: $' + weekly + '</strong>';
                 html += '<p><strong>Monthly Rate: $' + monthly + '</strong></p>';
                 html += '<p><strong>Weekly Rate: $' + weekly + '</strong></p>';
                 html += '<p><strong>Size: ' + size + ' sqFt</strong></p>';
@@ -72,6 +76,7 @@ function getPendingRental(){
                 html += '<p><strong>Max Rental Period: ' + max + ' Months</strong></p>';
                 html += '<p><strong>Nearby Tenant(s): ' + nearby + '</strong></p>';
                 html += '<p><strong>Location: ' + location + '</strong></p>';
+                
 
                 if(kitchen == 1){
                     html += '<p><strong>Kitchen Included</strong></p>';
@@ -88,6 +93,9 @@ function getPendingRental(){
                 if(bathroom == 1){
                     html += '<p><strong>Bathroom Included</strong></p>';
                 }
+
+                html+=' </div> </div>';
+
             }
 
         });
