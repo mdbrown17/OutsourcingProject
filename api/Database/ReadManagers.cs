@@ -66,7 +66,6 @@ namespace api.Database
                 string user = reader.GetString(5);
                 string pass = reader.GetString(6);
                 
-                
                 managers.Add(new Manager(){managerID = id,mfname = fName, mlname = lName, mphoneNumber = phone, mEmail = email, mUsername = user, mPassword = pass});
             }
             reader.Close();

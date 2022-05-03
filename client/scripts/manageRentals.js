@@ -43,8 +43,8 @@ function getAllPending(){
                 html += '<h5> Rquested By Customer: <b>' + customerID + '</b></h5>';
                 html += '<img src="' + myImage + '" alt="floorplan">'; //come back img
                 html += '<p><strong>Date Requested: ' +  rDate + '</strong></p>';
-                html += '<p><strong>Start Date Requested: ' + sDate + '</strong></p>';
-                html += '<p><strong>End Date Requested: ' +  eDate + '</strong></p>';
+                html += '<p><strong>    Start Date Requested: ' + sDate + '</strong></p>';
+                html += '<p><strong>    End Date Requested: ' +  eDate + '</strong></p>';
                 html += '<p><strong>Notes: ' + customerNotes + '</strong></p>';
 
                 html += '<div class="approveBtn">';
@@ -53,11 +53,19 @@ function getAllPending(){
                 html += ')">Approve</button>';
                 html += '</div>';
                 html += '<div class="denyBtn">';
-                html += '<button id="denyButton" class="btn">Deny</button></div></div>';
+
+                html += '<button id="denyButton" class="btn" onclick="denyApplication(';
+                html += applicationID + ", " + managerID;
+                html += ')">Deny</button></div></div>';
+
+                i++;
             }
-            i++;
         });
+        if(i == 0){
+            html += '<div class = "col-12"> <center><h3>No outstanding rental requests currently</h3></center></div>';
+        }
         document.getElementById("rentalApps").innerHTML = html;
+
 
     }).catch(function(error){
         console.log(error);
@@ -66,14 +74,19 @@ function getAllPending(){
 
 function approveApplication(applicationID, managerID, customerID, rentalID, sDate, eDate){
     //console.log("made it to approve function" + applicationID);
-    putApplication(applicationID, managerID);
+    putApplication(applicationID, managerID, "approved");
     putRentalSpace(rentalID, customerID);
     putLease(rentalID, customerID, sDate, eDate);
 
     showModalApproved();
 }
+function denyApplication(applicationID, managerID){
+    putApplication(applicationID, managerID, "denied");
+    showModalDenied();
+}
 
-function putApplication(applicationID, managerID){
+
+function putApplication(applicationID, managerID, status){
     fetch("https://localhost:5001/api/rentalapplications/" + applicationID, {
         method: "PUT",
         headers: {
@@ -83,7 +96,7 @@ function putApplication(applicationID, managerID){
         ,
         body: JSON.stringify({
                 applicationID: applicationID,
-                approvalStatus: "approved",
+                approvalStatus: status,
                 managerID: managerID
             })
     }).then((response) =>{
@@ -102,6 +115,7 @@ function putRentalSpace(rentalID, customerID){
         }
         ,
         body: JSON.stringify({
+            rentalID: rentalID,
             nearbyTenant: "N/A",
             customerID: customerID
         })
@@ -111,6 +125,10 @@ function putRentalSpace(rentalID, customerID){
 }
 
 function putLease(rentalID, customerID, sDate, eDate){
+    console.log("made it to putLease");
+
+    var startDate = new Date(sDate);
+    var endDate = new Date(eDate);
     fetch("https://localhost:5001/api/leases/" + rentalID, {
         method: "PUT",
         headers: {
@@ -120,9 +138,9 @@ function putLease(rentalID, customerID, sDate, eDate){
         ,
         body: JSON.stringify({
             leaseID: rentalID,
-            startDate: sDate,
-            endDate: eDate,
-            rentalID, rentalID, 
+            startDate: startDate,
+            endDate: endDate,
+            rentalID: rentalID, 
             customerID: customerID
         })
     }).then((response) =>{
@@ -132,4 +150,7 @@ function putLease(rentalID, customerID, sDate, eDate){
 
 function showModalApproved(){
     $('#approvedModal').modal('show');
+}
+function showModalDenied(){
+    $('#denyModal').modal('show');
 }
