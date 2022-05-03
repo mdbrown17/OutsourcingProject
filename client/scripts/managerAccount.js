@@ -100,6 +100,7 @@ function updateManager() {
             console.log(error);
         });
 }
+
 function editManager(){
     localStorage.setItem("fname", document.getElementById("firstname").value);
     localStorage.setItem("lname", document.getElementById("lastname").value);

@@ -28,10 +28,16 @@
   text-align: center;
 }
   
-.header h1{
+.header h2{
   font-size: 50px;
   color: #B22222;    
   font-variant: small-caps;
+}
+
+.subheader h2{
+    font-size: 45px;
+    color: #B22222;
+    font-variant: small-caps;
 }
 
 .header2{
@@ -68,21 +74,27 @@ font-size: x-small;
   width: 1500px;
   padding: 25px;
   align-content: center;
+  text-align: center;
 }
 
 .container img{
-  max-width: 250px;
+  max-width: 200px;
+  max-height: 150px;
   position: center;
 }
 
 .container h4{
   text-align: center;
   font-size: 30px;
-  color: #B22222;    
+  color: rgb(83, 75, 75);    
   font-variant: small-caps;
 }
 
 .container p{
   text-align: center;
   font-size: 15px;
+}
+
+.btn1{
+    margin-right: .5%;
 }
