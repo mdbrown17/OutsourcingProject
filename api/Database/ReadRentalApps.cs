@@ -29,12 +29,12 @@ namespace OutsourcingProject.api.Database
 
             while(reader.Read()){
                 int id = reader.GetInt32(0);
-                DateTime request = reader.GetDateTime(1);
-                string approval = reader.GetString(2);
-                string custNotes = reader.GetString(3);
-                int custId = reader.GetInt32(4);
-                int manId = reader.GetInt32(5);
-                int rentId = reader.GetInt32(6);
+                int rentId = reader.GetInt32(1);
+                DateTime request = reader.GetDateTime(2);
+                string approval = reader.GetString(3);
+                string custNotes = reader.GetString(4);
+                int custId = reader.GetInt32(5);
+                int manId = reader.GetInt32(6);
                 DateTime start = reader.GetDateTime(7);
                 DateTime end = reader.GetDateTime(8);
                 

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="./scripts/availableRentals.js" type="text/JavaScript"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,19 +25,20 @@
         <img src="./Images/logo2" id="logo" />
     </nav>
     <div class="header">
-        <div class="btn1">
-            <button id="loginButton" class="btn1" style="float: right;" input type="button" value="create page" onclick="change_page_loginNavigation()">Login</button>
-        </div>
+            <div class="btn1">
+                <button id="homeButton" class="btn1" style="float: right;" input type="button" value="create page" onclick="change_page_customerNavigation()">Home</button>
+            </div>
             <h1>Available Rental Spaces</h1>
     </div>
-     <div class ="container">
+    <div class ="container">
         <div id = "rentals" class="row">
-                    
+                <!-- RENTALS FILL HERE-->
         </div>
     </div>
+
     <div class="container">
         <div class="modal fade" id ="requestModal" role="dialog">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-md">
                 <div class = "modal-content">
                     <div class = "modal-header">
                         <h1>Request Property</h1>
@@ -56,7 +56,7 @@
                                 <form method="post">
                                 <div class="form-group ">
                                     <label class="control-label requiredField" for="startDate">
-                                    End Date
+                                    Start Date
                                     <span class="asteriskField">
                                     *
                                     </span>
@@ -83,12 +83,12 @@
                                     </div>
                                     <input class="form-control form-control" id="endDate" name="endDate" placeholder="YYYY-MM-DD" type="text"/>
                                     </div>
+                                    <br>
+                                    Notes for Tide Market: <br> <input type="text" name="marks" id="notes">
                                 </div>
                                 <div class="form-group">
                                     <div>
-                                    <button class="btn btn-custom " name="submit" type="submit">
-                                    Submit
-                                    </button>
+                                    <button class="btn btn-custom" onclick="submitRequest()">Submit</button>
                                     </div>
                                 </div>
                                 </form>
@@ -96,10 +96,6 @@
                                 </div>
                             </div>
                             </div>   
-                    
-  
-                        <!-- Marks: <input type="text" name="marks"
-                        id="marks"><br><br> -->
                     </div>
                     <div class="modal-footer">
                         <input class="btn" value="Close" onclick="hideRentalModal()">
@@ -107,45 +103,62 @@
                 </div>
             </div>
         </div>
-        <!-- <button type="button" data-toggle="modal" data-target="#requestModal">Open Modal</button> -->
-        <!-- <a href="#" data-toggle="modal" data-target="#requestModal"> Request </a> -->
+    </div>
+
+    <div class="col-md-12">
+        <div class="modal fade" id ="successModal" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class = "modal-content">
+                    <div class = "modal-header">
+                        <h1>Thank you!</h1>
+                    </div>
+                    <div class="modal-body">
+                      <h3>You successfully applied for a rental space within Tide Market.</h3>
+                      <h3>We look forward to getting back to you soon!</h3>
+                    </div>
+                    <div class="modal-footer">
+                        <input class="btn" value="Close" onclick="hideModalSuccess()">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src = "./scripts/loginPage.js"></script>
+    <script src = "./scripts/availableRentals.js"></script>
+    <script src = "./scripts/changePages.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-<!-- Include Date Range Picker -->
+    <!-- Include Date Range Picker -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
-<script>
-    $(document).ready(function(){
-        var date_input=$('input[name="startDate"]'); //our date input has the name "date"
-        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-        date_input.datepicker({
-            format: 'yyyy-mm-dd',
-            container: container,
-            todayHighlight: true,
-            autoclose: true,
+    <script>
+        $(document).ready(function(){
+            var date_input=$('input[name="startDate"]'); //our date input has the name "date"
+            var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+            date_input.datepicker({
+                format: 'yyyy-mm-dd',
+                container: container,
+                todayHighlight: true,
+                autoclose: true,
+            })
         })
-    })
-    $(document).ready(function(){
-        var date_input=$('input[name="endDate"]'); //our date input has the name "date"
-        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-        date_input.datepicker({
-            format: 'yyyy-mm-dd',
-            container: container,
-            todayHighlight: true,
-            autoclose: true,
+        $(document).ready(function(){
+            var date_input=$('input[name="endDate"]'); //our date input has the name "date"
+            var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+            date_input.datepicker({
+                format: 'yyyy-mm-dd',
+                container: container,
+                todayHighlight: true,
+                autoclose: true,
+            })
         })
-    })
-</script>
-
+    </script>
 </body>
 </div>
 </html>

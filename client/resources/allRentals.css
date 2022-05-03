@@ -77,6 +77,9 @@ font-size: x-small;
 
 .container h4{
   text-align: center;
+  font-size: 30px;
+  color: #B22222;    
+  font-variant: small-caps;
 }
 
 .container p{

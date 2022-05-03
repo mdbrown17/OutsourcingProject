@@ -17,6 +17,7 @@ namespace api.Controllers
     public class RentalSpaces : ControllerBase
     {
         // GET: api/RentalSpaces
+        [EnableCors("OpenPolicy")]
         [HttpGet]
         public List<RentalSpace> Get()
         {
@@ -31,10 +32,12 @@ namespace api.Controllers
         }
 
         // GET: api/RentalSpaces -async/5
-        [HttpGet("{rentalID}", Name = "GetRental")]
-        public string Get(int rentalID)
+        [EnableCors("OpenPolicy")]
+        [HttpGet("{id}", Name = "GetRental")]
+        public RentalSpace Get(int id)
         {
-            return "value";
+            IGetRentalSpaces song = new ReadRentals();
+            return song.GetOne(id);
         }
 
         // POST: api/RentalSpaces -async
@@ -45,9 +48,12 @@ namespace api.Controllers
         }
 
         // PUT: api/RentalSpaces -async/5
+        [EnableCors("OpenPolicy")]
         [HttpPut("{rentalID}")]
-        public void PutRental(int rentalID, [FromBody] string value)
+        public void PutRental(RentalSpace myRentalSpace)
         {
+            IInsertRentalSpaces updateRentalSpace = new SaveRental(); 
+            updateRentalSpace.UpdateRentalSpace(myRentalSpace);
         }
 
         // DELETE: api/RentalSpaces -async/5

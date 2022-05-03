@@ -6,6 +6,21 @@
   z-index: 1;
 }
 
+.navbar{
+  overflow: hidden;
+  background-color: lightgray;
+  font-family: Arial;
+}
+
+.navbar a{
+  float: left;
+  font-size: 16px;
+  color: black;
+  text-align: bottom;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
 #logo {
   position:relative;
   left: 560px;
@@ -19,8 +34,10 @@ padding-top: 125px;
 text-align: center;
 }
 
-.col-4 img{
-width: 80%;
+.header h1{
+  font-size: 50px;
+  color: #B22222;
+  font-variant: small-caps;
 }
 
 .col-4{
@@ -30,11 +47,25 @@ margin: 1px;
 flex-basis: 33%;
 padding: 20px;
 min-width: 200px;
-margin-bottom: 50px;
+margin-bottom: 25px;
 transition: transform 0.5s;
 }
 
-.btn{
-background-color: darkred;
-color: white;
+.loginButton{
+  padding-top: 25px;
 }
+
+.container{
+  padding-top: 50px;
+}
+
+.btn{
+  padding-top: 25px;
+  font-size: 18px;
+}
+
+input[type=button] {
+  background-color: rgb(83, 75, 75);
+  color: white;
+}
+

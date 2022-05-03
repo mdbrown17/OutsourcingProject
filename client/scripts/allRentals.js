@@ -1,16 +1,11 @@
-// const baseUrl = "https://localhost:5001/api/availablerentalspaces";
-
 function handleOnLoad() {
-    console.log(localStorage.getItem('successfulApp'));
+    
     getRentalSpaces();
-    if(localStorage.getItem('successfulApp') == "true"){
-        showModalSuccess();
-    }
-    localStorage.setItem("successfulApp", 'false');
+    
 }
 
 function getRentalSpaces(){
-    fetch('https://localhost:5001/api/availablerentalspaces')
+    fetch('https://localhost:5001/api/rentalspaces')
         .then(function(response){
         console.log(response);
         return response.json();
@@ -42,8 +37,7 @@ function getRentalSpaces(){
             html += '<div class = "col-sm-4" style="border-style: solid;">';
             html += '<h4><b>Rental Space ' + rentalID + '</b></h4>';
             html += '<img src="' + image + '" id="myimage" alt="floorplan">'
-            html += '<p><strong>Monthly Rate: $' + monthly + '</strong></p>';
-            html += '<p><strong>Weekly Rate: $' + weekly + '</strong></p>';
+            html += '<p><strong>Monthly Rate: $' + monthly + '</strong><strong> Weekly Rate: $' + weekly + '</strong></p>';
             html += '<p><strong>Size: ' + size + ' sqFt</strong></p>';
             html += '<p><strong>Min Rental Period: ' + min + ' Months</strong></p>';
             html += '<p><strong>Max Rental Period: ' + max + ' Months</strong></p>';
@@ -68,64 +62,13 @@ function getRentalSpaces(){
 
             // html += '<div class="btn">';
             // html += '<a href="#" data-toggle="modal" data-target="#requestModal"> Request </a>';
-            html += '<button id="requestButton" class="btn" onclick="showRentalModal(' + rentalID + ')">Request</button>';
+            html += '<center><button id="requestButton" class="btn" onclick="showRentalModal(' + rentalID + ')">Edit</button></center>';
             html+=' </div> </div>';
             rentalCount ++;
         });
-        document.getElementById("rentals").innerHTML = html;
+        document.getElementById("allRentals").innerHTML = html;
 
     }).catch(function(error){
             console.log(error);
     });
 }
-function submitRequest(){
-    localStorage.setItem('successfulApp', 'true');
-    const chosenSpace = localStorage.getItem("spaceToApplyID");
-    const start = document.getElementById("startDate").value;
-    const end = document.getElementById("endDate").value;
-    const notes = document.getElementById("notes").value;
-    postApplication(start, end, notes, chosenSpace);
-}
-function postApplication(start, end, notes, chosenSpace){
-    var application = {
-        customerNotes: notes,
-        customerID: localStorage.getItem("userID"),
-        managerID: 1,
-        rentalID: chosenSpace,
-        startDate: start,
-        endDate: end
-    };
-
-    fetch("https://localhost:5001/api/rentalapplications", {
-        method: "POST",
-        headers: {
-            "Accept": 'application/json',
-            "Content-Type":'application/json',
-        },
-        body: JSON.stringify(application)
-        
-    }).then((response) =>{
-        console.log(response);
-    });
-}
-
-
-function showModalSuccess(){
-    $('#successModal').modal('show');
-}
-
-function hideModalSuccess(){
-    $('#successModal').modal('hide');
-}
-
-function showRentalModal(id){
-    localStorage.setItem("spaceToApplyID", id);
-    console.log("id requested " + id);
-    console.log(localStorage.getItem('successfulApp'));
-    $('#requestModal').modal('show');
-}
-
-function hideRentalModal(){
-    $('#requestModal').modal('hide');
-}
-

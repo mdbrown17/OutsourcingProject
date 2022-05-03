@@ -1,17 +1,17 @@
-const baseUrl = "https://localhost:5001/api/customers"; 
-var customerList = [];
-var myCustomer = {};
+const baseUrl = "https://localhost:5001/api/managers"; 
+var managerList = [];
+var myManager = {};
 
 function handleOnLoad() {
     // localStorage.setItem('successfulApp', 'false');
-    getCustomerInfo();
+    getManagerInfo();
 }
 
-function getCustomerInfo() {
+function getManagerInfo() {
 
-    console.log('here ' + localStorage.getItem("userID"));
+    console.log('here ' + localStorage.getItem("managerID"));
 
-    fetch('https://localhost:5001/api/customers')
+    fetch('https://localhost:5001/api/managers')
         .then(function(response){
         console.log(response);
         return response.json();
@@ -20,18 +20,17 @@ function getCustomerInfo() {
         let html = "";
         let html2 = "";
 
-        json.forEach((customer) => {
+        json.forEach((manager) => {
             
-            if(customer.customerID == localStorage.getItem("userID"))
+            if(manager.managerID == localStorage.getItem("managerID"))
             {            
-                console.log(localStorage.getItem("userID"));
-                var firstname = customer.cfName;
-                var lastname = customer.clName;
-                var username = customer.cUsername;
-                var password = customer.cPassword;
-                var email = customer.cEmail;
-                var phonenumber = customer.cPhoneNumber;
-                var businessname = customer.cBusinessName;
+                console.log(localStorage.getItem("managerID"));
+                var firstname = manager.mfname;
+                var lastname = manager.mlname;
+                var username = manager.mUsername;
+                var password = manager.mPassword;
+                var email = manager.mEmail;
+                var phonenumber = manager.mphoneNumber;
 
                 html += '<p><strong>First Name: ' + firstname + '</strong></p>';
                 html += '<p><strong>Last Name: ' + lastname + '</strong></p>';
@@ -39,9 +38,8 @@ function getCustomerInfo() {
                 html += '<p><strong>Password: ' + password + ' </strong></p>';
                 html += '<p><strong>Email: ' + email + ' </strong></p>';
                 html += '<p><strong>Phone number: ' + phonenumber + ' </strong></p>';
-                html += '<p><strong>Business Name: ' + businessname + ' </strong></p>';
 
-                html2 += '<div class="btn"><button id="editCustomer" class="btn" onclick="updateCustomer()">Edit Account Info</button></div>'
+                html2 += '<div class="btn"><button id="editManager" class="btn" onclick="updateManager()">Edit Account Info</button></div>'
             }
 
         });
@@ -52,9 +50,10 @@ function getCustomerInfo() {
             console.log(error);
         });
 }
-function updateCustomer() {
 
-    fetch('https://localhost:5001/api/customers')
+function updateManager() {
+
+    fetch('https://localhost:5001/api/managers')
         .then(function(response){
         console.log(response);
         return response.json();
@@ -63,18 +62,19 @@ function updateCustomer() {
         let html = "";
         let html2 = "";
 
-        json.forEach((customer) => {
+        json.forEach((manager) => {
             
-            if(customer.customerID == localStorage.getItem("userID"))
+            if(manager.managerID == localStorage.getItem("managerID"))
             {            
-                console.log("BING BONG " + localStorage.getItem("userID"));
-                var firstname = customer.cfName;
-                var lastname = customer.clName;
-                var username = customer.cUsername;
-                var password = customer.cPassword;
-                var email = customer.cEmail;
-                var phonenumber = customer.cPhoneNumber;
-                var businessname = customer.cBusinessName;
+                console.log(localStorage.getItem("managerID"));
+                var firstname = manager.mfname;
+                var lastname = manager.mlname;
+                var username = manager.mUsername;
+                var password = manager.mPassword;
+                var email = manager.mEmail;
+                var phonenumber = manager.mphoneNumber;
+
+                
 
                 html += '<p><strong>First Name: </strong><input type="text" id="firstname" value="'+firstname+'"></input></p>';
                 html += '<p><strong>Last Name: </strong><input type="text" id="lastname" value="'+lastname+'"></input></p>';
@@ -82,39 +82,41 @@ function updateCustomer() {
                 html += '<p><strong>Password: </strong><input type="text" id="password" value="'+password+'"></input></p>';
                 html += '<p><strong>Email: </strong><input type="text" id="email" value="'+email+'"></input></p>';
                 html += '<p><strong>Phone Number: </strong><input type="text" id="phonenumber" value="'+phonenumber+'"></input></p>';
-                html += '<p><strong>Phone Number: </strong><input type="text" id="businessname" value="'+businessname+'"></input></p>';
 
-                html2 += '<div class="btn"><button id="editCustomer" class="btn" onclick="editCustomer()">Submit Changes</button></div>';
+                html2 += '<div class="btn"><button id="editManager" class="btn" onclick="editManager()">Submit Changes</button></div>';
             }
         });
         document.getElementById("info").innerHTML = html;
         document.getElementById("editButton").innerHTML = html2;
 
+        localStorage.setItem("fname", document.getElementById("firstname").value);
+        localStorage.setItem("lname", document.getElementById("lastname").value);
+        localStorage.setItem("uname", document.getElementById("username").value);
+        localStorage.setItem("pass", document.getElementById("password").value);
+        localStorage.setItem("mail", document.getElementById("email").value);
+        localStorage.setItem("phone", document.getElementById("phonenumber").value);
 
         }).catch(function(error){
             console.log(error);
         });
 }
-function editCustomer(){
+function editManager(){
     localStorage.setItem("fname", document.getElementById("firstname").value);
     localStorage.setItem("lname", document.getElementById("lastname").value);
     localStorage.setItem("uname", document.getElementById("username").value);
     localStorage.setItem("pass", document.getElementById("password").value);
     localStorage.setItem("mail", document.getElementById("email").value);
     localStorage.setItem("phone", document.getElementById("phonenumber").value);
-    localStorage.setItem("businessname", document.getElementById("businessname").value);
 
-    var customerID = localStorage.getItem("userID");
+    var managerID = localStorage.getItem("managerID");
     var fname = localStorage.getItem("fname");
     var lname = localStorage.getItem("lname");
     var uname = localStorage.getItem("uname");
     var pass = localStorage.getItem("pass");
     var mail = localStorage.getItem("mail");
     var phone = localStorage.getItem("phone");
-    var businessname = localStorage.getItem("businessname");
 
-
-    const url = "https://localhost:5001/api/customers/" + customerID;
+    const url = "https://localhost:5001/api/managers/" + managerID;
 
     fetch(url, {
         method: "PUT",
@@ -124,15 +126,14 @@ function editCustomer(){
         }
         ,
         body: JSON.stringify({
-            customerID: customerID,
-            cfName: fname,
-            clName: lname,
-            cPhoneNumber: phone,
-            cEmail: mail,
-            cUsername: uname,
-            cPassword: pass,
-            cBusinessName: businessname
-        })
+                managerID: managerID,
+                mfname: fname,
+                mlname: lname,
+                mphoneNumber: phone,
+                mEmail: mail,
+                mUsername: uname,
+                mPassword: pass
+            })
             
     }).then((response) =>{
         console.log(response);
