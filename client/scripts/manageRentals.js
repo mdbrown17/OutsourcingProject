@@ -5,10 +5,11 @@ function handleOnLoad(){
 
 function getAllPending(){
     console.log("made it here");
+    var i = 0;
 
     fetch('https://localhost:5001/api/rentalapplications')
         .then(function(response){
-        console.log(response);
+        // console.log(response);
         return response.json();
     }).then(function(json){
 
@@ -40,15 +41,17 @@ function getAllPending(){
             };
 
             localStorage.setItem("application", myApplication);
-            
-            getImage(rentalID);
+            getSpaceImage(rentalID, i);
+            var myImage = localStorage.getItem(`myImage${i}`);
 
-            var myImage = localStorage.getItem('image');
+            console.log(myImage);
+
+            //var myImage = mySpace._image;
 
             if(approvalStatus == 'pending')
             {
                 html += '<div class = "col-4" style="border-style: solid;">';
-                html += '<h4><b> Rental Space' + rentalID + ' </b></h4>';
+                html += '<h4><b>Request - Rental Space ' + rentalID + ' </b></h4>';
                 html += '<img src="' + myImage + '" alt="floorplan">'; //come back img
                 html += '<p><strong>Date Requested:' + dateRequested + '</strong></p>';
                 html += '<p><strong>Notes:' + customerNotes + '</strong></p>';
@@ -60,7 +63,7 @@ function getAllPending(){
                 html += '<div class="denyBtn">';
                 html += '<button id="denyButton" class="btn">Deny</button></div></div>';
             }
-            
+            i++;
         });
         document.getElementById("rentalApps").innerHTML = html;
 
@@ -68,26 +71,21 @@ function getAllPending(){
         console.log(error);
     });
 }
-function getImage(searchID){
-    var image = "";
-    fetch('https://localhost:5001/api/rentalspaces')
-        .then(function(response2){
-        console.log(response2);
-        return response2.json();
+function getSpaceImage(searchID, i){
+    // localStorage.setItem("myImage", "")
+    fetch('https://localhost:5001/api/rentalspaces/' + searchID)
+        .then(function(response){
+        // console.log(response);
+        return response.json();
     }).then(function(json){
-        json.forEach((rentalSpace) => {
-            if(rentalSpace.rentalID == searchID)
-            {   
-                image = rentalSpace.imagelink
-                localStorage.setItem("image", rentalSpace.imagelink);
-            }
-        });
+        myImage = json.imageLink;
+        localStorage.setItem(`myImage${i}`, myImage);
     });
-    return image;
 }
+
 function approveApplication(applicationID, managerID, customerID){
 
-    console.log("made it to approve function" + applicationID);
+    //console.log("made it to approve function" + applicationID);
 
     const specificUrl = "https://localhost:5001/api/rentalapplications/" + applicationID;
 
@@ -117,10 +115,11 @@ function approveApplication(applicationID, managerID, customerID){
         body: JSON.stringify({
             nearbyTenant: "N/A",
             rscustomerID: customerID
-            })
+        })
     }).then((response) =>{
         console.log(response);
     });
+
     showModalApproved();
 }
 

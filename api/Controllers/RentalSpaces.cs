@@ -32,10 +32,12 @@ namespace api.Controllers
         }
 
         // GET: api/RentalSpaces -async/5
-        [HttpGet("{rentalID}", Name = "GetRental")]
-        public string Get(int rentalID)
+        [EnableCors("OpenPolicy")]
+        [HttpGet("{id}", Name = "GetRental")]
+        public RentalSpace Get(int id)
         {
-            return "value";
+            IGetRentalSpaces song = new ReadRentals();
+            return song.GetOne(id);
         }
 
         // POST: api/RentalSpaces -async

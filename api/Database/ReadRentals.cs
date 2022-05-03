@@ -128,10 +128,10 @@ namespace api.Database
                 int inter = reader.GetInt32(14);
                 int bath = reader.GetInt32(15);
                 rentals.Add(new RentalSpace(){rentalID = rentalId, sqFt = ft, imageLink = image,
-                 minimumPeriod = min, maximumPeriod = max, monthlyRate = monthly, 
-                 weeklyRate = weekly, locationDetail = location, nearbyTenant = nearTenant, 
-                 customerID = custID, managerID = manID, kitchen = kitch, commercialLighting =lighting,
-                 securitySystem = security, internet = inter, bathroom = bath});
+                minimumPeriod = min, maximumPeriod = max, monthlyRate = monthly, 
+                weeklyRate = weekly, locationDetail = location, nearbyTenant = nearTenant, 
+                customerID = custID, managerID = manID, kitchen = kitch, commercialLighting =lighting,
+                securitySystem = security, internet = inter, bathroom = bath});
             }
             reader.Close();
             return rentals[0];
