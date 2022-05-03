@@ -10,25 +10,29 @@ using api.Models;
 
 namespace api.Database
 { 
-    public class SaveCustomer : IInsertCustomers{
-        public void InsertCustomer(Customer value){
+    public class SaveCustomer : IInsertCustomers 
+    {
+        public void InsertCustomer(Customer myCustomer){
             ConnectionString myConnection = new ConnectionString();
             string cs = myConnection.cs;
+
             using var con = new MySqlConnection(cs);
+
             con.Open();
 
-            string stm = @"INSERT INTO customer(customerid,cfname,clname,cbusinessname,cphonenumber,cemail,cusername,cpassword) VALUES(@customerid,@cfName,@clname,@cbusinessname,@cphonenumber,@cemail,@cusername,@cpassword)";
+            string stm = @$"INSERT INTO customer(customerid, cfname, clname, cbusinessname, cphonenumber, cemail, cusername, cpassword)
+                        VALUES(@customerID, @cfName, @clName, @cBusinessName, @cPhoneNumber, @cEmail, @cUsername, @cPassword)";
 
-            using var cmd = new MySqlCommand(stm,con);
+            using var cmd = new MySqlCommand(stm, con);
 
-            cmd.Parameters.AddWithValue("@customerid",value.customerID);
-            cmd.Parameters.AddWithValue("@cfname",value.cfName);
-            cmd.Parameters.AddWithValue("@clname",value.clName);
-            cmd.Parameters.AddWithValue("@cbusinessname", value.cBusinessName);
-            cmd.Parameters.AddWithValue("@cphonenumber",value.cPhoneNumber) ;
-            cmd.Parameters.AddWithValue("@cemail",value.cEmail);
-            cmd.Parameters.AddWithValue("@cusername", value.cUsername);
-            cmd.Parameters.AddWithValue("@cpassword",value.cPassword);
+            cmd.Parameters.AddWithValue("@customerID", myCustomer.customerID);
+            cmd.Parameters.AddWithValue("@cfName", myCustomer.cfName);
+            cmd.Parameters.AddWithValue("@clName", myCustomer.clName);
+            cmd.Parameters.AddWithValue("@cBusinessName", myCustomer.cBusinessName);
+            cmd.Parameters.AddWithValue("@cPhoneNumber", myCustomer.cPhoneNumber);
+            cmd.Parameters.AddWithValue("@cEmail", myCustomer.cEmail);
+            cmd.Parameters.AddWithValue("@cUsername", myCustomer.cUsername);
+            cmd.Parameters.AddWithValue("@cPassword", myCustomer.cPassword);
 
             cmd.Prepare();
 
@@ -45,7 +49,7 @@ namespace api.Database
 
             cmd.Connection = con;
 
-            //cmd.Parameters.AddWithValue("@customerid",value.customerID);
+            cmd.Parameters.AddWithValue("@customerid",value.customerID);
             cmd.Parameters.AddWithValue("@cfname",value.cfName);
             cmd.Parameters.AddWithValue("@clname",value.clName);
             cmd.Parameters.AddWithValue("@cbusinessname", value.cBusinessName);

@@ -3,7 +3,7 @@ var managerList = [];
 var myManager = {};
 
 function handleOnLoad() {
-    localStorage.setItem('successfulApp', 'false');
+    // localStorage.setItem('successfulApp', 'false');
     getManagerInfo();
 }
 
@@ -102,8 +102,8 @@ function updateManager() {
 }
 function editManager(){
     localStorage.setItem("fname", document.getElementById("firstname").value);
-        localStorage.setItem("lname", document.getElementById("lastname").value);
-        localStorage.setItem("uname", document.getElementById("username").value);
+    localStorage.setItem("lname", document.getElementById("lastname").value);
+    localStorage.setItem("uname", document.getElementById("username").value);
     localStorage.setItem("pass", document.getElementById("password").value);
     localStorage.setItem("mail", document.getElementById("email").value);
     localStorage.setItem("phone", document.getElementById("phonenumber").value);

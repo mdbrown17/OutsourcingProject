@@ -11,7 +11,7 @@ using api;
 
 namespace api.Database
 {
-    public class InsertCustomers : IInsertCustomers
+    public class InsertCustomers 
     {
         public void InsertCustomer(Customer myCustomer){
             ConnectionString myConnection = new ConnectionString();
