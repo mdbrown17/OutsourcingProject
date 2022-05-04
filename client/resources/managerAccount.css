@@ -1,0 +1,66 @@
+.navbar{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+  
+#logo {
+    position:relative;
+    left: 560px;
+    width: 250px;
+    height: 100px;
+}
+  
+.header {
+    padding-top: 125px;
+    text-align: center;
+}
+
+.header h1{
+    font-size: 50px;
+    color: #B22222;
+    font-variant: small-caps;
+}
+
+.subheader h2{
+    font-size: 45px;
+    color: #B22222;
+    font-variant: small-caps;
+}
+
+.customerinfo{
+    padding-top: 25px;
+}
+  
+.header2{
+    text-align: right;
+    font-size: x-small;
+}
+  
+.btn{
+    background-color: darkred;
+    color: white;
+}
+
+.col-6 img {
+    width: 80%;
+}
+
+.leaseinfo {
+    padding-bottom: 20px;
+}
+
+.customerinfo {
+    padding-bottom: 20px;
+}
+
+.btn1{
+    margin-right: .5%;
+}
+
+.modal-fade {
+    position: center;
+    margin-top: 50px;
+}

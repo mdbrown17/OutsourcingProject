@@ -1,0 +1,71 @@
+.navbar{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.navbar{
+  overflow: hidden;
+  background-color: lightgray;
+  font-family: Arial;
+}
+
+.navbar a{
+  float: left;
+  font-size: 16px;
+  color: black;
+  text-align: bottom;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+#logo {
+  position:relative;
+  left: 560px;
+  width: 250px;
+  height: 100px;
+
+}
+
+.header {
+padding-top: 125px;
+text-align: center;
+}
+
+.header h1{
+  font-size: 50px;
+  color: #B22222;
+  font-variant: small-caps;
+}
+
+.col-4{
+border: 1px;
+border-width: 1px;
+margin: 1px;
+flex-basis: 33%;
+padding: 20px;
+min-width: 200px;
+margin-bottom: 25px;
+transition: transform 0.5s;
+}
+
+.loginButton{
+  padding-top: 25px;
+}
+
+.container{
+  padding-top: 50px;
+}
+
+.btn{
+  padding-top: 25px;
+  font-size: 18px;
+}
+
+input[type=button] {
+  background-color: rgb(83, 75, 75);
+  color: white;
+}
+

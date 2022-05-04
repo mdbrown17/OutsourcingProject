@@ -1,0 +1,99 @@
+.navbar{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+  
+#logo {
+    position:relative;
+    left: 560px;
+    width: 250px;
+    height: 100px;
+}
+  
+.header {
+    padding-top: 125px;
+    text-align: center;
+}
+
+.topheader h2{
+    font-size: 50px;
+    color: #B22222;
+    font-variant: small-caps;
+}
+
+.subheader h2{
+    font-size: 35px;
+    color: #000000;
+    font-variant: small-caps;
+}
+
+.customerinfo applicationInfo {
+    padding-top: 75px;
+} 
+
+.pendingRentalInfo {
+    padding-top: 50px;
+}
+
+
+.customerinfo img{
+    
+    max-width: 250px;
+    position: center;
+    
+}
+
+.rentalSpace {
+    border: 1px;
+    border-width: 1px;
+    margin: 1px;
+    flex-basis: 33%;
+    padding: 20px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    transition: transform 0.5s;
+}
+
+.rentalApplication {
+    border: 1px;
+    border-width: 5px;
+    margin: 1px;
+    flex-basis: 33%;
+    padding: 20px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    transition: transform 0.5s;
+}
+  
+.header2{
+    text-align: right;
+    font-size: x-small;
+}
+  
+.btn{
+    background-color: darkred;
+    color: white;
+}
+
+.btn1{
+    margin-right: .5%;
+}
+
+.column{
+    float: center;
+}
+
+.left {
+    width: 50%
+}
+
+.right {
+    width: 50%
+}
+
+.row h3{
+    color: rgb(83, 75, 75)
+}
