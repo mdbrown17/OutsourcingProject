@@ -27,6 +27,7 @@ function getAllPending(){
             var rentalID = RentalApplication.rentalID;
             var startDate = new Date(RentalApplication.startDate);
             var endDate = new Date(RentalApplication.endDate);
+            
             eDate = endDate.getFullYear() + '-' + endDate.getDay() + '-'+ endDate.getMonth();
             sDate = startDate.getFullYear() + '-' + startDate.getDay() + '-'+ endDate.getMonth();
             rDate = dateRequested.getFullYear() + '-' + dateRequested.getDay() + '-'+ dateRequested.getMonth();
