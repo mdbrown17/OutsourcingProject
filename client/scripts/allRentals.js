@@ -70,7 +70,7 @@ function getRentalSpaces(){
             localStorage.setItem("editID", rentalID);
            
             
-            html += '<center><button id="requestButton" class="btn" onclick="updateRentalSpace()">Edit</button></center>';
+            html += '<center><button id="requestButton" class="btn" onclick="updateRentalSpace(' + rentalID + ')">Edit</button></center>';
             html +=' </div> </div>';
             
             rentalCount ++;
@@ -84,7 +84,7 @@ function getRentalSpaces(){
     });
 }
 
-function updateRentalSpace() {
+function updateRentalSpace(myID) {
 
     console.log("made it past button");
     console.log(localStorage.getItem("editID"));
@@ -101,28 +101,33 @@ function updateRentalSpace() {
 
         json.forEach((RentalSpace) => {
              
-            if(RentalSpace.rentalID == localStorage.getItem("rentalID"))
+            if(RentalSpace.rentalID == myID){
                 
-            console.log(localStorage.getItem("rentalID"));
+                console.log(localStorage.getItem("rentalID"));
+
                 var rentalID = RentalSpace.rentalID;
                 var imagelink = RentalSpace.imageLink;
                 var monthly = RentalSpace.monthlyRate;
                 var weekly = RentalSpace.weeklyRate;
                 var size = RentalSpace.sqFt;
+
                 var min = RentalSpace.minimumPeriod;
                 var max = RentalSpace.maximumPeriod;
                 var nearby = RentalSpace.nearbyTenant;
                 var location = RentalSpace.locationDetail;
                 var kitchen = RentalSpace.kitchen;
+
                 var lighting = RentalSpace.commercialLighting;
                 var security = RentalSpace.securitySystem;
                 var internet = RentalSpace.internet;
                 var bathroom = RentalSpace.bathroom;
                 var customer = RentalSpace.customerID;
+
                 var manager = RentalSpace.managerID;
 
-                html += '<div class = "col-sm-4" style="border-style: solid;">';
-                html += '<h4><b>Rental Space ' + rentalID + '</b></h4>';
+                // html += '<div class = "col-sm-4" style="border-style: solid;">';
+                html += '<h4><center><b>Rental Space ' + rentalID + '</b></center></h4>';
+                html += '<p><strong>Image Link: </strong><input type="text" id="imagelink" value="'+imagelink+'"></input></p>';
                 html += '<p><strong>Monthly Rate: </strong><input type="text" id="monthlyRate" value="'+monthly+'"></input></p>';
                 html += '<p><strong>Weekly Rate: </strong><input type="text" id="weeklyRate" value="'+weekly+'"></input></p>';
                 html += '<p><strong>Size: </strong><input type="text" id="sqFt" value="'+size+'"></input></p>';
@@ -130,55 +135,31 @@ function updateRentalSpace() {
                 html += '<p><strong>Max Rental Period: </strong><input type="text" id="maximumPeriod" value="'+max+'"></input></p>';
                 html += '<p><strong>Nearby Tenant: </strong><input type="text" id="nearbyTenant" value="'+nearby+'"></input></p>';
                 html += '<p><strong>Location: </strong><input type="text" id="locationDetail" value="'+location+'"></input></p>';
+                html += '<p><strong> Enter 1 if True and 0 if False for each of the below fields:';
                 html += '<p><strong>Kitchen: </strong><input type="text" id="kitchen" value="'+kitchen+'"></input></p>';
                 html += '<p><strong>Lighting: </strong><input type="text" id="commercialLighting" value="'+lighting+'"></input></p>';
                 html += '<p><strong>Security: </strong><input type="text" id="securitySystem" value="'+security+'"></input></p>';
                 html += '<p><strong>Internet: </strong><input type="text" id="internet" value="'+internet+'"></input></p>';
                 html += '<p><strong>Bathroom: </strong><input type="text" id="bathroom" value="'+bathroom+'"></input></p>';
 
-                html += '<center><button id="requestButton" class="btn" onclick="editRentalSpace()">Submit Changes</button></center>';
+                html += '<center><button id="requestButton" class="btn" onclick="editRentalSpace(';
+                html += + rentalID + "," + size + ", '" + imagelink + "'," + min + "," + max + "," + monthly + "," + weekly +
+                        ", '" + nearby + "', '" + location + "' , " + customer + "," + manager+ "," + kitchen + "," + lighting + "," + security+ "," + internet + "," + bathroom;
+                html += ')">Submit Changes</button></center>';
                 html+=' </div> </div>';
-        
+            }
+            
         });
-        document.getElementById("allRentals").innerHTML = html;
-
-        localStorage.setItem("monthRate", document.getElementById("monthly").value);
-        localStorage.setItem("weekRate", document.getElementById("weekly").value);
-        localStorage.setItem("sqFt", document.getElementById("size").value);
-        localStorage.setItem("image", document.getElementById("imagelink").value);
-        localStorage.setItem("minimum", document.getElementById("min").value);
-        localStorage.setItem("maximum", document.getElementById("max").value);
-        localStorage.setItem("nearby", document.getElementById("nearby").value);
-        localStorage.setItem("location", document.getElementById("location").value);
-        localStorage.setItem("hasKitchen", document.getElementById("kitchen").value);
-        localStorage.setItem("hasLighting", document.getElementById("lighting").value);
-        localStorage.setItem("hasSecurity", document.getElementById("security").value);
-        localStorage.setItem("hasInternet", document.getElementById("internet").value);
-        localStorage.setItem("hasBathroom", document.getElementById("bathroom").value);
-
+        document.getElementById("editDialog").innerHTML = html;
+        
         }).catch(function(error){
             console.log(error);
         });
+        showModalEdit();
+        
 }
 
-function editRentalSpace(){
-
-    var rentalID = localStorage.getItem("rentalID");
-    var monthRate = localStorage.getItem("monthRate");
-    var weekRate = localStorage.getItem("weekRate");
-    var sqFt = localStorage.getItem("sqFt");
-    var image = localStorage.getItem("image");
-    var minimum = localStorage.getItem("minimum");
-    var maximum = localStorage.getItem("maximum");
-    var nearby = localStorage.getItem("nearby");
-    var location = localStorage.getItem("location");
-    var hasKitchen = localStorage.getItem("hasKitchen");
-    var hasLighting = localStorage.getItem("hasLighting");
-    var hasSecurity = localStorage.getItem("hasSecurity");
-    var hasInternet = localStorage.getItem("hasInternet");
-    var hasBathroom = localStorage.getItem("hasBathroom");
-    var customer = localStorage.getItem("customer");
-    var manager = localStorage.getItem("manager");
+function editRentalSpace(rentalID, sqFt, image, minimum, maximum, monthRate, weekRate, nearby, location, customer, manager, kitchen, lighting, security, internet, bathroom){
 
     const url = "https://localhost:5001/api/rentalspaces/" + rentalID;
 
@@ -199,21 +180,29 @@ function editRentalSpace(){
                 weeklyRate: weekRate,
                 locationDetail: location,
                 nearbyTenant: nearby,
-                customerID: customer,
-                managerID: manager,
-                kitchen: hasKitchen,
-                commercialLighting: hasLighting,
-                securitySystem: hasSecurity,
-                internet: hasInternet,
-                bathroom: hasBathroom
-            })
+                rscustomerID: customer,
+                rsmanagerID: manager,
+                kitchen: kitchen,
+                commercialLighting: lighting,
+                securitySystem: security,
+                internet: internet,
+                bathroom: bathroom
+        })
             
     }).then((response) =>{
         console.log(response);
     });
-    showModal();
+    hideModalEdit();
+    showSuccessModal();
 }
 
-function showModal(){
+function showSuccessModal(){
     $('#successModal').modal('show');
+}
+
+function showModalEdit(){
+    $('#editModal').modal('show');
+}
+function hideModalEdit(){
+    $('#editModal').modal('hide');
 }
