@@ -47,8 +47,6 @@ function getRentalSpaces(){
             var startDate = sDate.getMonth() + '-' + sDate.getDay() + '-' + sDate.getFullYear();
             var endDate = eDate.getMonth() + '-' + eDate.getDay() + '-' + eDate.getFullYear();
 
-            
-
             html += '<div class = "col-sm-4" style="border-style: solid;">';
             html += '<h4><b>Rental Space ' + rentalID + '</b></h4>';
             html += '<img src="' + image + '" id="myimage" alt="floorplan" style="min-width: 100px; min-height: 150px; max-width: 200px; max-height: 150px;">';
@@ -59,8 +57,8 @@ function getRentalSpaces(){
                 html+= '<hr size="5" width="100%" color="black">  ';
                 html += '<p>Customer Name: ' +custName +'</p>';
                 html += '<p>Business Name: ' + business + '</p>';
-                html += '<p>Phone: ' +cPhone +'</p>';
-                html += '<p>eMail: ' +cEmail +'</p>';
+                html += '<p>Phone: ' + cPhone +'</p>';
+                html += '<p>eMail: ' + cEmail +'</p>';
                 html += '<p>Lease Start Date: ' + startDate +'</p>';
                 html += '<p>Lease End Date: ' + endDate +'</p>';
             }
@@ -76,16 +74,16 @@ function getRentalSpaces(){
 
             // space information
             html+= '<hr size="5" width="100%" color="black">  ';
-            html += '<p><strong>Monthly Rate: $' + monthly + '</strong><p/>';
-            html += '<p><strong> Weekly Rate: $' + weekly + '</strong></p>';
-            html += '<p><strong>Size: ' + size + ' sqFt</strong></p>';
-            html += '<p><strong>Min Rental Period: ' + min + ' Months</strong></p>';
-            html += '<p><strong>Max Rental Period: ' + max + ' Months</strong></p>';
-            html += '<p><strong>Nearby Tenant(s): ' + nearby + '</strong></p>';
-            html += '<p><strong>Location: ' + location + '</strong></p>';
+            html += '<p id="monthlyRate"><strong>Monthly Rate: $' + monthly + '</strong><p/>';
+            html += '<p id="weeklyRate"><strong> Weekly Rate: $' + weekly + '</strong></p>';
+            html += '<p id="sqFt"><strong>Size: ' + size + ' sqFt</strong></p>';
+            html += '<p id="minimumPeriod"><strong>Min Rental Period: ' + min + ' Months</strong></p>';
+            html += '<p id="maximumPeriod"><strong>Max Rental Period: ' + max + ' Months</strong></p>';
+            html += '<p id="nearbyTenant"><strong>Nearby Tenant(s): ' + nearby + '</strong></p>';
+            html += '<p id="locationDetail"><strong>Location: ' + location + '</strong></p>';
 
             if(kitchen == 1){
-                html += '<p><strong>Kitchen: Included</strong></p>';
+                html += '<p ><strong>Kitchen: Included</strong></p>';
             }
             if(lighting == 1){
                 html += '<p><strong>Commercial Lighting: Included</strong></p>';
@@ -102,9 +100,12 @@ function getRentalSpaces(){
 
             localStorage.setItem("editID", rentalID);
             if(customer != 1){
-                html+='<center><button id="makeAvailableButton" class="btn" onclick="makeSpaceAvailable(' + rentalID + ')">Make Space Available</button></center>';
+                html+='<center><button id="makeAvailableButton" class="btn" onclick="makeSpaceAvailable(' + 
+                rentalID + "," + size + ", '" + image + "'," + min + "," + max + "," + monthly + "," + weekly +
+                        ", '" + nearby + "', '" + location + "' , " + customer + "," + manager+ "," + kitchen + "," + lighting + "," + security+ "," + internet + "," + bathroom +
+                        ')">Make Space Available</button></center>';
             }
-           
+           console.log("9999999999  " + rentalID);
             
             html += '<center><button id="requestButton" class="btn" onclick="showEditRentalSpace(' + rentalID + ')">Edit Space Details</button></center>';
             html +=' </div> </div>';
@@ -130,7 +131,6 @@ function showEditRentalSpace(myID) {
     }).then(function(json){
 
         let html = "";
-        let html2 = "";
 
         json.forEach((RentalSpace) => {
              
@@ -242,12 +242,14 @@ function editRentalSpace(rentalID, sqFt, image, minimum, maximum, monthRate, wee
     hideModalEdit();
     showSuccessModal();
 }
-function makeSpaceAvailable(rentalID){
-    updateRentalSpace(rentalID);
-    updateLease(rentalID);
+function makeSpaceAvailable(myID, sqFt, image, minimum, maximum, monthRate, weekRate, nearby, location, customer, manager, kitchen, lighting, security, internet, bathroom){
+    updateRentalSpace(myID, sqFt, image, minimum, maximum, monthRate, weekRate, nearby, location, customer, manager, kitchen, lighting, security, internet, bathroom);
+    updateLease(myID);
+    showAvailableModal();
 }
-function updateRentalSpace(rentalID){
-    const url = "https://localhost:5001/api/rentalspaces/" + rentalID;
+function updateRentalSpace(myID, sqFt, image, minimum, maximum, monthRate, weekRate, nearby, location, customer, manager, kitchen, lighting, security, internet, bathroom){
+    console.log("1000000000 " + myID);
+    const url = "https://localhost:5001/api/rentalspaces/" + myID;
 
     fetch(url, {
         method: "PUT",
@@ -257,17 +259,35 @@ function updateRentalSpace(rentalID){
         }
         ,
         body: JSON.stringify({
-                customerID: 1
-            }) 
+            rentalID: myID,
+                sqFt: sqFt,
+                monthlyRate: monthRate,
+                weeklyRate: weekRate,
+                imageLink: image,
+                minimumPeriod: minimum,
+                maximumPeriod: maximum,
+                weeklyRate: weekRate,
+                locationDetail: location,
+                nearbyTenant: nearby,
+                customerID: 1,
+                managerID: manager,
+                kitchen: kitchen,
+                commercialLighting: lighting,
+                securitySystem: security,
+                internet: internet,
+                bathroom: bathroom
+        })
     }).then((response) =>{
         console.log(response);
     });
 }
 
-function updateRentalSpace(rentalID){
-    const url = "https://localhost:5001/api/rentalspaces/" + rentalID;
+function updateLease(myID){
 
-    fetch(url, {
+    var startDate = new Date();
+    var endDate = new Date();
+
+    fetch("https://localhost:5001/api/leases/" + myID, {
         method: "PUT",
         headers: {
             "Accept": 'application/json',
@@ -275,13 +295,20 @@ function updateRentalSpace(rentalID){
         }
         ,
         body: JSON.stringify({
-                customerID: 1
-            }) 
+            leaseID: myID,
+            startDate: startDate,
+            endDate: endDate,
+            rentalID: myID, 
+            customerID: 1
+        })
     }).then((response) =>{
         console.log(response);
     });
 }
 
+function showAvailableModal(){
+    $('#availableModal').modal('show');
+}
 
 function showSuccessModal(){
     $('#successModal').modal('show');
