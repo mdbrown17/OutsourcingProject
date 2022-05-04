@@ -32,4 +32,6 @@ function postCustomer() {
     }).then((response) =>{
         console.log(response);
     }); 
+
+    change_page_customerLogin();
 }
