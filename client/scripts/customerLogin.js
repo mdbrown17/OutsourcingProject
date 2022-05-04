@@ -43,6 +43,7 @@ function checkLogin()
                 html += '<p><strong>Incorrect password. Please try again.</strong></p>';
                 document.getElementById("error").innerHTML = html;
             }
+            
         })
 
         
