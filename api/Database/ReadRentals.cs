@@ -21,7 +21,7 @@ namespace api.Database
             using var con = new MySqlConnection(cs);
             con.Open();
 
-            string stm = @"Select * from rentalspace";
+            string stm = @"SELECT * FROM rentalspace rs JOIN customer c ON rs.rscustomerid = c.customerid JOIN lease l ON rs.rentalID = l.lrentalID JOIN manager m ON rs.rsmanagerid = m.managerid ORDER BY rs.rentalid";
 
             using var cmd = new MySqlCommand(stm,con);
             using MySqlDataReader reader = cmd.ExecuteReader();
@@ -44,11 +44,47 @@ namespace api.Database
                 int security = reader.GetInt32(13);
                 int inter = reader.GetInt32(14);
                 int bath = reader.GetInt32(15);
-                rentals.Add(new RentalSpace(){rentalID = rentalId, sqFt = ft, imageLink = image,
-                 minimumPeriod = min, maximumPeriod = max, monthlyRate = monthly, 
-                 weeklyRate = weekly, locationDetail = location, nearbyTenant = nearTenant, 
-                 customerID = custID, managerID = manID, kitchen = kitch, commercialLighting =lighting,
-                 securitySystem = security, internet = inter, bathroom = bath});
+                // above original
+                string cfName = reader.GetString(17);
+                string clName = reader.GetString(18);
+                string cBusinessName = reader.GetString(19);
+                Int64 cPhoneNumber = reader.GetInt64(20);
+                string cEmail = reader.GetString(21);
+                DateTime startDate = reader.GetDateTime(25);
+                DateTime endDate = reader.GetDateTime(26);
+                string mfname = reader.GetString(30);
+                string mlname = reader.GetString(31);
+                Int64 mphoneNumber = reader.GetInt64(32);
+                string mEmail = reader.GetString(33);
+
+                rentals.Add(new RentalSpace(){rentalID = rentalId, 
+                sqFt = ft, imageLink = image,
+                 minimumPeriod = min, 
+                 maximumPeriod = max, 
+                 monthlyRate = monthly, 
+                 weeklyRate = weekly, 
+                 locationDetail = location, 
+                 nearbyTenant = nearTenant, 
+                 customerID = custID, 
+                 managerID = manID, 
+                 kitchen = kitch, 
+                 commercialLighting = lighting,
+                 securitySystem = security, 
+                 internet = inter, 
+                 bathroom = bath,
+                // above original
+                 cfName = cfName,
+                 clName = clName,
+                 cBusinessName = cBusinessName,
+                 cPhoneNumber = cPhoneNumber,
+                 cEmail = cEmail,
+                 startDate = startDate,
+                 endDate = endDate,
+                 mfname = mfname,
+                 mlname = mlname,
+                 mphoneNumber = mphoneNumber,
+                 mEmail = mEmail
+                 });
             }
             reader.Close();
             return rentals;
