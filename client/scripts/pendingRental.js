@@ -11,6 +11,7 @@ function getApplication(){
     }).then(function(json){
 
         let html = "";
+        let html2 = "";
         json.forEach((rentalapplication) => {
 
             if(rentalapplication.customerID == localStorage.getItem("userID"))
@@ -26,12 +27,20 @@ function getApplication(){
                 html += '<p><strong>Date Requested: ' + dateRequested + '</strong></p>';
                 html += '<p><strong>Start Date: ' + startdate + '</strong></p>';
                 html += '<p><strong>End Date: ' + enddate + '</strong></p>';
+
+                html2 += '<div class="rentalSpace" style="border-style: solid;">';
+                html2 += '<p><strong>Monthly Rate: ' + rentalapplication.monthlyRate + '</strong></p>';
+                html2 += '<p><strong>Date Requested: ' + dateRequested + '</strong></p>';
+                html2 += '<p><strong>Start Date: ' + startdate + '</strong></p>';
+                html2 += '<p><strong>End Date: ' + enddate + '</strong></p>';
             }
 
+            html+=' </div> </div>';
             html+=' </div> </div>';
 
         });
         document.getElementById("applicationInfo").innerHTML = html;
+        document.getElementById("rentalSpaceInfo").innerHTML = html2;
 
     }).catch(function(error){
             console.log(error);

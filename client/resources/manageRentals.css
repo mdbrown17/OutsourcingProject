@@ -58,3 +58,13 @@ font-size: x-small;
     background-color: red;
     color: white;
   }
+
+.subheader h2{
+    font-size: 45px;
+    color: #B22222;
+    font-variant: small-caps;
+}
+
+.btn1{
+  margin-right: .5%;
+}

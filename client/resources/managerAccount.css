@@ -59,3 +59,8 @@
 .btn1{
     margin-right: .5%;
 }
+
+.modal-fade {
+    position: center;
+    margin-top: 50px;
+}

@@ -34,6 +34,12 @@
   font-variant: small-caps;
 }
 
+.subheader h2{
+  font-size: 45px;
+  color: #B22222;
+  font-variant: small-caps;
+}
+
 .header2{
 text-align: right;
 font-size: x-small;
@@ -82,4 +88,8 @@ font-size: x-small;
 .container p{
   text-align: center;
   font-size: 15px;
+}
+
+.btn1{
+  margin-right: .5%;
 }

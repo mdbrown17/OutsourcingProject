@@ -18,7 +18,7 @@
     text-align: center;
 }
 
-.header h1{
+.topheader h2{
     font-size: 50px;
     color: #B22222;
     font-variant: small-caps;
@@ -76,4 +76,20 @@
 .btn{
     background-color: darkred;
     color: white;
+}
+
+.btn1{
+    margin-right: .5%;
+}
+
+.column{
+    float: center;
+}
+
+.left {
+    width: 50%
+}
+
+.right {
+    width: 50%
 }
