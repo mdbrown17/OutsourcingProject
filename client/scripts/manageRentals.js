@@ -42,7 +42,7 @@ function getAllPending(){
             
                 html += '<h4><b>Request #' + applicationID + ' - Rental Space ' + rentalID + ' </b></h4>';
                 html += '<h5> Rquested By Customer: <b>' + customerID + '</b></h5>';
-                html += '<img src="' + myImage + '" alt="floorplan">'; //come back img
+                html += '<img src="' + myImage + '" alt="floorplan" style="min-width: 100px; min-height: 150px; max-width: 200px; max-height: 150px;"></center>'; //come back img
                 html += '<p><strong>Date Requested: ' +  rDate + '</strong></p>';
                 html += '<p><strong>    Start Date Requested: ' + sDate + '</strong></p>';
                 html += '<p><strong>    End Date Requested: ' +  eDate + '</strong></p>';

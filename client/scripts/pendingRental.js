@@ -50,7 +50,7 @@ function getApplication(){
                 html += '<p><strong>Monthly Rate: ' + monthlyRate + '</strong></p>';
                 html += '<p><strong>Weekly Rate: ' + weeklyRate + '</strong></p>';
                 html += '<p><strong>Application Status: ' + status + '</strong></p>';
-                html += '<img src="' + image + '" id="myimage" alt="floorplan"></div>';
+                html += '<img src="' + image + '" id="myimage" alt="floorplan" style="min-width: 100px; min-height: 150px; max-width: 200px; max-height: 150px;"></center></div>';
                 
                 
                 html += '<div class="col-6">';

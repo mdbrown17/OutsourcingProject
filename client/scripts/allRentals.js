@@ -51,11 +51,12 @@ function getRentalSpaces(){
 
             html += '<div class = "col-sm-4" style="border-style: solid;">';
             html += '<h4><b>Rental Space ' + rentalID + '</b></h4>';
-            html += '<img src="' + image + '" id="myimage" alt="floorplan">';
+            html += '<img src="' + image + '" id="myimage" alt="floorplan" style="min-width: 100px; min-height: 150px; max-width: 200px; max-height: 150px;">';
 
             // cust information
             if(customer != 1){
-                html+='<p><strong>Currently Occupied By Customer #' +customer + '</strong></h5>';
+                html +='<h5>Currently Occupied By Customer #' +customer + '</strong></h5>';
+                html+= '<hr size="5" width="100%" color="black">  ';
                 html += '<p>Customer Name: ' +custName +'</p>';
                 html += '<p>Business Name: ' + business + '</p>';
                 html += '<p>Phone: ' +cPhone +'</p>';
