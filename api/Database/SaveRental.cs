@@ -43,7 +43,7 @@ namespace api.Database
             using var con = new MySqlConnection(cs);
             con.Open();
 
-            using var cmd = new MySqlCommand(@"UPDATE rentalspace set nearbytenant = @nearbytenant, rscustomerid = @rscustomerid WHERE rentalid = @rentalid");
+            using var cmd = new MySqlCommand(@"UPDATE rentalspace set rentalid = @rentalid, sqft = @sqft, imagelink = @imagelink, minimumperiod = @minimumperiod, monthlyrate = @monthlyrate, weeklyrate = @weeklyrate, locationdetail = @locationdetail, nearbytenant = @nearbytenant, rsmanagerid = @rsmanagerid, kitchen = @kitchen, commerciallighting = @commerciallighting, securitySystem = @securitysystem, internet = @internet, bathroom = @bathroom, nearbytenant = @nearbytenant, rscustomerid = @rscustomerid WHERE rentalid = @rentalid");
 
             cmd.Connection = con;
 
@@ -58,6 +58,12 @@ namespace api.Database
             cmd.Parameters.AddWithValue("@nearbytenant",value.nearbyTenant);
             cmd.Parameters.AddWithValue("@rscustomerid",value.customerID);
             cmd.Parameters.AddWithValue("@rsmanagerid",value.managerID);
+
+            cmd.Parameters.AddWithValue("@kitchen",value.kitchen);
+            cmd.Parameters.AddWithValue("@commerciallighting",value.commercialLighting);
+            cmd.Parameters.AddWithValue("@securitysystem",value.securitySystem);
+            cmd.Parameters.AddWithValue("@internet",value.internet);
+            cmd.Parameters.AddWithValue("@bathroom",value.bathroom);
 
             cmd.Prepare();
 

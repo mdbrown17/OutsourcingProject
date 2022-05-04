@@ -1,3 +1,5 @@
+using System;
+
 namespace api.Models
 {
     public class RentalSpace
@@ -18,5 +20,21 @@ namespace api.Models
         public int securitySystem {get; set;}
         public int internet {get; set;}
         public int bathroom {get; set;}
+
+        //below are new from lease
+        public DateTime startDate {get; set;}
+        public DateTime endDate {get; set;}
+        // from customer
+        public string cfName {get; set;}
+        public string clName {get; set;}
+        public string cBusinessName {get; set;}
+        public Int64 cPhoneNumber {get; set;}
+        public string cEmail {get; set;}
+        // from manager
+        public string mfname {get; set;}
+        public string mlname {get; set;}
+        public Int64 mphoneNumber {get; set;}
+        public string mEmail {get; set;}
+
     }
 }
