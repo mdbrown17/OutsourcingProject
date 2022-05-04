@@ -93,3 +93,10 @@ font-size: x-small;
 .btn1{
   margin-right: .5%;
 }
+
+.container h4{
+  text-align: center;
+  font-size: 30px;
+  color: rgb(83, 75, 75);    
+  font-variant: small-caps;
+}

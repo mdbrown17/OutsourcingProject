@@ -59,7 +59,7 @@
 
 .rentalApplication {
     border: 1px;
-    border-width: 1px;
+    border-width: 5px;
     margin: 1px;
     flex-basis: 33%;
     padding: 20px;
@@ -92,4 +92,8 @@
 
 .right {
     width: 50%
+}
+
+.row h3{
+    color: rgb(83, 75, 75)
 }

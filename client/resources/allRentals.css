@@ -78,11 +78,21 @@ font-size: x-small;
 .container h4{
   text-align: center;
   font-size: 30px;
-  color: #B22222;    
+  color: rgb(83, 75, 75);    
   font-variant: small-caps;
 }
 
 .container p{
   text-align: center;
   font-size: 15px;
+}
+
+.subheader h2{
+  font-size: 45px;
+  color: #B22222;
+  font-variant: small-caps;
+}
+
+.btn1{
+  margin-right: .5%;
 }

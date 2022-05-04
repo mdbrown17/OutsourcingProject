@@ -68,7 +68,7 @@ function getRentalSpaces(){
 
             // html += '<div class="btn">';
             // html += '<a href="#" data-toggle="modal" data-target="#requestModal"> Request </a>';
-            html += '<button id="requestButton" class="btn" onclick="showRentalModal(' + rentalID + ')">Request</button>';
+            html += '<center><button id="requestButton" class="btn" onclick="showRentalModal(' + rentalID + ')">Request</button></center>';
             html+=' </div> </div>';
             rentalCount ++;
         });
@@ -78,6 +78,7 @@ function getRentalSpaces(){
             console.log(error);
     });
 }
+
 function submitRequest(){
     localStorage.setItem('successfulApp', 'true');
     const chosenSpace = localStorage.getItem("spaceToApplyID");

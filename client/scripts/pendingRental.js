@@ -12,35 +12,67 @@ function getApplication(){
 
         let html = "";
         let html2 = "";
+        
         json.forEach((rentalapplication) => {
 
-            if(rentalapplication.customerID == localStorage.getItem("userID"))
+            if(rentalapplication.customerID == localStorage.getItem("userID") && rentalapplication.approvalStatus != "approved")
             {
                 console.log(rentalapplication.customerID); // test note
-                var dateRequested = rentalapplication.dateRequested;
+                var applicationID = rentalapplication.applicationID;
+                var image = rentalapplication.imageLink;
                 var rentalid = rentalapplication.rentalID;
-                var startdate = rentalapplication.startDate;
-                var enddate = rentalapplication.endDate;
+                var daterequested = new Date(rentalapplication.dateRequested);
+                var sDate = new Date(rentalapplication.startDate);
+                var eDate = new Date(rentalapplication.endDate);
+                var startdate = sDate.getMonth() + '-' + sDate.getDay() + '-' + sDate.getFullYear();
+                var enddate = eDate.getMonth() + '-' + eDate.getDay() + '-' + eDate.getFullYear();
+                var dateRequested = daterequested.getMonth() + '-' + daterequested.getDay() + '-' + daterequested.getFullYear();
+                var monthlyRate = rentalapplication.monthlyRate;
+                var weeklyRate = rentalapplication.weeklyRate;
+                var location = rentalapplication.locationDetail;
+                var nearby = rentalapplication.nearbyTenant;
+                var hasKitchen = rentalapplication.kitchen;
+                var hasCommercialLighting = rentalapplication.commercialLighting;
+                var hasSecuritySystem = rentalapplication.securitySystem;
+                var hasInternet = rentalapplication.internet;
+                var hasBathroom = rentalapplication.bathroom;
+                var status = rentalapplication.approvalStatus;
+
+                html += '<div class="row" style="border-style: solid; border-width: 2px; border-radius: 20px; border-color: grey;>';
                 
-                html += '<div class="rentalApplication" style="border-style: solid;">';
-                html += '<p><strong>RentalID: ' + rentalapplication.rentalID + '</strong></p>';
+                html += '<div class="rentalApplication">';
+                
+                html += '<div class="col-6">';
+                
                 html += '<p><strong>Date Requested: ' + dateRequested + '</strong></p>';
                 html += '<p><strong>Start Date: ' + startdate + '</strong></p>';
                 html += '<p><strong>End Date: ' + enddate + '</strong></p>';
-
-                html2 += '<div class="rentalSpace" style="border-style: solid;">';
-                html2 += '<p><strong>Monthly Rate: ' + rentalapplication.monthlyRate + '</strong></p>';
-                html2 += '<p><strong>Date Requested: ' + dateRequested + '</strong></p>';
-                html2 += '<p><strong>Start Date: ' + startdate + '</strong></p>';
-                html2 += '<p><strong>End Date: ' + enddate + '</strong></p>';
+                html += '<p><strong>Monthly Rate: ' + monthlyRate + '</strong></p>';
+                html += '<p><strong>Weekly Rate: ' + weeklyRate + '</strong></p>';
+                html += '<p><strong>Application Status: ' + status + '</strong></p>';
+                html += '<img src="' + image + '" id="myimage" alt="floorplan"></div>';
+                
+                
+                html += '<div class="col-6">';
+                
+                html += '<p><strong>ApplicationID: ' + applicationID + '</strong></p>';
+                html += '<p><strong>RentalID: ' + rentalid + '</strong></p>';
+                html += '<p><strong>Location: ' + location + '</strong></p>';
+                html += '<p><strong>Nearby Tenant: ' + nearby + '</strong></p>';
+                html += '<p><strong>Kitchen: ' + hasKitchen + '</strong></p>';
+                html += '<p><strong>Commercial Lighting: ' + hasCommercialLighting + '</strong></p>';
+                html += '<p><strong>Security System: ' + hasSecuritySystem + '</strong></p>';
+                html += '<p><strong>Internet: ' + hasInternet + '</strong></p>';
+                html += '<p><strong>Bathroom: ' + hasBathroom + '</strong></p></div></div>';
+                
             }
 
-            html+=' </div> </div>';
-            html+=' </div> </div>';
-
+            html += '</div></div><br><br><br>';
+           
         });
         document.getElementById("applicationInfo").innerHTML = html;
-        document.getElementById("rentalSpaceInfo").innerHTML = html2;
+        document.getElementById("rentalInfo").innerHTML = html2;
+        
 
     }).catch(function(error){
             console.log(error);
@@ -108,7 +140,7 @@ function getPendingRental(){
             }
 
         });
-        document.getElementById("pendingRentalInfo").innerHTML = html;
+        //document.getElementById("pendingRentalInfo").innerHTML = html;
 
     }).catch(function(error){
             console.log(error);
