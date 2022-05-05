@@ -12,11 +12,14 @@ function getApplication(){
 
         let html = "";
         let html2 = "";
+        var count = 0;
         
         json.forEach((rentalapplication) => {
 
             if(rentalapplication.customerID == localStorage.getItem("userID") && rentalapplication.approvalStatus != "approved")
             {
+                count++;
+
                 console.log(rentalapplication.customerID); // test note
                 var applicationID = rentalapplication.applicationID;
                 var image = rentalapplication.imageLink;
@@ -70,6 +73,9 @@ function getApplication(){
             html += '</div></div><br><br><br>';
            
         });
+        if(count == 0){
+            html += '<H3>You have no pending rental applications</H3>';
+        }
         document.getElementById("applicationInfo").innerHTML = html;
         document.getElementById("rentalInfo").innerHTML = html2;
         

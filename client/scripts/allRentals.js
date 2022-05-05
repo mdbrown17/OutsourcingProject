@@ -48,8 +48,8 @@ function getRentalSpaces(){
             var endDate = eDate.getMonth() + '-' + eDate.getDay() + '-' + eDate.getFullYear();
 
             html += '<div class = "col-sm-4" style="border-style: solid;">';
-            html += '<h4 id="rentalID"><b>Rental Space ' + rentalID + '</b></h4>';
-            html += '<img src="' + image + '" id="image" alt="floorplan">';
+            html += '<h4><b>Rental Space ' + rentalID + '</b></h4>';
+            html += '<img src="' + image + '" alt="floorplan">';
 
             // cust information
             if(customer != 1){
@@ -73,13 +73,13 @@ function getRentalSpaces(){
 
             // space information
             html+= '<hr size="5" width="100%" color="black">  ';
-            html += '<p id="monthlyRate"><strong>Monthly Rate: $' + monthly + '</strong><p/>';
-            html += '<p id="weeklyRate"><strong> Weekly Rate: $' + weekly + '</strong></p>';
-            html += '<p id="sqFt"><strong>Size: ' + size + ' sqFt</strong></p>';
-            html += '<p id="minimumPeriod"><strong>Min Rental Period: ' + min + ' Months</strong></p>';
-            html += '<p id="maximumPeriod"><strong>Max Rental Period: ' + max + ' Months</strong></p>';
-            html += '<p id="nearbyTenant"><strong>Nearby Tenant(s): ' + nearby + '</strong></p>';
-            html += '<p id="locationDetail"><strong>Location: ' + location + '</strong></p>';
+            html += '<p ><strong>Monthly Rate: $' + monthly + '</strong><p/>';
+            html += '<p><strong> Weekly Rate: $' + weekly + '</strong></p>';
+            html += '<p ><strong>Size: ' + size + ' sqFt</strong></p>';
+            html += '<p><strong>Min Rental Period: ' + min + ' Months</strong></p>';
+            html += '<p><strong>Max Rental Period: ' + max + ' Months</strong></p>';
+            html += '<p><strong>Nearby Tenant(s): ' + nearby + '</strong></p>';
+            html += '<p><strong>Location: ' + location + '</strong></p>';
 
             if(kitchen == 1){
                 html += '<p ><strong>Kitchen: Included</strong></p>';
@@ -97,14 +97,12 @@ function getRentalSpaces(){
                 html += '<p><strong>Bathroom: Included</strong></p>';
             }
 
-            localStorage.setItem("editID", rentalID);
             if(customer != 1){
                 html+='<center><button id="makeAvailableButton" class="btn" onclick="makeSpaceAvailable(' + 
                 rentalID + "," + size + ", '" + image + "'," + min + "," + max + "," + monthly + "," + weekly +
                         ", '" + nearby + "', '" + location + "' , " + customer + "," + manager+ "," + kitchen + "," + lighting + "," + security+ "," + internet + "," + bathroom +
                         ')">Make Space Available</button></center>';
             }
-           console.log("9999999999  " + rentalID);
             
             html += '<center><button id="requestButton" class="btn" onclick="showEditRentalSpace(' + rentalID + ')">Edit Space Details</button></center>';
             html +=' </div> </div>';
@@ -120,8 +118,7 @@ function getRentalSpaces(){
 
 function showEditRentalSpace(myID) {
 
-    console.log("made it past button");
-    console.log(localStorage.getItem("editID"));
+    console.log(myID);
 
     fetch('https://localhost:5001/api/rentalspaces')
         .then(function(response){
@@ -171,10 +168,10 @@ function showEditRentalSpace(myID) {
                 html += '<p><strong>Internet: </strong><input type="text" id="internet" value="'+internet+'"></input></p>';
                 html += '<p><strong>Bathroom: </strong><input type="text" id="bathroom" value="'+bathroom+'"></input></p>';
 
-                
+                    
 
                 html += '<center><button id="requestButton" class="btn" onclick="editRentalSpace(';
-                html += + rentalID + "," + size + ", '" + imagelink + "'," + min + "," + max + "," + monthly + "," + weekly +
+                html += + rentalID +  "," + size + ", '" + imagelink + "'," + min + "," + max + "," + monthly + "," + weekly +
                         ", '" + nearby + "', '" + location + "' , " + customer + "," + manager+ "," + kitchen + "," + lighting + "," + security+ "," + internet + "," + bathroom;
                 html += ')">Submit Changes</button></center>';
                 html+=' </div> </div>';
@@ -188,23 +185,26 @@ function showEditRentalSpace(myID) {
         });
     showModalEdit();
 }
+//, sqFt, image, minimum, maximum, monthRate, weekRate, nearby, location, customer, manager, kitchen, lighting, security, internet, bathroom
 function editRentalSpace(rentalID, sqFt, image, minimum, maximum, monthRate, weekRate, nearby, location, customer, manager, kitchen, lighting, security, internet, bathroom){
-    
-    image = document.getElementById("image").value;
-    monthly = document.getElementById("monthlyRate").value;
-    weekRate = document.getElementById("weeklyRate").value;
-    sqFt = document.getElementById("sqFt").value;
-    minimum = document.getElementById("minimumPeriod").value;
 
-    maximum = document.getElementById("maximumPeriod").value;
-    nearby = document.getElementById("nearbyTenant").value;
-    location = document.getElementById("locationDetail").value;
-    kitchen = document.getElementById("kitchen").value;
-    lighting = document.getElementById("commercialLighting").value;
+    console.log(rentalID);
 
-    security = document.getElementById("securitySystem").value;
-    internet = document.getElementById("internet").value;
-    bathroom = document.getElementById("bathroom").value;
+    // var image = document.getElementById("image").value;
+    var monthRate = document.getElementById("monthlyRate").value;
+    var weekRate = document.getElementById("weeklyRate").value;
+    var sqFt = document.getElementById("sqFt").value;
+    var minimum = document.getElementById("minimumPeriod").value;
+
+    var maximum = document.getElementById("maximumPeriod").value;
+    var nearby = document.getElementById("nearbyTenant").value;
+    var location = document.getElementById("locationDetail").value;
+    var kitchen = document.getElementById("kitchen").value;
+    var lighting = document.getElementById("commercialLighting").value;
+
+    var security = document.getElementById("securitySystem").value;
+    var internet = document.getElementById("internet").value;
+    var bathroom = document.getElementById("bathroom").value;
 
     const url = "https://localhost:5001/api/rentalspaces/" + rentalID;
 
@@ -218,12 +218,11 @@ function editRentalSpace(rentalID, sqFt, image, minimum, maximum, monthRate, wee
         body: JSON.stringify({
                 rentalID: rentalID,
                 sqFt: sqFt,
-                monthlyRate: monthly,
+                monthlyRate: monthRate,
                 weeklyRate: weekRate,
                 imageLink: image,
                 minimumPeriod: minimum,
                 maximumPeriod: maximum,
-                weeklyRate: weekRate,
                 locationDetail: location,
                 nearbyTenant: nearby,
                 customerID: customer,
@@ -249,7 +248,7 @@ function makeSpaceAvailable(myID, sqFt, image, minimum, maximum, monthRate, week
 function updateRentalSpace(myID, sqFt, image, minimum, maximum, monthRate, weekRate, nearby, location, customer, manager, kitchen, lighting, security, internet, bathroom){
     console.log("1000000000 " + myID);
     const url = "https://localhost:5001/api/rentalspaces/" + myID;
-
+    
     fetch(url, {
         method: "PUT",
         headers: {

@@ -41,7 +41,7 @@ function getRentalSpaces(){
 
             html += '<div class = "col-sm-4" style="border-style: solid;">';
             html += '<h4><b>Rental Space ' + rentalID + '</b></h4>';
-            html += '<img src="' + image + '" id="myimage" alt="floorplan">'
+            html += '<center><img src="' + image + '" id="myimage" alt="floorplan"></center>'
             html += '<p><strong>Monthly Rate: $' + monthly + '</strong></p>';
             html += '<p><strong>Weekly Rate: $' + weekly + '</strong></p>';
             html += '<p><strong>Size: ' + size + ' sqFt</strong></p>';
@@ -109,7 +109,6 @@ function postApplication(start, end, notes, chosenSpace){
         console.log(response);
     });
 }
-
 
 function showModalSuccess(){
     $('#successModal').modal('show');

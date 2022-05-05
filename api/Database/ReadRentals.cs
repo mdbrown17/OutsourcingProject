@@ -140,7 +140,7 @@ namespace api.Database
             using var con = new MySqlConnection(cs);
             con.Open();
 
-            string stm = @"Select * from rentalspace JOIN WHERE @rentalid = rentalid";
+            string stm = @"Select * from rentalspace WHERE @rentalid = rentalid";
 
             using var cmd = new MySqlCommand(stm,con);
             cmd.Parameters.AddWithValue("@rentalid",id);
@@ -163,11 +163,27 @@ namespace api.Database
                 int security = reader.GetInt32(13);
                 int inter = reader.GetInt32(14);
                 int bath = reader.GetInt32(15);
-                rentals.Add(new RentalSpace(){rentalID = rentalId, sqFt = ft, imageLink = image,
-                minimumPeriod = min, maximumPeriod = max, monthlyRate = monthly, 
-                weeklyRate = weekly, locationDetail = location, nearbyTenant = nearTenant, 
-                customerID = custID, managerID = manID, kitchen = kitch, commercialLighting =lighting,
-                securitySystem = security, internet = inter, bathroom = bath});
+                // above original
+                
+
+                rentals.Add(new RentalSpace(){
+                 rentalID = rentalId, 
+                 sqFt = ft, imageLink = image,
+                 minimumPeriod = min, 
+                 maximumPeriod = max, 
+                 monthlyRate = monthly, 
+                 weeklyRate = weekly, 
+                 locationDetail = location, 
+                 nearbyTenant = nearTenant, 
+                 customerID = custID, 
+                 managerID = manID, 
+                 kitchen = kitch, 
+                 commercialLighting = lighting,
+                 securitySystem = security, 
+                 internet = inter, 
+                 bathroom = bath
+                // above original
+                 });
             }
             reader.Close();
             return rentals[0];

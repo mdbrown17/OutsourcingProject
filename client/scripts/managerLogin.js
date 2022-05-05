@@ -31,7 +31,7 @@ function checkLogin()
                 localStorage.setItem("userFirstName", firstname);
                 change_page_managerNavigation();
             }
-            else if(manager.mUsername != temp.username && manager.mPassword == temp.password)
+            else if(manager.mUsername != temp.username)
             {
                 let html = "";
                 html += '<p><strong>There is no account with that username.</strong></p>';
